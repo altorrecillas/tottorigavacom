@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tottori Gavà — Restaurante japonés en Gavà · Sushi, Take Away y Domicilio</title>
+<meta name="description" content="Restaurante japonés en el centro de Gavà desde 2017. Sushi elaborado al momento, menú del día desde 14,90 €, take away y entrega a domicilio. Calle Sant Pere 37. Reservas: 93 638 87 70.">
+<link rel="canonical" href="https://tottorigava.com/">
+<meta name="theme-color" content="#0a0806">
+<meta name="author" content="Tottori Gavà">
+
+<!-- Compartir en WhatsApp, Facebook, X -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Tottori Gavà">
+<meta property="og:url" content="https://tottorigava.com/">
+<meta property="og:title" content="Tottori Gavà — Restaurante japonés en Gavà">
+<meta property="og:description" content="Sushi elaborado al momento, menú del día desde 14,90 €, take away y entrega a domicilio en Gavà.">
+<meta property="og:image" content="https://tottorigava.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="img/logohero.avif" imagesrcset="img/sm/logohero.avif 780w, img/logohero.avif 1600w" imagesizes="100vw" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@200&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #0a0806;
+    --dark: #111009;
+    --surface: #16140f;
+    --gold: #c9a96e;
+    --gold-light: #e4c98a;
+    --gold-muted: #7a6240;
+    --cream: #f0e8d8;
+    --cream-dim: #a89878;
+    --white: #faf6ef;
+    --sello: #b5342c;
+    --lamina: linear-gradient(135deg,#a8874d 0%,#e4c98a 30%,#c9a96e 48%,#f2e0b0 66%,#b8945a 100%);
+    --lamina-viva: linear-gradient(135deg,#bd9a5c 0%,#f0dca8 30%,#e4c98a 48%,#fdf0cc 66%,#c9a96e 100%);
+    --relieve: 0 1px 0 rgba(255,240,200,.34) inset;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black); color: var(--cream);
+    font-family: 'Montserrat', sans-serif; font-weight: 300;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity:.03; pointer-events:none; z-index:1000;
+  }
+
+  /* ── BASE UI: selección, foco, scrollbar ── */
+  img { display: block; }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--gold); color: var(--black); }
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  html { scrollbar-color: #3a3126 var(--black); }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: #3a3126; border: 2px solid var(--black); border-radius: 6px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold-muted); }
+
+  .skip-link {
+    position: fixed; left: 16px; top: -120px; z-index: 900;
+    background: var(--gold); color: var(--black);
+    font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    padding: 14px 22px; text-decoration: none; transition: top .25s;
+  }
+  .skip-link:focus { top: 16px; }
+
+  /* Respeta la preferencia del sistema de reducir movimiento */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:500;
+    padding: 32px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background .5s, padding .4s;
+  }
+  nav.scrolled {
+    background: rgba(10,8,6,.93); backdrop-filter: blur(14px);
+    padding: 18px 60px; border-bottom: 1px solid rgba(201,169,110,.1);
+  }
+  .nav-logo {
+    font-family: 'Noto Serif JP',serif; font-weight:200;
+    font-size:11px; letter-spacing:.35em; color:var(--gold);
+    text-transform:uppercase; text-decoration:none;
+  }
+  .nav-logo span {
+    display:block; font-family:'Cormorant Garamond',serif;
+    font-size:22px; letter-spacing:.15em; color:var(--white);
+    font-weight:300; line-height:1;
+  }
+  .nav-links { display:flex; gap:44px; list-style:none; }
+  .nav-links a {
+    font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--cream-dim); text-decoration:none; transition:color .3s; position:relative;
+  }
+  .nav-links a::after {
+    content:''; position:absolute; bottom:-4px; left:0; right:0;
+    height:1px; background:var(--gold); transform:scaleX(0);
+    transform-origin:left; transition:transform .35s;
+  }
+  .nav-links a:hover { color:var(--gold-light); }
+  .nav-links a:hover::after { transform:scaleX(1); }
+  .nav-cta {
+    font-size:10px; letter-spacing:.25em; text-transform:uppercase;
+    color:var(--black); background:var(--lamina); box-shadow:var(--relieve); padding:12px 24px;
+    text-decoration:none; transition:background .3s, box-shadow .3s;
+  }
+  .nav-cta:hover { background:var(--lamina-viva); }
+
+  /* HERO */
+  #hero { position:relative; height:100vh; display:flex; align-items:flex-end; overflow:hidden; }
+  .hero-bg {
+    position:absolute; inset:0;
+    background-image: url('img/logohero.avif');
+    background-size:cover; background-position:center center;
+    animation: heroZoom 14s ease-out forwards;
+  }
+  /* HERO IMAGE MOBILE — hidden on desktop */
+  .hero-img-mobile { display: none; }
+
+  @keyframes heroZoom { from{transform:scale(1.06)} to{transform:scale(1)} }
+  .hero-overlay {
+    position:absolute; inset:0;
+    background: linear-gradient(to bottom, rgba(10,8,6,.2) 0%, rgba(10,8,6,.35) 40%, rgba(10,8,6,.82) 100%);
+  }
+  .hero-kanji {
+    position:absolute; right:7%; top:50%; transform:translateY(-50%);
+    font-family:'Noto Serif JP',serif; font-size:clamp(110px,16vw,240px); font-weight:200;
+    color:transparent; -webkit-text-stroke:1px rgba(201,169,110,.18);
+    line-height:1; writing-mode:vertical-rl; user-select:none;
+    animation: fadeInRight 2s ease .4s both;
+  }
+  .hero-content { position:relative; z-index:2; padding:0 60px 100px; max-width:680px; }
+  .hero-tag {
+    display:inline-flex; align-items:center; gap:12px;
+    font-size:10px; letter-spacing:.35em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:28px; animation:fadeInUp 1s ease .3s both;
+  }
+  .hero-tag::before { content:''; width:40px; height:1px; background:var(--gold); }
+  h1 {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(52px,7vw,96px);
+    font-weight:300; line-height:.95; letter-spacing:-.01em; color:var(--white); margin-bottom:12px;
+    animation:fadeInUp 1s ease .5s both;
+  }
+  h1 em { font-style:italic; color:var(--gold-light); }
+  .hero-sub {
+    font-family:'Noto Serif JP',serif; font-size:13px; font-weight:200;
+    letter-spacing:.3em; color:rgba(240,232,216,.7); margin-bottom:48px;
+    animation:fadeInUp 1s ease .7s both;
+  }
+  .hero-actions { display:flex; align-items:center; gap:36px; animation:fadeInUp 1s ease .9s both; }
+  .btn-primary {
+    display:inline-block; font-size:10.5px; letter-spacing:.25em; text-transform:uppercase;
+    color:var(--black); background:var(--lamina); padding:18px 40px; text-decoration:none;
+    box-shadow:var(--relieve), 0 8px 22px -16px rgba(201,169,110,.8);
+    transition:background .3s, transform .3s, box-shadow .3s;
+  }
+  .btn-primary:hover { background:var(--lamina-viva); transform:translateY(-2px); box-shadow:var(--relieve), 0 14px 30px -16px rgba(201,169,110,.9); }
+  .btn-ghost {
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:10.5px; letter-spacing:.25em; text-transform:uppercase;
+    color:rgba(240,232,216,.7); text-decoration:none; transition:color .3s;
+  }
+  .btn-ghost svg { transition:transform .3s; }
+  .btn-ghost:hover { color:var(--white); }
+  .btn-ghost:hover svg { transform:translateX(4px); }
+  .hero-scroll {
+    position:absolute; bottom:40px; right:60px;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    z-index:2; animation:fadeInUp 1.5s ease 1.2s both;
+  }
+  .hero-scroll span { font-size:9px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-muted); writing-mode:vertical-rl; }
+  .scroll-line { width:1px; height:60px; background:linear-gradient(to bottom, var(--gold-muted), transparent); animation:scrollPulse 2s infinite; }
+
+  /* ABOUT */
+  #about {
+    padding:160px 60px;
+    display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:center;
+  }
+  .section-label {
+    font-size:9.5px; letter-spacing:.4em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:24px;
+    display:flex; align-items:center; gap:16px;
+  }
+  .section-label::before { content:''; width:24px; height:1px; background:var(--gold); }
+  .about-text h2 {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(36px,4vw,54px);
+    font-weight:300; line-height:1.15; color:var(--white); margin-bottom:32px;
+  }
+  .about-text h2 em { font-style:italic; color:var(--gold-light); }
+  .about-text p { font-size:13.5px; line-height:2; color:var(--cream-dim); margin-bottom:20px; max-width:440px; }
+  .divider-gold { width:60px; height:1px; background:var(--gold-muted); margin:40px 0; }
+  .about-visual { position:relative; }
+  .about-img {
+    position:relative; aspect-ratio:3/4; overflow:hidden; cursor:pointer;
+    border-radius:12px; border:1px solid rgba(201,169,110,.32);
+    box-shadow: 0 14px 30px -20px rgba(0,0,0,.7);
+    transition: border-color .35s, box-shadow .35s;
+  }
+  .about-img:hover { border-color: rgba(201,169,110,.6); }
+  .about-img img {
+    width:100%; height:100%; object-fit:cover;
+    filter:brightness(.82) saturate(.8) contrast(1.05); transition:transform .8s ease;
+  }
+  .about-img:hover img { transform:scale(1.04); }
+  .about-badge {
+    position:absolute; bottom:-28px; left:-28px;
+    width:116px; height:116px; background:var(--lamina);
+    box-shadow:0 2px 0 rgba(255,240,200,.4) inset, 0 16px 38px -20px rgba(201,169,110,.85);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:2;
+  }
+  .about-badge .big { font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:400; color:var(--black); line-height:1; }
+  .about-badge .small { font-size:8px; letter-spacing:.12em; color:rgba(10,8,6,.65); text-transform:uppercase; text-align:center; margin-top:4px; }
+
+  /* STRIP GALLERY */
+  #strip {
+    display:grid; grid-template-columns:repeat(5,1fr); gap:3px; height:340px; overflow:hidden;
+  }
+  .strip-item {
+    position:relative; overflow:hidden; cursor:pointer;
+    border-radius:12px; border:1px solid rgba(201,169,110,.32);
+    transition: border-color .35s;
+  }
+  .strip-item:hover { border-color: rgba(201,169,110,.6); }
+  .strip-item img {
+    width:100%; height:100%; object-fit:cover;
+    filter:brightness(.92) saturate(1.08) contrast(1.03); transition:transform .6s ease, filter .5s;
+  }
+  .strip-item img.ambiente { filter:brightness(.82) saturate(.8) contrast(1.05); }
+  .strip-item:hover img { transform:scale(1.08); filter:brightness(1.02) saturate(1.18) contrast(1.03); }
+
+  /* MENU */
+  #menu { padding:120px 60px; background:var(--surface); position:relative; overflow:hidden; }
+  #menu::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(to right, transparent, var(--gold-muted), transparent); }
+  #menu::after  { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(to right, transparent, var(--gold-muted), transparent); }
+  .menu-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:80px; }
+  .menu-header h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,50px); font-weight:300; color:var(--white); line-height:1; }
+  .menu-header h2 em { font-style:italic; color:var(--gold-light); }
+  .menu-tabs { display:flex; gap:4px; }
+  .menu-tab {
+    font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--cream-dim);
+    padding:10px 20px; border:1px solid rgba(201,169,110,.2); cursor:pointer;
+    background:transparent; font-family:'Montserrat',sans-serif; transition:all .3s;
+  }
+  .menu-tab.active, .menu-tab:hover { background:var(--gold); color:var(--black); border-color:var(--gold); }
+  .menu-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+  .menu-card { position:relative; background:var(--dark); overflow:hidden; cursor:pointer;
+    border-radius:12px; border:1px solid rgba(201,169,110,.32);
+    box-shadow: 0 14px 30px -20px rgba(0,0,0,.7);
+    transition: transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .45s, border-color .45s; }
+  .menu-card:hover { transform:translateY(-6px); z-index:2;
+    border-color: rgba(201,169,110,.6);
+    box-shadow: 0 26px 50px -24px rgba(0,0,0,1); }
+  /* Tarjeta destacada (Combinación 5) */
+  .menu-card-featured { background:rgba(201,169,110,.05); border-color: rgba(201,169,110,.5); }
+  .menu-card-featured:hover { border-color: rgba(201,169,110,.75); box-shadow: 0 26px 50px -24px rgba(0,0,0,1); }
+  .menu-card-featured .card-num, .menu-card-featured .card-jp { color:var(--gold); }
+  .menu-card-featured .card-price { color:var(--gold-light); }
+  .menu-card-featured .card-tag { color:var(--gold); border-color:rgba(201,169,110,.4); }
+
+  /* — Sello 特選: marca de especialidad de la casa. Hace eco del sello rojo
+       que llevan estampado las pizarras en las propias fotos del restaurante. — */
+  .menu-card.tokusen::before {
+    content: '特'; position: absolute; z-index: 3; top: 9px; right: 9px;
+    width: 34px; height: 34px; display: grid; place-items: center;
+    background: var(--sello); color: #fff5ee;
+    font-family: 'Noto Serif JP', serif; font-weight: 200; font-size: 17px;
+    -webkit-text-stroke: .4px #fff5ee;
+    box-shadow: inset 0 0 0 3px var(--sello), inset 0 0 0 4px rgba(255,245,238,.45),
+                0 4px 14px -4px rgba(0,0,0,.85);
+    pointer-events: none;
+  }
+  .menu-card-img { aspect-ratio:4/3; overflow:hidden; position:relative; }
+  .menu-card-img img {
+    width:100%; height:100%; object-fit:cover;
+    filter:brightness(.96) saturate(1.1) contrast(1.04); transition:transform .6s, filter .5s;
+  }
+  .menu-card:hover .menu-card-img img { transform:scale(1.06); filter:brightness(1.03) saturate(1.18) contrast(1.04); }
+  .menu-card-body { padding:26px 30px 30px; border-top: 1px solid rgba(201,169,110,.18); }
+  .card-num { font-family:'Cormorant Garamond',serif; font-size:11px; color:var(--gold-muted); letter-spacing:.2em; margin-bottom:8px; }
+  .card-jp { font-family:'Noto Serif JP',serif; font-size:20px; font-weight:200; color:var(--gold-light); margin-bottom:6px; }
+  .menu-card h3 { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; color:var(--white); margin-bottom:8px; letter-spacing:.02em; }
+  .menu-card p { font-size:11.5px; line-height:1.8; color:var(--cream-dim); }
+  .card-footer { display:flex; align-items:center; justify-content:space-between; margin-top:20px; padding-top:16px; border-top:1px solid rgba(201,169,110,.1); }
+  .card-price { font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--gold); letter-spacing:.05em; }
+  .card-tag { font-size:8.5px; letter-spacing:.15em; color:var(--gold-muted); border:1px solid rgba(201,169,110,.2); padding:3px 9px; text-transform:uppercase; }
+
+  /* DAILY */
+  #daily { padding:140px 60px; display:grid; grid-template-columns:1fr 1.2fr; gap:100px; align-items:center; }
+  .daily-visual { position:relative; }
+  .daily-img {
+    aspect-ratio:1; overflow:hidden; position:relative; cursor:pointer;
+    border-radius:12px; border:1px solid rgba(201,169,110,.32);
+    box-shadow: 0 14px 30px -20px rgba(0,0,0,.7);
+    transition: border-color .35s;
+  }
+  .daily-img:hover { border-color: rgba(201,169,110,.6); }
+  .daily-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.82) saturate(.8) contrast(1.05); transition:transform .6s; }
+  .daily-img:hover img { transform:scale(1.04); }
+  .daily-badge {
+    position:absolute; bottom:-24px; right:-24px; width:130px; height:130px;
+    background:var(--lamina); border-radius:50%;
+    box-shadow:0 2px 0 rgba(255,240,200,.4) inset, 0 18px 40px -20px rgba(201,169,110,.9);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:2;
+  }
+  .daily-badge .price { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:400; color:var(--black); line-height:1; }
+  .daily-badge .lbl { font-size:8px; letter-spacing:.15em; color:rgba(10,8,6,.65); text-transform:uppercase; text-align:center; margin-top:3px; }
+  .daily-text h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(34px,3.5vw,48px); font-weight:300; color:var(--white); margin-bottom:24px; line-height:1.1; }
+  .daily-text h2 em { font-style:italic; color:var(--gold-light); }
+  .daily-text > p { font-size:13px; line-height:2; color:var(--cream-dim); margin-bottom:40px; }
+  .courses { list-style:none; }
+  .courses li { display:grid; grid-template-columns:1fr auto; align-items:center; padding:18px 0; border-bottom:1px solid rgba(201,169,110,.1); gap:16px; }
+  .course-name { font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--white); font-weight:400; }
+  .course-desc { font-size:11px; color:var(--cream-dim); margin-top:2px; }
+  .course-tag { font-size:8.5px; letter-spacing:.2em; color:var(--gold); border:1px solid rgba(201,169,110,.3); padding:4px 10px; text-transform:uppercase; white-space:nowrap; }
+
+  /* GALLERY */
+  #galeria { padding:120px 60px; background:var(--dark); }
+  .galeria-top { margin-bottom:56px; }
+  .galeria-top h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,50px); font-weight:300; color:var(--white); line-height:1; }
+  .galeria-top h2 em { font-style:italic; color:var(--gold-light); }
+  .gallery-grid {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:220px 220px;
+    gap:4px;
+  }
+  .g-item { position:relative; overflow:hidden; cursor:pointer;
+    border-radius:12px; border:1px solid rgba(201,169,110,.32);
+    transition: transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .45s, border-color .35s; }
+  .g-item:hover { z-index:2; border-color: rgba(201,169,110,.6); box-shadow: 0 26px 50px -24px rgba(0,0,0,1); }
+  .g-item.wide { grid-column:span 2; }
+  .g-item.tall { grid-row:span 2; }
+  .g-item img { width:100%; height:100%; object-fit:cover; filter:brightness(.94) saturate(1.08) contrast(1.03); transition:transform .6s, filter .5s; }
+  .g-item:hover img { transform:scale(1.07); filter:brightness(1.03) saturate(1.18) contrast(1.03); }
+
+  /* RESERVAS */
+  #reservas { padding:140px 60px; background:var(--surface); position:relative; text-align:center; overflow:hidden; }
+  #reservas::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 60% at 50% 50%, rgba(139,26,26,.07), transparent 70%); pointer-events:none; }
+  .reservas-kanji { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-family:'Noto Serif JP',serif; font-size:370px; font-weight:200; color:transparent; -webkit-text-stroke:1px rgba(201,169,110,.04); user-select:none; pointer-events:none; line-height:1; }
+  .reservas-inner { position:relative; z-index:2; max-width:600px; margin:0 auto; }
+  .reservas-inner h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(40px,5vw,68px); font-weight:300; color:var(--white); line-height:1; margin-bottom:16px; }
+  .reservas-inner h2 em { font-style:italic; color:var(--gold-light); }
+  .reservas-inner > p { font-size:13px; line-height:1.9; color:var(--cream-dim); margin-bottom:56px; }
+  .contact-cards { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:48px; }
+  .contact-card { background:rgba(201,169,110,.06); border:1px solid rgba(201,169,110,.15); padding:30px 40px; text-decoration:none; transition:background .3s, border-color .3s; min-width:200px; }
+  .contact-card:hover { background:rgba(201,169,110,.12); border-color:rgba(201,169,110,.4); }
+  .cc-label { font-size:9px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-muted); margin-bottom:8px; }
+  .cc-val { font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); font-weight:400; letter-spacing:.03em; }
+
+  /* LOCATION */
+  #location { padding:140px 60px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .loc-info h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,4vw,52px); font-weight:300; color:var(--white); margin-bottom:40px; line-height:1.1; }
+  .loc-info h2 em { font-style:italic; color:var(--gold-light); }
+  .loc-row { display:flex; gap:20px; padding:22px 0; border-bottom:1px solid rgba(201,169,110,.1); align-items:flex-start; }
+  .loc-icon { width:36px; height:36px; background:rgba(201,169,110,.1); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .loc-icon svg { color:var(--gold); }
+  .loc-label { font-size:9px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-muted); margin-bottom:4px; }
+  .loc-val { font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--white); font-weight:400; line-height:1.5; }
+  .loc-val a { color:inherit; text-decoration:none; transition:color .3s; }
+  .loc-val a:hover { color:var(--gold-light); }
+  .map-wrap { aspect-ratio:1; position:relative; overflow:hidden; border:1px solid rgba(201,169,110,.1); }
+  .map-wrap iframe { width:100%; height:100%; border:none; filter:grayscale(1) invert(.9) contrast(.88) sepia(20%); opacity:.68; }
+  .map-wrap::after { content:''; position:absolute; inset:0; box-shadow:inset 0 0 60px rgba(10,8,6,.5); pointer-events:none; }
+
+  /* DELIVERY CONDITIONS */
+  .delivery-conditions {
+    margin-top: 48px;
+    border: 1px solid rgba(201,169,110,.2);
+    padding: 32px 36px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+  .delivery-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 9.5px; letter-spacing: .35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 14px;
+  }
+  .delivery-title svg { color: var(--gold); flex-shrink: 0; }
+  .delivery-min {
+    font-size: 11px; letter-spacing: .1em; color: var(--cream-dim);
+    margin-bottom: 20px; padding-bottom: 16px;
+    border-bottom: 1px solid rgba(201,169,110,.1);
+  }
+  .delivery-rows { display: flex; flex-direction: column; gap: 0; }
+  .delivery-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 13px 0; border-bottom: 1px solid rgba(201,169,110,.07);
+  }
+  .delivery-row:last-child { border-bottom: none; }
+  .delivery-zone { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--white); font-weight: 400; }
+  .delivery-price { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--cream-dim); font-weight: 400; }
+  .delivery-price.free { color: var(--gold-light); }
+
+  /* FOOTER */
+  footer { background:var(--black); padding:56px 60px; border-top:1px solid rgba(201,169,110,.1); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; }
+  .footer-logo { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:var(--white); letter-spacing:.1em; }
+  .footer-logo span { display:block; font-family:'Noto Serif JP',serif; font-size:10px; font-weight:200; letter-spacing:.4em; color:var(--gold-muted); margin-top:4px; text-transform:uppercase; }
+  .footer-links { display:flex; gap:28px; list-style:none; }
+  .footer-links a { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--cream-dim); text-decoration:none; transition:color .3s; }
+  .footer-links a:hover { color:var(--gold); }
+  .footer-copy { font-size:10px; color:var(--gold-muted); letter-spacing:.1em; }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeInRight { from{opacity:0;transform:translateY(-50%) translateX(40px)} to{opacity:.45;transform:translateY(-50%) translateX(0)} }
+  @keyframes scrollPulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+  .reveal { opacity:0; transform:translateY(36px); transition:opacity .9s ease, transform .9s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    width: 40px; height: 40px; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 0; z-index: 600;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 1px;
+    background: var(--gold); transition: transform .3s, opacity .3s, width .3s;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed; inset: 0; z-index: 499;
+    background: rgba(10,8,6,.97); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: center; gap: 0;
+    opacity: 0; pointer-events: none;
+    transition: opacity .4s ease;
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu a {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 8vw, 44px);
+    font-weight: 300; letter-spacing: .05em; color: var(--cream-dim);
+    text-decoration: none; padding: 16px 40px; transition: color .3s;
+    border-bottom: 1px solid rgba(201,169,110,.08); width: 100%; text-align: center;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--gold-light); }
+  .mobile-menu .mobile-cta {
+    margin-top: 32px; font-family: 'Montserrat', sans-serif;
+    font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--black); background: var(--lamina); box-shadow: var(--relieve);
+    padding: 18px 48px; border-bottom: none; width: auto;
+  }
+
+  /* ── TABLET (≤1024px) ── */
+  @media(max-width:1024px){
+    /* Disable custom cursor on touch */
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+
+    /* Nav */
+    nav { padding: 20px 24px; }
+    nav.scrolled { padding: 14px 24px; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: flex; }
+
+    /* Hero */
+    .hero-content { padding: 0 24px 80px; max-width: 100%; }
+    .hero-kanji { display: none; }
+    .hero-scroll { right: 24px; }
+
+    /* About */
+    #about { grid-template-columns: 1fr; gap: 60px; padding: 80px 24px; }
+    .about-visual { padding-bottom: 40px; }
+    .about-badge { bottom: 12px; left: 12px; width: 100px; height: 100px; }
+    .about-badge .big { font-size: 26px; }
+
+    /* Strip */
+    #strip { grid-template-columns: repeat(3,1fr); height: 220px; }
+    #strip .strip-item:nth-child(n+4) { display: none; }
+
+    /* Menu */
+    #menu { padding: 80px 24px; }
+    .menu-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .menu-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Daily */
+    #daily { grid-template-columns: 1fr; gap: 0; padding: 80px 24px; }
+    .daily-visual { padding-bottom: 48px; margin-bottom: 48px; }
+    .daily-badge { bottom: 16px; right: 16px; width: 110px; height: 110px; }
+    .daily-badge .price { font-size: 26px; }
+
+    /* Gallery */
+    #galeria { padding: 80px 24px; }
+    .gallery-grid {
+      grid-template-columns: repeat(2,1fr);
+      grid-template-rows: none;
+      grid-auto-rows: 180px;
+    }
+    .g-item.wide { grid-column: span 2; }
+    .g-item.tall { grid-row: span 1; }
+
+    /* Reservas */
+    #reservas { padding: 80px 24px; }
+    .reservas-kanji { font-size: 180px; }
+    .contact-card { padding: 24px 28px; min-width: 0; width: 100%; }
+
+    /* Location */
+    #location { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
+    .map-wrap { aspect-ratio: 4/3; }
+
+    /* Footer */
+    footer { padding: 40px 24px; flex-direction: column; align-items: center; text-align: center; gap: 28px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px 24px; }
+  }
+
+  /* ── MOBILE (≤640px) ── */
+  @media(max-width:640px){
+    /* Hero — imagen completa + contenido debajo */
+    #hero {
+      flex-direction: column;
+      align-items: stretch;
+      height: auto;
+      min-height: 0;
+    }
+    .hero-bg { display: none; }
+    .hero-overlay { display: none; }
+    .hero-img-mobile {
+      display: block;
+      width: 100%;
+      height: auto;
+      flex-shrink: 0;
+      -webkit-mask-image: linear-gradient(to bottom, #000 66%, transparent 100%);
+              mask-image: linear-gradient(to bottom, #000 66%, transparent 100%);
+    }
+    .hero-kanji { display: none; }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 24px 56px;
+      margin-top: -30px;
+      max-width: 100%;
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .hero-tag  { animation: none; opacity: 1; }
+    h1         { animation: none; opacity: 1; }
+    .hero-sub  { animation: none; opacity: 1; }
+    .hero-actions {
+      flex-direction: column; align-items: flex-start; gap: 20px;
+      animation: none; opacity: 1;
+    }
+    .btn-primary { width: 100%; text-align: center; padding: 18px 24px; }
+    .hero-scroll { display: none; }
+
+    /* Strip */
+    #strip { grid-template-columns: repeat(2,1fr); height: 180px; }
+    #strip .strip-item:nth-child(n+3) { display: none; }
+
+    /* Menu */
+    .menu-grid { grid-template-columns: 1fr; }
+    .menu-tabs { flex-wrap: wrap; }
+
+    /* Courses */
+    .courses li { grid-template-columns: 1fr; gap: 8px; }
+    .course-tag { align-self: flex-start; }
+
+    /* Contact */
+    .contact-cards { flex-direction: column; }
+
+    /* Galería */
+    .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 200px; }
+    .g-item.wide { grid-column: span 1; }
+
+    /* Reservas */
+    .reservas-kanji { font-size: 100px; }
+
+    /* Daily */
+    .daily-visual { padding-bottom: 60px; }
+    .daily-badge { width: 100px; height: 100px; bottom: 12px; right: 12px; }
+    .daily-badge .price { font-size: 22px; }
+
+    /* About badge */
+    .about-badge { width: 90px; height: 90px; left: 8px; bottom: 8px; }
+    .about-badge .big { font-size: 22px; }
+
+    /* Footer */
+    .footer-links { gap: 12px 16px; }
+  }
+
+  /* ── VERY SMALL (≤380px) ── */
+  @media(max-width:380px){
+    nav { padding: 16px 16px; }
+    .hero-content { padding: 0 16px 60px; }
+    #about, #menu, #daily, #galeria, #reservas, #location { padding-left: 16px; padding-right: 16px; }
+    footer { padding: 32px 16px; }
+  }
+
+  /* ── BARRA DE PROGRESO DE LECTURA ── */
+  .scroll-progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+    transform: scaleX(0); transform-origin: 0 50%;
+    background: linear-gradient(to right, var(--gold-muted), var(--gold-light));
+    z-index: 700; pointer-events: none;
+  }
+
+  /* ── ESTADO ABIERTO / CERRADO ── */
+  .open-status:empty { display: none; }
+  .open-status {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+    padding: 5px 11px; border: 1px solid rgba(201,169,110,.28);
+    color: var(--cream-dim); white-space: nowrap; vertical-align: middle;
+  }
+  .open-status::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold-muted); flex-shrink: 0;
+  }
+  .open-status.is-open { color: #9fd0a4; border-color: rgba(120,190,130,.3); }
+  .open-status.is-open::before { background: #6fbf7a; box-shadow: 0 0 0 3px rgba(111,191,122,.18); animation: pulseDot 2.4s ease-in-out infinite; }
+  .open-status.is-closed { color: #d9a0a0; border-color: rgba(200,120,120,.28); }
+  .open-status.is-closed::before { background: #c56d6d; }
+  @keyframes pulseDot { 0%,100%{box-shadow:0 0 0 3px rgba(111,191,122,.18)} 50%{box-shadow:0 0 0 6px rgba(111,191,122,0)} }
+
+  /* ── BARRA DE ACCIONES MÓVIL ── */
+  .mobile-actions { display: none; }
+  @media (max-width: 1024px) {
+    .mobile-actions {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 480;
+      padding: 0;
+      background: rgba(10,8,6,.95); backdrop-filter: blur(18px);
+      border-top: 1px solid rgba(201,169,110,.18);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    .mobile-actions a {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      padding: 10px 4px 11px; text-decoration: none; min-height: 58px;
+      font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--cream-dim); transition: color .25s, background .25s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mobile-actions a + a { box-shadow: inset 1px 0 0 rgba(201,169,110,.1); }
+    .mobile-actions a svg { color: var(--gold); transition: transform .25s; }
+    .mobile-actions a:active { background: rgba(201,169,110,.12); color: var(--gold-light); }
+    .mobile-actions a:active svg { transform: scale(.88); }
+    .ma-wa svg { color: #6fbf7a; }
+    body { padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px)); }
+    .mobile-menu { padding-bottom: 70px; }
+  }
+
+
+  /* ── VISOR DE FOTOS ── */
+  .lightbox[hidden] { display: none; }
+  .lightbox {
+    position: fixed; inset: 0; z-index: 950;
+    background: rgba(6,5,4,.96); backdrop-filter: blur(20px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity .28s ease;
+    padding: 72px 24px 40px;
+  }
+  .lightbox.show { opacity: 1; }
+  .lb-figure {
+    display: flex; flex-direction: column; align-items: center;
+    max-width: 720px; width: 100%; margin: auto;
+  }
+  .lb-media {
+    width: 100%; display: flex; align-items: center; justify-content: center;
+    min-height: 0;
+  }
+  .lb-media img {
+    max-width: 100%; max-height: 62vh; width: auto; height: auto;
+    object-fit: contain; opacity: 0; transform: scale(.97);
+    transition: opacity .35s ease, transform .35s ease;
+  }
+  .lb-media img.ready { opacity: 1; transform: scale(1); }
+  .lb-cap { text-align: center; margin-top: 26px; width: 100%; }
+  .lb-num {
+    display: block; font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 300;
+    color: transparent; -webkit-text-stroke: 1px var(--gold); letter-spacing: .06em; line-height: 1;
+    margin-bottom: 10px;
+  }
+  .lb-num:empty { display: none; }
+  .lb-name {
+    display: block; font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 5vw, 32px); font-weight: 400; color: var(--white); line-height: 1.15;
+  }
+  .lb-desc {
+    display: block; font-size: 11.5px; line-height: 1.7; color: var(--cream-dim);
+    margin-top: 10px; max-width: 460px; margin-left: auto; margin-right: auto;
+  }
+  .lb-desc:empty { display: none; }
+  .lb-price {
+    display: block; font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; color: var(--gold-light); letter-spacing: .06em; margin-top: 14px;
+  }
+  .lb-price:empty { display: none; }
+
+  .lb-btn {
+    position: absolute; display: flex; align-items: center; justify-content: center;
+    width: 46px; height: 46px; background: rgba(201,169,110,.08);
+    border: 1px solid rgba(201,169,110,.22); color: var(--gold);
+    cursor: pointer; transition: background .25s, color .25s, border-color .25s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .lb-btn:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+  .lb-close { top: 20px; right: 20px; }
+  .lb-prev  { left: 20px;  top: 50%; margin-top: -23px; }
+  .lb-next  { right: 20px; top: 50%; margin-top: -23px; }
+  .lb-counter {
+    position: absolute; top: 28px; left: 50%; transform: translateX(-50%);
+    font-size: 9.5px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-muted);
+  }
+  .lb-hint {
+    position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-size: 8.5px; letter-spacing: .24em; text-transform: uppercase; color: rgba(122,98,64,.7);
+  }
+
+  /* la tarjeta ahora sí hace algo al pulsarla */
+  .dish-card, .menu-card, .g-item, .strip-item { -webkit-tap-highlight-color: transparent; }
+
+  @media (max-width: 1024px) {
+    .lightbox { padding: 64px 16px 34px; }
+    .lb-media img { max-height: 50vh; }
+    .lb-btn { width: 42px; height: 42px; }
+    .lb-close { top: 14px; right: 14px; }
+    .lb-prev { left: 10px; }
+    .lb-next { right: 10px; }
+    .lb-cap { margin-top: 20px; }
+    .lb-hint { display: none; }
+  }
+
+
+  /* ── Aparición suave de las fotos (solo si hay JS) ── */
+  .js-fade .dish-card-img img,
+  .js-fade .menu-card-img img,
+  .js-fade .g-item img,
+  .js-fade .strip-item img,
+  .js-fade .about-img img,
+  .js-fade .daily-img img { opacity: 0; }
+  .js-fade img.cargada { opacity: 1; }
+  .dish-card-img, .menu-card-img, .g-item, .strip-item, .about-img, .daily-img {
+    background: linear-gradient(135deg, #17140e 0%, #221d14 100%);
+  }
+
+  /* ── AFINADO MÓVIL ── */
+  @media (max-width: 640px) {
+    /* las fotos de plato son cuadradas en origen: en móvil se ven enteras */
+    .dish-card-img, .menu-card-img { aspect-ratio: 1 / 1; }
+    .dish-card-body { padding: 16px 16px 20px; }
+    .dish-num { font-size: 30px; }
+    .dish-name { font-size: 16px; }
+    .dish-price { font-size: 18px; }
+    .dish-desc { font-size: 10px; }
+  }
+
+  /* Texto solo para lectores de pantalla: el sello es un pseudoelemento y
+     no se anuncia solo, pero sí lleva información. */
+  .sr-solo {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<a href="#about" class="skip-link">Saltar al contenido</a>
+
+<nav id="navbar" aria-label="Principal">
+  <a href="#" class="nav-logo"><span>TOTTORI</span>Restaurant Japonès</a>
+  <ul class="nav-links">
+    <li><a href="#about">El Restaurante</a></li>
+    <li><a href="carta.html">Carta</a></li>
+    <li><a href="menu.html">Menú del Día</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#location">Ubicación</a></li>
+  </ul>
+  <a href="tel:936388770" class="nav-cta">Reservar mesa</a>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about"     onclick="closeMobile()">El Restaurante</a>
+  <a href="carta.html" onclick="closeMobile()">Carta</a>
+  <a href="menu.html"  onclick="closeMobile()">Menú del Día</a>
+  <a href="#galeria"   onclick="closeMobile()">Galería</a>
+  <a href="#location"  onclick="closeMobile()">Ubicación</a>
+  <a href="tel:936388770" class="mobile-cta">Reservar mesa</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <img class="hero-img-mobile" src="img/logohero.avif" srcset="img/sm/logohero.avif 780w, img/logohero.avif 1600w" sizes="100vw" width="1600" height="900" alt="Rótulo del restaurante Tottori Gavà" fetchpriority="high" decoding="async">
+  <div class="hero-overlay"></div>
+  <div class="hero-kanji">鳥取</div>
+  <div class="hero-content">
+    <div class="hero-tag">Gavà, Barcelona — desde 2017</div>
+    <h1>Cocina<br><em>japonesa</em><br>auténtica</h1>
+    <p class="hero-sub">鳥取 · Tottori · とっとり</p>
+    <div class="hero-actions">
+      <a href="menu.html" class="btn-primary">Menú del día</a>
+      <a href="carta.html" target="_self" onclick="closeMobile()" class="btn-ghost">Ver la carta <svg width="20" height="10" viewBox="0 0 20 10" fill="none"><path d="M0 5H18M14 1L18 5L14 9" stroke="currentColor" stroke-width="1"/></svg></a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text reveal">
+    <div class="section-label">El Restaurante</div>
+    <h2>El <em>arte</em> de<br>la cocina japonesa</h2>
+    <div class="divider-gold"></div>
+    <p>Tottori es el nombre que recibe la capital y provincia de Tottori, en el centro de Japón. Tiene unos 200.000 habitantes y es una zona conocida por sus dunas, sus playas y sus edificios históricos.</p>
+    <p>En Tottori Gavà, cada plato es un viaje a los sabores más auténticos de Japón. Nuestra cocina combina técnicas tradicionales con ingredientes seleccionados para ofrecer una experiencia gastronómica única en el corazón de Gavà.</p>
+    <p>Ubicados en la illa peatonal del Centre, con terraza exterior y servicio a domicilio. Desde el sushi más delicado hasta los platos calientes, cada elaboración lleva el respeto y la precisión que define la cultura culinaria japonesa.</p>
+    <a href="#reservas" class="btn-primary" style="display:inline-block;margin-top:16px;">Hacer una reserva</a>
+  </div>
+  <div class="about-visual reveal">
+    <div class="about-img">
+      <img src="principal/portada1.avif" alt="Restaurante Tottori Gavà" loading="lazy" decoding="async" srcset="principal/sm/portada1.avif 340w, principal/portada1.avif 700w" sizes="(max-width:1024px) 92vw, 44vw" width="700" height="940">
+    </div>
+    <div class="about-badge">
+      <span class="big">7+</span>
+      <span class="small">años de<br>pasión</span>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div id="strip">
+  <div class="strip-item"><img class="ambiente" src="principal/portada2.avif" alt="Comida japonesa" loading="lazy" decoding="async" srcset="principal/sm/portada2.avif 340w, principal/portada2.avif 500w" sizes="(max-width:640px) 47vw, (max-width:1024px) 31vw, 20vw" width="500" height="400"></div>
+  <div class="strip-item"><img src="principal/portada3.avif" alt="Rainbow roll" loading="lazy" decoding="async" srcset="principal/sm/portada3.avif 340w, principal/portada3.avif 500w" sizes="(max-width:640px) 47vw, (max-width:1024px) 31vw, 20vw" width="500" height="400"></div>
+  <div class="strip-item"><img src="principal/portada4.avif" alt="Combinación sushi" loading="lazy" decoding="async" srcset="principal/sm/portada4.avif 340w, principal/portada4.avif 500w" sizes="(max-width:640px) 47vw, (max-width:1024px) 31vw, 20vw" width="500" height="400"></div>
+  <div class="strip-item"><img src="principal/portada5.avif" alt="Tataki de atún" loading="lazy" decoding="async" srcset="principal/sm/portada5.avif 340w, principal/portada5.avif 500w" sizes="(max-width:640px) 47vw, (max-width:1024px) 31vw, 20vw" width="500" height="400"></div>
+  <div class="strip-item"><img src="principal/portada6.avif" alt="Tottori roll" loading="lazy" decoding="async" srcset="principal/sm/portada6.avif 340w, principal/portada6.avif 500w" sizes="(max-width:640px) 47vw, (max-width:1024px) 31vw, 20vw" width="500" height="400"></div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-header reveal">
+    <div>
+      <div class="section-label">Nuestra Carta</div>
+      <h2>Especialidades<br><em>de la casa</em></h2>
+    </div>
+    <div class="menu-tabs" role="group" aria-label="Filtrar especialidades">
+      <button class="menu-tab active" data-tab="rolls" aria-pressed="true">Rolls</button>
+      <button class="menu-tab" data-tab="nigiris" aria-pressed="false">Nigiris</button>
+      <button class="menu-tab" data-tab="varios" aria-pressed="false">Varios</button>
+    </div>
+  </div>
+  <div class="menu-grid">
+
+    <!-- ROLLS -->
+    <div class="menu-card reveal" data-category="rolls">
+      <div class="menu-card-img"><img src="principal/rainbow%20roll.avif" alt="Rainbow Roll" loading="lazy" decoding="async" srcset="principal/sm/rainbow%20roll.avif 340w, principal/rainbow%20roll.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
+      <div class="menu-card-body">
+        <div class="card-num">403</div>
+        <div class="card-jp">レインボー巻き</div>
+        <h3>Rainbow Roll</h3>
+        <p>Salmón, atún, langostino, dorada, aguacate, cangrejo y pepino · 8 piezas.</p>
+        <div class="card-footer"><span class="card-price">9,65€</span><span class="card-tag">Especialidad</span></div>
+      </div>
+    </div>
+    <div class="menu-card tokusen reveal" data-category="rolls">
+      <div class="menu-card-img"><img src="principal/tottori%20roll.avif" alt="Tottori Roll" loading="lazy" decoding="async" srcset="principal/sm/tottori%20roll.avif 340w, principal/tottori%20roll.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
+      <div class="menu-card-body">
+        <span class="sr-solo">Especialidad de la casa</span>
+        <div class="card-num">406</div>
+        <div class="card-jp">鳥取ロール</div>
+        <h3>Tottori Roll</h3>
+        <p>Atún, cangrejo, aguacate, pepino y salsa picante · 8 piezas.</p>
+        <div class="card-footer"><span class="card-price">11,30€</span><span class="card-tag">La firma</span></div>
+      </div>
+    </div>
+    <div class="menu-card reveal" data-category="rolls">
+      <div class="menu-card-img"><img src="principal/dragon%20roll%20salmon.avif" alt="Dragon Roll Salmón" loading="lazy" decoding="async" srcset="principal/sm/dragon%20roll%20salmon.avif 340w, principal/dragon%20roll%20salmon.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
+      <div class="menu-card-body">
+        <div class="card-num">404</div>
+        <div class="card-jp">龍ロール</div>
+        <h3>Dragon Roll Salmón</h3>
+        <p>Salmón fresco, aguacate cremoso, cangrejo y pepino · 8 piezas.</p>
+        <div class="card-footer"><span class="card-price">9,35€</span><span class="card-tag">Muy pedido</span></div>
+      </div>
+    </div>
+
+    <!-- NIGIRIS -->
+    <div class="menu-card reveal" data-category="nigiris" hidden>
+      <div class="menu-card-img"><img src="principal/nigiri%20de%20salmon.avif" alt="Nigiri de Salmón" loading="lazy" decoding="async" srcset="principal/sm/nigiri%20de%20salmon.avif 340w, principal/nigiri%20de%20salmon.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
+      <div class="menu-card-body">
+        <div class="card-num">601</div>
+        <div class="card-jp">鮭の握り</div>
+        <h3>Nigiri de Salmón</h3>
+        <p>Seis piezas de nigiri con salmón noruego fresco sobre arroz de sushi.</p>
+        <div class="card-footer"><span class="card-price">8,90€</span><span class="card-tag">Nigiri</span></div>
+      </div>
+    </div>
+    <div class="menu-card reveal" data-category="nigiris" hidden>
+      <div class="menu-card-img"><img src="principal/nigiri%20de%20atun.avif" alt="Nigiri de Atún" loading="lazy" decoding="async"></div>
+      <div class="menu-card-body">
+        <div class="card-num">602</div>
+        <div class="card-jp">まぐろの握り</div>
+        <h3>Nigiri de Atún</h3>
+        <p>Seis piezas de nigiri con atún rojo fresco sobre arroz de sushi.</p>
+        <div class="card-footer"><span class="card-price">10,50€</span><span class="card-tag">Nigiri</span></div>
+      </div>
+    </div>
+    <div class="menu-card reveal" data-category="nigiris" hidden>
+      <div class="menu-card-img"><img src="principal/nigiri%20de%20dorada.avif" alt="Nigiri de Dorada" loading="lazy" decoding="async"></div>
+      <div class="menu-card-body">
+        <div class="card-num">606</div>
+        <div class="card-jp">鯛のにぎり</div>
+        <h3>Nigiri de Dorada</h3>
+        <p>Seis piezas de nigiri de dorada.</p>
+        <div class="card-footer"><span class="card-price">9,20€</span><span class="card-tag">Nigiri</span></div>
+      </div>
+    </div>
+
+    <!-- COCINA -->
+    <div class="menu-card reveal" data-category="varios" hidden>
+      <div class="menu-card-img"><img src="principal/tataki%20de%20atun.avif" alt="Tataki de atún" loading="lazy" decoding="async" srcset="principal/sm/tataki%20de%20atun.avif 340w, principal/tataki%20de%20atun.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
+      <div class="menu-card-body">
+        <div class="card-num">703</div>
+        <div class="card-jp">まぐろたたき</div>
+        <h3>Tataki de Atún</h3>
+        <p>Atún rojo sellado a la plancha, láminas finas con salsa ponzu y jengibre.</p>
+        <div class="card-footer"><span class="card-price">11,60€</span><span class="card-tag">Tataki</span></div>
+      </div>
+    </div>
+    <div class="menu-card reveal" data-category="varios" hidden>
+      <div class="menu-card-img"><img src="principal/gyozacarne.avif" alt="Gyoza de carne" loading="lazy" decoding="async"></div>
+      <div class="menu-card-body">
+        <div class="card-num">907</div>
+        <div class="card-jp">餃子</div>
+        <h3>Gyoza de carne</h3>
+        <p>Gyoza de carne 6 unidades.</p>
+        <div class="card-footer"><span class="card-price">6,90€</span><span class="card-tag">Entrante</span></div>
+      </div>
+    </div>
+    <div class="menu-card menu-card-featured reveal" data-category="varios" hidden>
+      <div class="menu-card-img"><img src="principal/combinacion%205.avif" alt="Combinación 5" loading="lazy" decoding="async" srcset="principal/sm/combinacion%205.avif 340w, principal/combinacion%205.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
+      <div class="menu-card-body">
+        <div class="card-num">811</div>
+        <div class="card-jp">大皿盛り</div>
+        <h3>Combinación 5 · 44 piezas</h3>
+        <p>Spicy roll salmón, crunch cali roll, makis variados, nigiris y dragon roll.</p>
+        <div class="card-footer"><span class="card-price">39,90€</span><span class="card-tag">Para 2–3</span></div>
+      </div>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:64px;" class="reveal">
+    <a href="carta_tottori.pdf" class="btn-primary" target="_blank" rel="noopener">Descargar carta completa PDF</a>
+  </div>
+</section>
+
+<!-- DAILY -->
+<section id="daily">
+  <div class="daily-visual reveal">
+    <div class="daily-img">
+      <img src="principal/restaurante.avif" alt="Menú del día" loading="lazy" decoding="async" srcset="principal/sm/restaurante.avif 340w, principal/restaurante.avif 700w" sizes="(max-width:1024px) 92vw, 40vw" width="700" height="700">
+    </div>
+    <div class="daily-badge">
+      <div class="price">14,90</div>
+      <div class="lbl">Menú<br>del día</div>
+    </div>
+  </div>
+  <div class="daily-text reveal">
+    <div class="section-label">Menú del Día</div>
+    <h2>Una comida<br><em>completa</em>,<br>cada día</h2>
+    <p>De lunes a viernes al mediodía disfruta de nuestro menú completo. Cocina japonesa auténtica a precio accesible. También disponible menú premium de 17,90€.</p>
+    <ul class="courses">
+      <li>
+        <div><div class="course-name">Primero a elegir</div><div class="course-desc">Ensalada wakame · Sopa miso · Gyoza · Edamame</div></div>
+        <span class="course-tag">4 opciones</span>
+      </li>
+      <li>
+        <div><div class="course-name">Segundo a elegir</div><div class="course-desc">Chicken teriyaki · Tempura · Yakimeshi · Maki de salmón</div></div>
+        <span class="course-tag">4 opciones</span>
+      </li>
+      <li>
+        <div><div class="course-name">Postre o café</div><div class="course-desc">Mochi · Helado de matcha o sésamo negro · Café o té</div></div>
+        <span class="course-tag">incluido</span>
+      </li>
+      <li>
+        <div><div class="course-name">Bebida</div><div class="course-desc">Agua · Cerveza · Vino · Refresco</div></div>
+        <span class="course-tag">incluida</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="galeria-top reveal">
+    <div class="section-label">Galería</div>
+    <h2>Cada plato,<br><em>una obra</em></h2>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="g-item wide"><img src="principal/gran%20combinacion.avif" alt="Gran combinación" loading="lazy" decoding="async" srcset="principal/sm/gran%20combinacion.avif 340w, principal/gran%20combinacion.avif 900w" sizes="(max-width:640px) 92vw, 47vw" width="900" height="400"></div>
+    <div class="g-item"><img src="principal/poke%20de%20salmon.avif" alt="Poke de salmón" loading="lazy" decoding="async"></div>
+    <div class="g-item"><img src="principal/salmon%20ikura%20roll.avif" alt="Salmón ikura roll" loading="lazy" decoding="async" srcset="principal/sm/salmon%20ikura%20roll.avif 340w, principal/salmon%20ikura%20roll.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
+    <div class="g-item"><img src="principal/futomaki%20salmon%20mango.avif" alt="Futomaki salmón mango" loading="lazy" decoding="async" srcset="principal/sm/futomaki%20salmon%20mango.avif 340w, principal/futomaki%20salmon%20mango.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
+    <div class="g-item"><img src="principal/mochi.avif" alt="Mochi" loading="lazy" decoding="async" srcset="principal/sm/mochi.avif 340w, principal/mochi.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
+    <div class="g-item"><img src="principal/sashimi.avif" alt="Sashimi" loading="lazy" decoding="async" srcset="principal/sm/sashimi.avif 340w, principal/sashimi.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
+    <div class="g-item"><img src="principal/gunkan%20ikura.avif" alt="Gunkan ikura" loading="lazy" decoding="async" srcset="principal/sm/gunkan%20ikura.avif 340w, principal/gunkan%20ikura.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
+  </div>
+</section>
+
+<!-- RESERVAS -->
+<section id="reservas">
+  <div class="reservas-kanji">予</div>
+  <div class="reservas-inner reveal">
+    <div class="section-label" style="justify-content:center;">Reservas &amp; Contacto</div>
+    <h2>Reserva tu<br><em>mesa</em></h2>
+    <p>Llámanos o escríbenos por WhatsApp para reservar. También ofrecemos servicio a domicilio y Take Away.</p>
+    <div style="margin:-32px 0 40px"><span class="open-status" data-open-status></span></div>
+    <div class="contact-cards">
+      <a href="tel:936388770" class="contact-card">
+        <div class="cc-label">Teléfono principal</div>
+        <div class="cc-val">93 638 87 70</div>
+      </a>
+      <a href="https://wa.me/34688006355" target="_blank" rel="noopener" class="contact-card">
+        <div class="cc-label">WhatsApp / Móvil</div>
+        <div class="cc-val">688 006 355</div>
+      </a>
+    </div>
+    <a href="tel:936388770" class="btn-primary">Llamar ahora</a>
+
+    <div class="delivery-conditions">
+      <div class="delivery-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Condiciones envío a domicilio
+      </div>
+      <div class="delivery-min">Pedido mínimo 18€</div>
+      <div class="delivery-rows">
+        <div class="delivery-row">
+          <span class="delivery-zone">Gavà y hasta 3 km</span>
+          <span class="delivery-price free">Gratuito</span>
+        </div>
+        <div class="delivery-row">
+          <span class="delivery-zone">De 3 km a 5 km</span>
+          <span class="delivery-price">+3€</span>
+        </div>
+        <div class="delivery-row">
+          <span class="delivery-zone">Más de 5 km</span>
+          <span class="delivery-price">5€</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="loc-info reveal">
+    <div class="section-label">Dónde estamos</div>
+    <h2>Ven a<br><em>visitarnos</em></h2>
+    <div class="loc-row">
+      <div class="loc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+      <div><div class="loc-label">Dirección</div><div class="loc-val"><a href="https://maps.google.com/?q=Calle+St.+Pere+37,Gavà,Barcelona" target="_blank" rel="noopener">Calle St. Pere nº37<br>08850 Gavà, Barcelona</a></div></div>
+    </div>
+    <div class="loc-row">
+      <div class="loc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div><div class="loc-label">Horario</div><div class="loc-val">Lunes: cerrado<br>Mar–Jue &amp; Dom: 12:00–16:00 &amp; 19:00–23:00<br>Vie–Sáb: 12:00–16:00 &amp; 19:00–24:00</div>
+      <div style="margin-top:12px"><span class="open-status" data-open-status></span></div></div>
+    </div>
+    <div class="loc-row">
+      <div class="loc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg></div>
+      <div><div class="loc-label">Contacto</div><div class="loc-val"><a href="tel:936388770">93 638 87 70</a><br><a href="tel:688006355">688 006 355</a><br><a href="mailto:tottorigava@gmail.com">tottorigava@gmail.com</a></div></div>
+    </div>
+    <div class="loc-row">
+      <div class="loc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <div><div class="loc-label">Servicios</div><div class="loc-val">Restaurante · Take Away · A Domicilio</div></div>
+    </div>
+  </div>
+  <div class="map-wrap reveal">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.5!2d2.003!3d41.302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49ceabce88e73%3A0x1!2sCalle+de+Sant+Pere%2C+37%2C+08850+Gav%C3%A0!5e0!3m2!1ses!2ses!4v1" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">TOTTORI <span>Restaurant japonès · Gavà</span></div>
+  <ul class="footer-links">
+    <li><a href="#about">El Restaurante</a></li>
+    <li><a href="carta.html">Carta</a></li>
+    <li><a href="menu.html">Menú</a></li>
+    <li><a href="#reservas">Reservas</a></li>
+    <li><a href="avisolegal.html">Aviso Legal</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Tottori Gavà · Barcelona</div>
+</footer>
+
+
+<!-- VISOR DE FOTOS -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
+  <div class="lb-counter" id="lbCounter"></div>
+  <button type="button" class="lb-btn lb-close" id="lbClose" aria-label="Cerrar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <button type="button" class="lb-btn lb-prev" id="lbPrev" aria-label="Anterior">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></svg>
+  </button>
+  <button type="button" class="lb-btn lb-next" id="lbNext" aria-label="Siguiente">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+  <figure class="lb-figure">
+    <div class="lb-media"><img id="lbImg" alt=""></div>
+    <figcaption class="lb-cap">
+      <span class="lb-num"  id="lbNum"></span>
+      <span class="lb-name" id="lbName"></span>
+      <span class="lb-desc" id="lbDesc"></span>
+      <span class="lb-price" id="lbPrice"></span>
+    </figcaption>
+  </figure>
+  <div class="lb-hint">← → para navegar · Esc para cerrar</div>
+</div>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 80);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── Menú móvil ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function setMobile(open) {
+    mobileMenu.classList.toggle('open', open);
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  hamburger.addEventListener('click', () => setMobile(!mobileMenu.classList.contains('open')));
+  function closeMobile() { setMobile(false); }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) { closeMobile(); hamburger.focus(); }
+  });
+
+  /* ── Aparición progresiva al hacer scroll ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); obs.unobserve(e.target); }
+    });
+  }, { threshold: .08, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  /* ── Filtro de especialidades ── */
+  const tabs = document.querySelectorAll('.menu-tab');
+  const cards = document.querySelectorAll('.menu-card');
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      tabs.forEach(x => { x.classList.remove('active'); x.setAttribute('aria-pressed', 'false'); });
+      t.classList.add('active'); t.setAttribute('aria-pressed', 'true');
+      cards.forEach(card => {
+        const show = card.dataset.category === t.dataset.tab;
+        card.hidden = !show;
+        if (show) { card.classList.remove('visible'); setTimeout(() => card.classList.add('visible'), 60); }
+      });
+    });
+  });
+
+  /* ── Barra de progreso de lectura ── */
+  (function(){
+    const bar = document.querySelector('.scroll-progress');
+    if (!bar) return;
+    let ticking = false;
+    const update = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
+
+  /* ── ¿Abierto ahora? Calculado en hora de Madrid ── */
+  (function(){
+    const nodes = document.querySelectorAll('[data-open-status]');
+    if (!nodes.length) return;
+    // 0 domingo … 6 sábado. Tramos en minutos desde medianoche.
+    const HORARIO = {
+      0: [[720, 960], [1140, 1380]],
+      1: [],
+      2: [[720, 960], [1140, 1380]],
+      3: [[720, 960], [1140, 1380]],
+      4: [[720, 960], [1140, 1380]],
+      5: [[720, 960], [1140, 1440]],
+      6: [[720, 960], [1140, 1440]]
+    };
+    const DIAS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+    function ahoraMadrid() {
+      const f = new Intl.DateTimeFormat('es-ES', {
+        timeZone: 'Europe/Madrid', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false
+      }).formatToParts(new Date());
+      const g = t => f.find(p => p.type === t).value;
+      const wd = { 'dom': 0, 'lun': 1, 'mar': 2, 'mié': 3, 'mie': 3, 'jue': 4, 'vie': 5, 'sáb': 6, 'sab': 6 };
+      const key = g('weekday').toLowerCase().replace('.', '').slice(0, 3);
+      return { dia: wd[key] ?? new Date().getDay(), min: +g('hour') * 60 + +g('minute') };
+    }
+    function hhmm(m) { return String(Math.floor(m / 60) % 24).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); }
+    const { dia, min } = ahoraMadrid();
+    const hoy = HORARIO[dia];
+    let abierto = null;
+    for (const [a, b] of hoy) if (min >= a && min < b) { abierto = b; break; }
+    let texto, clase;
+    if (abierto !== null) {
+      texto = 'Abierto ahora · hasta las ' + hhmm(abierto);
+      clase = 'is-open';
+    } else {
+      let prox = hoy.find(([a]) => min < a);
+      if (prox) {
+        texto = 'Cerrado · abre a las ' + hhmm(prox[0]);
+      } else {
+        let d = dia, saltos = 0;
+        do { d = (d + 1) % 7; saltos++; } while (!HORARIO[d].length && saltos < 8);
+        texto = 'Cerrado · abre el ' + DIAS[d] + ' a las ' + hhmm(HORARIO[d][0][0]);
+      }
+      clase = 'is-closed';
+    }
+    nodes.forEach(n => { n.textContent = texto; n.classList.remove('is-open', 'is-closed'); n.classList.add(clase); });
+  })();
+
+  /* ── Visor de fotos a pantalla completa ── */
+  (function(){
+    const lb = document.getElementById('lightbox');
+    if (!lb) return;
+    const img = document.getElementById('lbImg');
+    const elNum = document.getElementById('lbNum'), elName = document.getElementById('lbName');
+    const elDesc = document.getElementById('lbDesc'), elPrice = document.getElementById('lbPrice');
+    const elCount = document.getElementById('lbCounter');
+    const btPrev = document.getElementById('lbPrev'), btNext = document.getElementById('lbNext');
+
+    const txt = (el, sel) => { const n = el.querySelector(sel); return n ? n.textContent.trim() : ''; };
+    const items = [...document.querySelectorAll('.dish-card, .menu-card, .g-item, .strip-item, .about-img, .daily-img')]
+      .filter(el => el.querySelector('img'))
+      .map(el => ({
+        el,
+        src:   el.querySelector('img').getAttribute('src'),
+        num:   txt(el, '.dish-num') || txt(el, '.card-num'),
+        name:  txt(el, '.dish-name') || txt(el, 'h3') || el.querySelector('img').alt || '',
+        desc:  txt(el, '.dish-desc') || txt(el, '.menu-card-body p'),
+        price: txt(el, '.dish-price') || txt(el, '.card-price')
+      }));
+    if (!items.length) return;
+
+    items.forEach((it, i) => {
+      it.el.setAttribute('role', 'button');
+      it.el.setAttribute('tabindex', '0');
+      it.el.addEventListener('click', () => abrir(i));
+      it.el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(i); }
+      });
+    });
+
+    let idx = -1, previo = null;
+    const visibles = () => items.filter(it => !it.el.hidden && it.el.offsetParent !== null);
+
+    function pintar(i) {
+      const lista = visibles();
+      const pos = lista.findIndex(x => x === items[i]);
+      const it = items[i];
+      img.classList.remove('ready');
+      const tmp = new Image();
+      tmp.onload = () => { img.src = it.src; img.alt = it.name; img.classList.add('ready'); };
+      tmp.src = it.src;
+      if (tmp.complete) tmp.onload();
+      elNum.textContent = it.num;
+      elName.textContent = it.name;
+      elDesc.textContent = it.desc;
+      elPrice.textContent = it.price;
+      elCount.textContent = pos >= 0 ? (pos + 1) + ' / ' + lista.length : '';
+      const varios = lista.length > 1;
+      btPrev.hidden = btNext.hidden = !varios;
+      // precarga vecinos
+      if (pos >= 0) [lista[pos - 1], lista[pos + 1]].forEach(v => { if (v) new Image().src = v.src; });
+    }
+
+    function abrir(i) {
+      previo = document.activeElement;
+      idx = i;
+      lb.hidden = false;
+      requestAnimationFrame(() => lb.classList.add('show'));
+      document.body.style.overflow = 'hidden';
+      pintar(idx);
+      document.getElementById('lbClose').focus();
+    }
+    function cerrar() {
+      lb.classList.remove('show');
+      document.body.style.overflow = '';
+      setTimeout(() => { lb.hidden = true; img.removeAttribute('src'); }, 280);
+      if (previo && previo.focus) previo.focus();
+    }
+    function mover(paso) {
+      const lista = visibles();
+      if (lista.length < 2) return;
+      let pos = lista.findIndex(x => x === items[idx]);
+      if (pos < 0) pos = 0;
+      const sig = lista[(pos + paso + lista.length) % lista.length];
+      idx = items.indexOf(sig);
+      pintar(idx);
+    }
+
+    document.getElementById('lbClose').addEventListener('click', cerrar);
+    btPrev.addEventListener('click', () => mover(-1));
+    btNext.addEventListener('click', () => mover(1));
+    lb.addEventListener('click', e => { if (e.target === lb || e.target === img || e.target.classList.contains('lb-figure') || e.target.classList.contains('lb-media')) cerrar(); });
+    document.addEventListener('keydown', e => {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') cerrar();
+      else if (e.key === 'ArrowLeft') mover(-1);
+      else if (e.key === 'ArrowRight') mover(1);
+    });
+
+    /* gestos: deslizar para cambiar o cerrar */
+    let x0 = null, y0 = null;
+    lb.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+    lb.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+      if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) mover(dx < 0 ? 1 : -1);
+      else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) cerrar();
+      x0 = y0 = null;
+    }, { passive: true });
+  })();
+
+  /* ── Las fotos entran con un fundido en cuanto cargan ── */
+  (function(){
+    document.documentElement.classList.add('js-fade');
+    const marcar = im => im.classList.add('cargada');
+    document.querySelectorAll('.dish-card-img img, .menu-card-img img, .g-item img, .strip-item img, .about-img img, .daily-img img')
+      .forEach(im => {
+        im.style.transition = 'opacity .55s ease, transform .6s, filter .5s';
+        if (im.complete && im.naturalWidth) marcar(im);
+        else { im.addEventListener('load', () => marcar(im)); im.addEventListener('error', () => marcar(im)); }
+      });
+    // red de seguridad: pase lo que pase, a los 4 s se ven todas
+    setTimeout(() => document.querySelectorAll('.js-fade img:not(.cargada)').forEach(marcar), 4000);
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "@id": "https://tottorigava.com/#restaurante",
+  "name": "Tottori Gavà",
+  "alternateName": "Tottori Menjar Japonès",
+  "description": "Restaurante japonés en el centro de Gavà desde 2017. Sushi elaborado al momento, menú del día, take away y entrega a domicilio.",
+  "url": "https://tottorigava.com/",
+  "image": "https://tottorigava.com/og-image.jpg",
+  "logo": "https://tottorigava.com/apple-touch-icon.png",
+  "telephone": "+34936388770",
+  "email": "tottorigava@gmail.com",
+  "servesCuisine": ["Japonesa", "Sushi", "Asiática"],
+  "priceRange": "€€",
+  "currenciesAccepted": "EUR",
+  "paymentAccepted": "Efectivo, Tarjeta",
+  "foundingDate": "2017",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Carrer de Sant Pere, 37",
+    "addressLocality": "Gavà",
+    "addressRegion": "Barcelona",
+    "postalCode": "08850",
+    "addressCountry": "ES"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 41.302, "longitude": 2.003 },
+  "hasMap": "https://maps.google.com/?q=Calle+St.+Pere+37,Gav%C3%A0,Barcelona",
+  "hasMenu": "https://tottorigava.com/carta.html",
+  "acceptsReservations": "True",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Sunday"], "opens": "12:00", "closes": "16:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Sunday"], "opens": "19:00", "closes": "23:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "12:00", "closes": "16:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "19:00", "closes": "23:59" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "00:00", "closes": "00:00" }
+  ]
+}
+</script>
+
+<div class="mobile-actions" role="navigation" aria-label="Acciones rápidas">
+  <a href="tel:936388770"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg><span>Llamar</span></a>
+  <a class="ma-wa" href="https://wa.me/34688006355" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.24 8.24 0 01-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm-2.5 4.1c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.43-.59 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41h-.5z"/></svg><span>WhatsApp</span></a>
+  <a href="carta.html"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7a2 2 0 012 2v14a2 2 0 00-2-2H4z"/><path d="M20 4h-7a2 2 0 00-2 2v14a2 2 0 012-2h7z"/></svg><span>Carta</span></a>
+  <a href="https://maps.google.com/?q=Calle+St.+Pere+37,Gav%C3%A0,Barcelona" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Llegar</span></a>
+</div>
+
+
+</body>
+</html>

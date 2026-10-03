@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú del Día — Tottori Gavà · Japonés en Gavà desde 14,90 €</title>
+<meta name="description" content="Menú del día en Tottori Gavà: primero, segundo, postre y bebida incluida desde 14,90 €. Mediodía de martes a viernes en el centro de Gavà.">
+<link rel="canonical" href="https://tottorigava.com/menu.html">
+<meta name="theme-color" content="#0a0806">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Tottori Gavà">
+<meta property="og:url" content="https://tottorigava.com/menu.html">
+<meta property="og:title" content="Menú del día — Tottori Gavà">
+<meta property="og:description" content="Menú japonés completo desde 14,90 €, con bebida y postre incluidos.">
+<meta property="og:image" content="https://tottorigava.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@200&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #0a0806;
+    --dark: #111009;
+    --surface: #16140f;
+    --gold: #c9a96e;
+    --gold-light: #e4c98a;
+    --gold-muted: #7a6240;
+    --cream: #f0e8d8;
+    --cream-dim: #a89878;
+    --white: #faf6ef;
+    --sello: #b5342c;
+    --lamina: linear-gradient(135deg,#a8874d 0%,#e4c98a 30%,#c9a96e 48%,#f2e0b0 66%,#b8945a 100%);
+    --lamina-viva: linear-gradient(135deg,#bd9a5c 0%,#f0dca8 30%,#e4c98a 48%,#fdf0cc 66%,#c9a96e 100%);
+    --relieve: 0 1px 0 rgba(255,240,200,.34) inset;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black); color: var(--cream);
+    font-family: 'Montserrat', sans-serif; font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: .03; pointer-events: none; z-index: 1000;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+    padding: 32px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background .5s, padding .4s;
+  }
+  nav.scrolled {
+    background: rgba(10,8,6,.93); backdrop-filter: blur(14px);
+    padding: 18px 60px; border-bottom: 1px solid rgba(201,169,110,.1);
+  }
+  .nav-logo {
+    font-family: 'Noto Serif JP', serif; font-weight: 200;
+    font-size: 11px; letter-spacing: .35em; color: var(--gold);
+    text-transform: uppercase; text-decoration: none;
+  }
+  .nav-logo span {
+    display: block; font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; letter-spacing: .15em; color: var(--white);
+    font-weight: 300; line-height: 1;
+  }
+  .nav-links { display: flex; gap: 44px; list-style: none; }
+  .nav-links a {
+    font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--cream-dim); text-decoration: none; transition: color .3s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--gold); transform: scaleX(0);
+    transform-origin: left; transition: transform .35s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-links a.active::after { transform: scaleX(1); }
+  .nav-cta {
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--black); background: var(--lamina); box-shadow: var(--relieve); padding: 12px 24px;
+    text-decoration: none; transition: background .3s, box-shadow .3s;
+  }
+  .nav-cta:hover { background: var(--lamina-viva); }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    width: 40px; height: 40px; gap: 5px;
+    background: none; border: none; padding: 0; z-index: 600; cursor: pointer;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 1px;
+    background: var(--gold); transition: transform .3s, opacity .3s, width .3s;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed; inset: 0; z-index: 499;
+    background: rgba(10,8,6,.97); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity .4s ease;
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu a {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(28px,8vw,44px);
+    font-weight: 300; letter-spacing: .05em; color: var(--cream-dim);
+    text-decoration: none; padding: 16px 40px; transition: color .3s;
+    border-bottom: 1px solid rgba(201,169,110,.08); width: 100%; text-align: center;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--gold-light); }
+  .mobile-menu .mobile-cta {
+    margin-top: 32px; font-family: 'Montserrat', sans-serif;
+    font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--black); background: var(--lamina); box-shadow: var(--relieve);
+    padding: 18px 48px; border-bottom: none; width: auto;
+  }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding: 160px 60px 80px;
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid rgba(201,169,110,.08);
+  }
+  .page-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 80% 50%, rgba(201,169,110,.04), transparent 70%);
+    pointer-events: none;
+  }
+  .page-hero-kanji {
+    position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+    font-family: 'Noto Serif JP', serif; font-size: clamp(100px,14vw,220px); font-weight: 200;
+    color: transparent; -webkit-text-stroke: 1px rgba(201,169,110,.1);
+    line-height: 1; writing-mode: vertical-rl; user-select: none;
+    animation: fadeInRight 2s ease .3s both;
+  }
+  .page-hero-content { position: relative; z-index: 2; max-width: 660px; }
+  .page-tag {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 10px; letter-spacing: .35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px; animation: fadeInUp 1s ease .2s both;
+  }
+  .page-tag::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+  .page-hero h1 {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(48px,6vw,88px);
+    font-weight: 300; line-height: .95; letter-spacing: -.01em; color: var(--white);
+    margin-bottom: 20px; animation: fadeInUp 1s ease .4s both;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--gold-light); }
+  .page-hero p {
+    font-size: 13.5px; line-height: 1.9; color: var(--cream-dim);
+    animation: fadeInUp 1s ease .6s both;
+  }
+
+  /* BACK LINK */
+  .back-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--cream-dim); text-decoration: none; transition: color .3s;
+    margin-top: 32px; animation: fadeInUp 1s ease .7s both;
+  }
+  .back-link svg { transition: transform .3s; }
+  .back-link:hover { color: var(--gold); }
+  .back-link:hover svg { transform: translateX(-4px); }
+
+  /* DIVIDER */
+  .divider-section {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-muted), transparent);
+    margin: 0 60px;
+  }
+
+  /* MENU SECTION */
+  .menu-section {
+    padding: 100px 60px;
+    position: relative;
+  }
+  .menu-section::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,.2), transparent);
+  }
+  .menu-section.alt-bg { background: var(--surface); }
+
+  /* MENU HEADER */
+  .menu-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 16px; flex-wrap: wrap; gap: 24px;
+  }
+  .menu-header-left { flex: 1; }
+  .section-label {
+    font-size: 9.5px; letter-spacing: .4em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+  .menu-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 300; color: var(--white); line-height: .9;
+    letter-spacing: -.02em;
+  }
+  .menu-title em { font-style: italic; color: var(--gold-light); }
+  .menu-price-badge {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 80px); font-weight: 300;
+    color: transparent; -webkit-text-stroke: 1px var(--gold);
+    line-height: 1; letter-spacing: -.02em; white-space: nowrap;
+    align-self: flex-start; padding-top: 4px;
+  }
+  .menu-description {
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--cream-dim); margin-top: 20px; margin-bottom: 64px;
+    padding-left: 40px; border-left: 1px solid rgba(201,169,110,.2);
+    line-height: 1.8;
+  }
+
+  /* CURSO BLOCK */
+  .curso-block { margin-bottom: 64px; }
+  .curso-block:last-child { margin-bottom: 0; }
+  .curso-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 34px); font-weight: 300;
+    color: var(--white); letter-spacing: .04em;
+    margin-bottom: 32px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .curso-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, rgba(201,169,110,.2), transparent);
+  }
+  .curso-label span {
+    font-family: 'Noto Serif JP', serif; font-size: 11px; font-weight: 200;
+    color: var(--gold); letter-spacing: .3em; text-transform: uppercase;
+    align-self: center;
+  }
+  .curso-note {
+    font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold-muted); margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  /* DISH GRID */
+  .dish-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+  }
+
+  /* DISH CARD */
+  .dish-card {
+    position: relative; background: var(--dark); overflow: hidden; cursor: pointer;
+    border-radius: 12px;
+    border: 1px solid rgba(201,169,110,.32);
+    box-shadow: 0 14px 30px -20px rgba(0,0,0,.7);
+    transition: transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .45s, border-color .45s;
+  }
+  .dish-card:hover {
+    transform: translateY(-6px); z-index: 2;
+    border-color: rgba(201,169,110,.6);
+    box-shadow: 0 26px 50px -24px rgba(0,0,0,1);
+  }
+  .dish-card-img {
+    aspect-ratio: 4/3; overflow: hidden; position: relative;
+  }
+  .dish-card-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(.96) saturate(1.1) contrast(1.04); transition: transform .6s, filter .5s;
+  }
+  .dish-card:hover .dish-card-img img {
+    transform: scale(1.06); filter: brightness(1.03) saturate(1.18) contrast(1.04);
+  }
+  .dish-card-body { padding: 20px 22px 24px; border-top: 1px solid rgba(201,169,110,.18); }
+  .dish-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 18px;
+    font-weight: 400; color: var(--white); line-height: 1.2; letter-spacing: .02em;
+  }
+
+  /* A ELEGIR badge */
+  .elegir-badge {
+    display: inline-block;
+    font-size: 8.5px; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,169,110,.3);
+    padding: 5px 10px; margin-bottom: 20px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black); padding: 56px 60px;
+    border-top: 1px solid rgba(201,169,110,.1);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 26px;
+    font-weight: 300; color: var(--white); letter-spacing: .1em;
+  }
+  .footer-logo span {
+    display: block; font-family: 'Noto Serif JP', serif;
+    font-size: 10px; font-weight: 200; letter-spacing: .4em;
+    color: var(--gold-muted); margin-top: 4px; text-transform: uppercase;
+  }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a {
+    font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--cream-dim); text-decoration: none; transition: color .3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 10px; color: var(--gold-muted); letter-spacing: .1em; }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp   { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeInRight{ from{opacity:0;transform:translateY(-50%) translateX(40px)} to{opacity:.4;transform:translateY(-50%) translateX(0)} }
+  .reveal { opacity: 0; transform: translateY(36px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media(max-width:1024px){
+    nav { padding: 20px 24px; }
+    nav.scrolled { padding: 14px 24px; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: flex; }
+    .page-hero { padding: 130px 24px 60px; }
+    .page-hero-kanji { display: none; }
+    .menu-section { padding: 72px 24px; }
+    .divider-section { margin: 0 24px; }
+    .menu-header { flex-direction: column; gap: 12px; }
+    .menu-price-badge { font-size: clamp(36px, 8vw, 60px); }
+    .dish-grid { grid-template-columns: repeat(3, 1fr); }
+    footer { padding: 40px 24px; flex-direction: column; align-items: center; text-align: center; gap: 28px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px 24px; }
+  }
+  @media(max-width:640px){
+    .dish-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media(max-width:380px){
+    nav { padding: 16px; }
+    .page-hero { padding: 110px 16px 48px; }
+    .menu-section { padding: 56px 16px; }
+    .divider-section { margin: 0 16px; }
+    .dish-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── BASE UI: selección, foco, scrollbar ── */
+  img { display: block; }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--gold); color: var(--black); }
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  html { scrollbar-color: #3a3126 var(--black); }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: #3a3126; border: 2px solid var(--black); border-radius: 6px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold-muted); }
+
+  .skip-link {
+    position: fixed; left: 16px; top: -120px; z-index: 900;
+    background: var(--gold); color: var(--black);
+    font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    padding: 14px 22px; text-decoration: none; transition: top .25s;
+  }
+  .skip-link:focus { top: 16px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* ── BARRA DE PROGRESO DE LECTURA ── */
+  .scroll-progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+    transform: scaleX(0); transform-origin: 0 50%;
+    background: linear-gradient(to right, var(--gold-muted), var(--gold-light));
+    z-index: 700; pointer-events: none;
+  }
+
+  /* ── ESTADO ABIERTO / CERRADO ── */
+  .open-status:empty { display: none; }
+  .open-status {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+    padding: 5px 11px; border: 1px solid rgba(201,169,110,.28);
+    color: var(--cream-dim); white-space: nowrap; vertical-align: middle;
+  }
+  .open-status::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold-muted); flex-shrink: 0;
+  }
+  .open-status.is-open { color: #9fd0a4; border-color: rgba(120,190,130,.3); }
+  .open-status.is-open::before { background: #6fbf7a; box-shadow: 0 0 0 3px rgba(111,191,122,.18); animation: pulseDot 2.4s ease-in-out infinite; }
+  .open-status.is-closed { color: #d9a0a0; border-color: rgba(200,120,120,.28); }
+  .open-status.is-closed::before { background: #c56d6d; }
+  @keyframes pulseDot { 0%,100%{box-shadow:0 0 0 3px rgba(111,191,122,.18)} 50%{box-shadow:0 0 0 6px rgba(111,191,122,0)} }
+
+  /* ── BARRA DE ACCIONES MÓVIL ── */
+  .mobile-actions { display: none; }
+  @media (max-width: 1024px) {
+    .mobile-actions {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 480;
+      padding: 0;
+      background: rgba(10,8,6,.95); backdrop-filter: blur(18px);
+      border-top: 1px solid rgba(201,169,110,.18);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    .mobile-actions a {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      padding: 10px 4px 11px; text-decoration: none; min-height: 58px;
+      font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--cream-dim); transition: color .25s, background .25s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mobile-actions a + a { box-shadow: inset 1px 0 0 rgba(201,169,110,.1); }
+    .mobile-actions a svg { color: var(--gold); transition: transform .25s; }
+    .mobile-actions a:active { background: rgba(201,169,110,.12); color: var(--gold-light); }
+    .mobile-actions a:active svg { transform: scale(.88); }
+    .ma-wa svg { color: #6fbf7a; }
+    body { padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px)); }
+    .mobile-menu { padding-bottom: 70px; }
+  }
+
+
+  /* ── Aparición suave de las fotos (solo si hay JS) ── */
+  .js-fade .dish-card-img img,
+  .js-fade .menu-card-img img,
+  .js-fade .g-item img,
+  .js-fade .strip-item img,
+  .js-fade .about-img img,
+  .js-fade .daily-img img { opacity: 0; }
+  .js-fade img.cargada { opacity: 1; }
+  .dish-card-img, .menu-card-img, .g-item, .strip-item, .about-img, .daily-img {
+    background: linear-gradient(135deg, #17140e 0%, #221d14 100%);
+  }
+
+  /* ── AFINADO MÓVIL ── */
+  @media (max-width: 640px) {
+    /* las fotos de plato son cuadradas en origen: en móvil se ven enteras */
+    .dish-card-img, .menu-card-img { aspect-ratio: 1 / 1; }
+    .dish-card-body { padding: 16px 16px 20px; }
+    .dish-num { font-size: 30px; }
+    .dish-name { font-size: 16px; }
+    .dish-price { font-size: 18px; }
+    .dish-desc { font-size: 10px; }
+  }
+
+
+  /* ── VISOR DE FOTOS ── */
+  .lightbox[hidden] { display: none; }
+  .lightbox {
+    position: fixed; inset: 0; z-index: 950;
+    background: rgba(6,5,4,.96); backdrop-filter: blur(20px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity .28s ease;
+    padding: 72px 24px 40px;
+  }
+  .lightbox.show { opacity: 1; }
+  .lb-figure {
+    display: flex; flex-direction: column; align-items: center;
+    max-width: 720px; width: 100%; margin: auto;
+  }
+  .lb-media {
+    width: 100%; display: flex; align-items: center; justify-content: center;
+    min-height: 0;
+  }
+  .lb-media img {
+    max-width: 100%; max-height: 62vh; width: auto; height: auto;
+    object-fit: contain; opacity: 0; transform: scale(.97);
+    transition: opacity .35s ease, transform .35s ease;
+  }
+  .lb-media img.ready { opacity: 1; transform: scale(1); }
+  .lb-cap { text-align: center; margin-top: 26px; width: 100%; }
+  .lb-num {
+    display: block; font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 300;
+    color: transparent; -webkit-text-stroke: 1px var(--gold); letter-spacing: .06em; line-height: 1;
+    margin-bottom: 10px;
+  }
+  .lb-num:empty { display: none; }
+  .lb-name {
+    display: block; font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 5vw, 32px); font-weight: 400; color: var(--white); line-height: 1.15;
+  }
+  .lb-desc {
+    display: block; font-size: 11.5px; line-height: 1.7; color: var(--cream-dim);
+    margin-top: 10px; max-width: 460px; margin-left: auto; margin-right: auto;
+  }
+  .lb-desc:empty { display: none; }
+  .lb-price {
+    display: block; font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; color: var(--gold-light); letter-spacing: .06em; margin-top: 14px;
+  }
+  .lb-price:empty { display: none; }
+
+  .lb-btn {
+    position: absolute; display: flex; align-items: center; justify-content: center;
+    width: 46px; height: 46px; background: rgba(201,169,110,.08);
+    border: 1px solid rgba(201,169,110,.22); color: var(--gold);
+    cursor: pointer; transition: background .25s, color .25s, border-color .25s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .lb-btn:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+  .lb-close { top: 20px; right: 20px; }
+  .lb-prev  { left: 20px;  top: 50%; margin-top: -23px; }
+  .lb-next  { right: 20px; top: 50%; margin-top: -23px; }
+  .lb-counter {
+    position: absolute; top: 28px; left: 50%; transform: translateX(-50%);
+    font-size: 9.5px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-muted);
+  }
+  .lb-hint {
+    position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-size: 8.5px; letter-spacing: .24em; text-transform: uppercase; color: rgba(122,98,64,.7);
+  }
+
+  /* la tarjeta ahora sí hace algo al pulsarla */
+  .dish-card, .menu-card, .g-item, .strip-item { -webkit-tap-highlight-color: transparent; }
+
+  @media (max-width: 1024px) {
+    .lightbox { padding: 64px 16px 34px; }
+    .lb-media img { max-height: 50vh; }
+    .lb-btn { width: 42px; height: 42px; }
+    .lb-close { top: 14px; right: 14px; }
+    .lb-prev { left: 10px; }
+    .lb-next { right: 10px; }
+    .lb-cap { margin-top: 20px; }
+    .lb-hint { display: none; }
+  }
+
+</style>
+</head>
+<body>
+
+<a href="#contenido" class="skip-link">Saltar al contenido</a>
+
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><span>TOTTORI</span>Restaurant Japonès</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">El Restaurante</a></li>
+    <li><a href="carta.html">Carta</a></li>
+    <li><a href="menu.html" class="active" aria-current="page">Menú del Día</a></li>
+    <li><a href="index.html#galeria">Galería</a></li>
+    <li><a href="index.html#location">Ubicación</a></li>
+  </ul>
+  <a href="tel:936388770" class="nav-cta">Reservar mesa</a>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#about" onclick="closeMobile()">El Restaurante</a>
+  <a href="carta.html" onclick="closeMobile()">Carta</a>
+  <a href="index.html#galeria" onclick="closeMobile()">Galería</a>
+  <a href="index.html#location" onclick="closeMobile()">Ubicación</a>
+  <a href="tel:936388770" class="mobile-cta">Reservar mesa</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-kanji">日替</div>
+  <div class="page-hero-content">
+    <div class="page-tag">Tottori Gavà · Gavà, Barcelona</div>
+    <h1>Menú<br><em>del día</em></h1>
+    <p>Menú mediodía, días laborables.<br>Elaborado con los mejores ingredientes frescos de temporada.</p>
+    <div style="margin-top:20px"><span class="open-status" data-open-status></span></div>
+    <a href="index.html" class="back-link">
+      <svg width="20" height="10" viewBox="0 0 20 10" fill="none"><path d="M20 5H2M6 1L2 5L6 9" stroke="currentColor" stroke-width="1"/></svg>
+      Volver al inicio
+    </a>
+  </div>
+</div>
+
+<!-- MENÚ 14,90 € -->
+<section id="contenido" class="menu-section">
+
+  <div class="menu-header reveal">
+    <div class="menu-header-left">
+      <div class="section-label">Menú del día</div>
+      <div class="menu-title"><em>Menú</em> One</div>
+    </div>
+    <div class="menu-price-badge">14,90 €</div>
+  </div>
+
+  <div class="menu-description reveal">
+    Primero + Segundo + Tercero · Bebida incluída
+  </div>
+
+  <!-- PRIMEROS -->
+  <div class="curso-block">
+    <div class="curso-label reveal">Primeros <span>一品目</span></div>
+    <div class="elegir-badge reveal">A elegir</div>
+    <div class="dish-grid">
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Edamame.avif" alt="Edamame" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Edamame</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Sopa%20de%20miso.avif" alt="Sopa de miso" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Sopa de miso</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Wakame.avif" alt="Wakame" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Wakame</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Gyozas.avif" alt="Gyozas" loading="lazy" decoding="async" srcset="imgmenu/sm/Gyozas.avif 340w, imgmenu/Gyozas.avif 671w" sizes="(max-width:380px) 92vw, (max-width:640px) 47vw, (max-width:1024px) 31vw, 24vw" width="671" height="671">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Gyozas</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Ensalada%20de%20pollo.avif" alt="Ensalada de pollo" loading="lazy" decoding="async" srcset="imgmenu/sm/Ensalada%20de%20pollo.avif 340w, imgmenu/Ensalada%20de%20pollo.avif 671w" sizes="(max-width:380px) 92vw, (max-width:640px) 47vw, (max-width:1024px) 31vw, 24vw" width="671" height="671">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Ensalada de pollo</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEGUNDOS -->
+  <div class="curso-block">
+    <div class="curso-label reveal">Segundos <span>二品目</span></div>
+    <div class="elegir-badge reveal">A elegir</div>
+    <div class="dish-grid">
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Sushi%20variado%201.1.avif" alt="Sushi variado 1" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Sushi variado 1</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Sushi%20variado%201.2.avif" alt="Sushi variado 2" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Sushi variado 2</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Sushi%20variado%201.3.avif" alt="Sushi variado 3" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Sushi variado 3</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TERCEROS -->
+  <div class="curso-block">
+    <div class="curso-label reveal">Terceros <span>三品目</span></div>
+    <div class="elegir-badge reveal">A elegir</div>
+    <div class="dish-grid">
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Yakisoba.avif" alt="Yakisoba" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Yakisoba</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Yakimeshi.avif" alt="Yakimeshi" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Yakimeshi</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Chicken%20teriyaki.avif" alt="Chicken teriyaki" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Chicken teriyaki</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<div class="divider-section"></div>
+
+<!-- MENÚ 17,90 € -->
+<section class="menu-section alt-bg">
+
+  <div class="menu-header reveal">
+    <div class="menu-header-left">
+      <div class="section-label">Menú del día</div>
+      <div class="menu-title"><em>Menú</em> Two</div>
+    </div>
+    <div class="menu-price-badge">17,90 €</div>
+  </div>
+
+  <div class="menu-description reveal">
+    Primero + Segundo + Tercero + Postre · Bebida incluída
+  </div>
+
+  <!-- PRIMEROS -->
+  <div class="curso-block">
+    <div class="curso-label reveal">Primeros <span>一品目</span></div>
+    <div class="elegir-badge reveal">A elegir</div>
+    <div class="dish-grid">
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Ensalada%20tottori.avif" alt="Ensalada tottori" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Ensalada tottori</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Rollo%20de%20marisco.avif" alt="Rollo de marisco" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Rollo de marisco</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Takoyaki.avif" alt="Takoyaki" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Takoyaki</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Langostinos%20con%20panko.avif" alt="Langostinos con panko" loading="lazy" decoding="async" srcset="imgmenu/sm/Langostinos%20con%20panko.avif 340w, imgmenu/Langostinos%20con%20panko.avif 671w" sizes="(max-width:380px) 92vw, (max-width:640px) 47vw, (max-width:1024px) 31vw, 24vw" width="671" height="671">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Langostinos con panko</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEGUNDOS -->
+  <div class="curso-block">
+    <div class="curso-label reveal">Segundos <span>二品目</span></div>
+    <div class="elegir-badge reveal">A elegir</div>
+    <div class="dish-grid">
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Sushi%20variado%202.1.avif" alt="Sushi variado 1" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Sushi variado 1</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Sushi%20variado%202.2.avif" alt="Sushi variado 2" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Sushi variado 2</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Sushi%20variado%202.3.avif" alt="Sushi variado 3" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Sushi variado 3</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TERCEROS -->
+  <div class="curso-block">
+    <div class="curso-label reveal">Terceros <span>三品目</span></div>
+    <div class="elegir-badge reveal">A elegir</div>
+    <div class="dish-grid">
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Yakisoba%20de%20gambas.avif" alt="Yakisoba de gambas" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Yakisoba de gambas</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Yakisoba%20de%20pollo.avif" alt="Yakisoba de pollo" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Yakisoba de pollo</div>
+        </div>
+      </div>
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgmenu/Oyakodon.avif" alt="Oyakodon" loading="lazy" decoding="async">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Oyakodon</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- POSTRE -->
+  <div class="curso-block">
+    <div class="curso-label reveal">Postre <span>デザート</span></div>
+    <div class="curso-note reveal">Incluído en el menú</div>
+    <div class="dish-grid">
+
+      <div class="dish-card reveal">
+        <div class="dish-card-img">
+          <img src="imgcarta/951%20Mochi%20de%20fresa,%20chocolate%20o%20t%C3%A9%20verde%201p.avif" alt="Mochi de fresa, chocolate o té verde" loading="lazy" decoding="async" srcset="imgcarta/sm/951%20Mochi%20de%20fresa%2C%20chocolate%20o%20t%C3%A9%20verde%201p.avif 340w, imgcarta/951%20Mochi%20de%20fresa%2C%20chocolate%20o%20t%C3%A9%20verde%201p.avif 608w" sizes="(max-width:380px) 92vw, (max-width:640px) 47vw, (max-width:1024px) 31vw, 24vw" width="608" height="608">
+        </div>
+        <div class="dish-card-body">
+          <div class="dish-name">Postre del día</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<div class="divider-section"></div>
+
+<footer>
+  <div class="footer-logo">TOTTORI <span>Restaurant japonès · Gavà</span></div>
+  <ul class="footer-links">
+    <li><a href="index.html#about">El Restaurante</a></li>
+    <li><a href="carta.html">Carta</a></li>
+    <li><a href="index.html#galeria">Galería</a></li>
+    <li><a href="index.html#reservas">Reservas</a></li>
+    <li><a href="avisolegal.html">Aviso Legal</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Tottori Gavà · Barcelona</div>
+</footer>
+
+
+<!-- VISOR DE FOTOS -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
+  <div class="lb-counter" id="lbCounter"></div>
+  <button type="button" class="lb-btn lb-close" id="lbClose" aria-label="Cerrar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <button type="button" class="lb-btn lb-prev" id="lbPrev" aria-label="Anterior">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></svg>
+  </button>
+  <button type="button" class="lb-btn lb-next" id="lbNext" aria-label="Siguiente">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+  <figure class="lb-figure">
+    <div class="lb-media"><img id="lbImg" alt=""></div>
+    <figcaption class="lb-cap">
+      <span class="lb-num"  id="lbNum"></span>
+      <span class="lb-name" id="lbName"></span>
+      <span class="lb-desc" id="lbDesc"></span>
+      <span class="lb-price" id="lbPrice"></span>
+    </figcaption>
+  </figure>
+  <div class="lb-hint">← → para navegar · Esc para cerrar</div>
+</div>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 80));
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  /* ── Barra de progreso de lectura ── */
+  (function(){
+    const bar = document.querySelector('.scroll-progress');
+    if (!bar) return;
+    let ticking = false;
+    const update = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
+
+  /* ── ¿Abierto ahora? Calculado en hora de Madrid ── */
+  (function(){
+    const nodes = document.querySelectorAll('[data-open-status]');
+    if (!nodes.length) return;
+    // 0 domingo … 6 sábado. Tramos en minutos desde medianoche.
+    const HORARIO = {
+      0: [[720, 960], [1140, 1380]],
+      1: [],
+      2: [[720, 960], [1140, 1380]],
+      3: [[720, 960], [1140, 1380]],
+      4: [[720, 960], [1140, 1380]],
+      5: [[720, 960], [1140, 1440]],
+      6: [[720, 960], [1140, 1440]]
+    };
+    const DIAS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+    function ahoraMadrid() {
+      const f = new Intl.DateTimeFormat('es-ES', {
+        timeZone: 'Europe/Madrid', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false
+      }).formatToParts(new Date());
+      const g = t => f.find(p => p.type === t).value;
+      const wd = { 'dom': 0, 'lun': 1, 'mar': 2, 'mié': 3, 'mie': 3, 'jue': 4, 'vie': 5, 'sáb': 6, 'sab': 6 };
+      const key = g('weekday').toLowerCase().replace('.', '').slice(0, 3);
+      return { dia: wd[key] ?? new Date().getDay(), min: +g('hour') * 60 + +g('minute') };
+    }
+    function hhmm(m) { return String(Math.floor(m / 60) % 24).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); }
+    const { dia, min } = ahoraMadrid();
+    const hoy = HORARIO[dia];
+    let abierto = null;
+    for (const [a, b] of hoy) if (min >= a && min < b) { abierto = b; break; }
+    let texto, clase;
+    if (abierto !== null) {
+      texto = 'Abierto ahora · hasta las ' + hhmm(abierto);
+      clase = 'is-open';
+    } else {
+      let prox = hoy.find(([a]) => min < a);
+      if (prox) {
+        texto = 'Cerrado · abre a las ' + hhmm(prox[0]);
+      } else {
+        let d = dia, saltos = 0;
+        do { d = (d + 1) % 7; saltos++; } while (!HORARIO[d].length && saltos < 8);
+        texto = 'Cerrado · abre el ' + DIAS[d] + ' a las ' + hhmm(HORARIO[d][0][0]);
+      }
+      clase = 'is-closed';
+    }
+    nodes.forEach(n => { n.textContent = texto; n.classList.remove('is-open', 'is-closed'); n.classList.add(clase); });
+  })();
+
+  /* ── Las fotos entran con un fundido en cuanto cargan ── */
+  (function(){
+    document.documentElement.classList.add('js-fade');
+    const marcar = im => im.classList.add('cargada');
+    document.querySelectorAll('.dish-card-img img, .menu-card-img img, .g-item img, .strip-item img, .about-img img, .daily-img img')
+      .forEach(im => {
+        im.style.transition = 'opacity .55s ease, transform .6s, filter .5s';
+        if (im.complete && im.naturalWidth) marcar(im);
+        else { im.addEventListener('load', () => marcar(im)); im.addEventListener('error', () => marcar(im)); }
+      });
+    // red de seguridad: pase lo que pase, a los 4 s se ven todas
+    setTimeout(() => document.querySelectorAll('.js-fade img:not(.cargada)').forEach(marcar), 4000);
+  })();
+
+  /* ── Visor de fotos a pantalla completa ── */
+  (function(){
+    const lb = document.getElementById('lightbox');
+    if (!lb) return;
+    const img = document.getElementById('lbImg');
+    const elNum = document.getElementById('lbNum'), elName = document.getElementById('lbName');
+    const elDesc = document.getElementById('lbDesc'), elPrice = document.getElementById('lbPrice');
+    const elCount = document.getElementById('lbCounter');
+    const btPrev = document.getElementById('lbPrev'), btNext = document.getElementById('lbNext');
+
+    const txt = (el, sel) => { const n = el.querySelector(sel); return n ? n.textContent.trim() : ''; };
+    const items = [...document.querySelectorAll('.dish-card, .menu-card, .g-item, .strip-item, .about-img, .daily-img')]
+      .filter(el => el.querySelector('img'))
+      .map(el => ({
+        el,
+        src:   el.querySelector('img').getAttribute('src'),
+        num:   txt(el, '.dish-num') || txt(el, '.card-num'),
+        name:  txt(el, '.dish-name') || txt(el, 'h3') || el.querySelector('img').alt || '',
+        desc:  txt(el, '.dish-desc') || txt(el, '.menu-card-body p'),
+        price: txt(el, '.dish-price') || txt(el, '.card-price')
+      }));
+    if (!items.length) return;
+
+    items.forEach((it, i) => {
+      it.el.setAttribute('role', 'button');
+      it.el.setAttribute('tabindex', '0');
+      it.el.addEventListener('click', () => abrir(i));
+      it.el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(i); }
+      });
+    });
+
+    let idx = -1, previo = null;
+    const visibles = () => items.filter(it => !it.el.hidden && it.el.offsetParent !== null);
+
+    function pintar(i) {
+      const lista = visibles();
+      const pos = lista.findIndex(x => x === items[i]);
+      const it = items[i];
+      img.classList.remove('ready');
+      const tmp = new Image();
+      tmp.onload = () => { img.src = it.src; img.alt = it.name; img.classList.add('ready'); };
+      tmp.src = it.src;
+      if (tmp.complete) tmp.onload();
+      elNum.textContent = it.num;
+      elName.textContent = it.name;
+      elDesc.textContent = it.desc;
+      elPrice.textContent = it.price;
+      elCount.textContent = pos >= 0 ? (pos + 1) + ' / ' + lista.length : '';
+      const varios = lista.length > 1;
+      btPrev.hidden = btNext.hidden = !varios;
+      // precarga vecinos
+      if (pos >= 0) [lista[pos - 1], lista[pos + 1]].forEach(v => { if (v) new Image().src = v.src; });
+    }
+
+    function abrir(i) {
+      previo = document.activeElement;
+      idx = i;
+      lb.hidden = false;
+      requestAnimationFrame(() => lb.classList.add('show'));
+      document.body.style.overflow = 'hidden';
+      pintar(idx);
+      document.getElementById('lbClose').focus();
+    }
+    function cerrar() {
+      lb.classList.remove('show');
+      document.body.style.overflow = '';
+      setTimeout(() => { lb.hidden = true; img.removeAttribute('src'); }, 280);
+      if (previo && previo.focus) previo.focus();
+    }
+    function mover(paso) {
+      const lista = visibles();
+      if (lista.length < 2) return;
+      let pos = lista.findIndex(x => x === items[idx]);
+      if (pos < 0) pos = 0;
+      const sig = lista[(pos + paso + lista.length) % lista.length];
+      idx = items.indexOf(sig);
+      pintar(idx);
+    }
+
+    document.getElementById('lbClose').addEventListener('click', cerrar);
+    btPrev.addEventListener('click', () => mover(-1));
+    btNext.addEventListener('click', () => mover(1));
+    lb.addEventListener('click', e => { if (e.target === lb || e.target === img || e.target.classList.contains('lb-figure') || e.target.classList.contains('lb-media')) cerrar(); });
+    document.addEventListener('keydown', e => {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') cerrar();
+      else if (e.key === 'ArrowLeft') mover(-1);
+      else if (e.key === 'ArrowRight') mover(1);
+    });
+
+    /* gestos: deslizar para cambiar o cerrar */
+    let x0 = null, y0 = null;
+    lb.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+    lb.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+      if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) mover(dx < 0 ? 1 : -1);
+      else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) cerrar();
+      x0 = y0 = null;
+    }, { passive: true });
+  })();
+</script>
+
+<div class="mobile-actions" role="navigation" aria-label="Acciones rápidas">
+  <a href="tel:936388770"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg><span>Llamar</span></a>
+  <a class="ma-wa" href="https://wa.me/34688006355" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.24 8.24 0 01-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm-2.5 4.1c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.43-.59 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41h-.5z"/></svg><span>WhatsApp</span></a>
+  <a href="carta.html"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7a2 2 0 012 2v14a2 2 0 00-2-2H4z"/><path d="M20 4h-7a2 2 0 00-2 2v14a2 2 0 012-2h7z"/></svg><span>Carta</span></a>
+  <a href="https://maps.google.com/?q=Calle+St.+Pere+37,Gav%C3%A0,Barcelona" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Llegar</span></a>
+</div>
+
+</body>
+</html>

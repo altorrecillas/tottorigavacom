@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aviso Legal — Tottori Gavà</title>
+<meta name="description" content="Aviso legal, política de privacidad y condiciones de uso del sitio web de Tottori Gavà.">
+<link rel="canonical" href="https://tottorigava.com/avisolegal.html">
+<meta name="theme-color" content="#0a0806">
+<meta name="robots" content="noindex,follow">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Tottori Gavà">
+<meta property="og:url" content="https://tottorigava.com/avisolegal.html">
+<meta property="og:title" content="Aviso Legal — Tottori Gavà">
+<meta property="og:description" content="Información legal del sitio web de Tottori Gavà.">
+<meta property="og:image" content="https://tottorigava.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@200&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #0a0806;
+    --dark: #111009;
+    --surface: #16140f;
+    --gold: #c9a96e;
+    --gold-light: #e4c98a;
+    --gold-muted: #7a6240;
+    --cream: #f0e8d8;
+    --cream-dim: #a89878;
+    --white: #faf6ef;
+    --sello: #b5342c;
+    --lamina: linear-gradient(135deg,#a8874d 0%,#e4c98a 30%,#c9a96e 48%,#f2e0b0 66%,#b8945a 100%);
+    --lamina-viva: linear-gradient(135deg,#bd9a5c 0%,#f0dca8 30%,#e4c98a 48%,#fdf0cc 66%,#c9a96e 100%);
+    --relieve: 0 1px 0 rgba(255,240,200,.34) inset;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black); color: var(--cream);
+    font-family: 'Montserrat', sans-serif; font-weight: 300;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity:.03; pointer-events:none; z-index:1000;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:500;
+    padding: 32px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10,8,6,.93); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(201,169,110,.1);
+  }
+  .nav-logo {
+    font-family: 'Noto Serif JP',serif; font-weight:200;
+    font-size:11px; letter-spacing:.35em; color:var(--gold);
+    text-transform:uppercase; text-decoration:none;
+  }
+  .nav-logo span {
+    display:block; font-family:'Cormorant Garamond',serif;
+    font-size:22px; letter-spacing:.15em; color:var(--white);
+    font-weight:300; line-height:1;
+  }
+  .nav-links { display:flex; gap:44px; list-style:none; }
+  .nav-links a {
+    font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--cream-dim); text-decoration:none; transition:color .3s; position:relative;
+  }
+  .nav-links a::after {
+    content:''; position:absolute; bottom:-4px; left:0; right:0;
+    height:1px; background:var(--gold); transform:scaleX(0);
+    transform-origin:left; transition:transform .35s;
+  }
+  .nav-links a:hover { color:var(--gold-light); }
+  .nav-links a:hover::after { transform:scaleX(1); }
+  .nav-cta {
+    font-size:10px; letter-spacing:.25em; text-transform:uppercase;
+    color:var(--black); background:var(--lamina); box-shadow:var(--relieve); padding:12px 24px;
+    text-decoration:none; transition:background .3s;
+  }
+  .nav-cta:hover { background:var(--lamina-viva); }
+
+  /* HERO MINI */
+  .page-hero {
+    padding: 160px 60px 80px;
+    border-bottom: 1px solid rgba(201,169,110,.1);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '法'; position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
+    font-family: 'Noto Serif JP', serif; font-size: clamp(120px, 18vw, 260px); font-weight: 200;
+    color: transparent; -webkit-text-stroke: 1px rgba(201,169,110,.08);
+    line-height: 1; user-select: none;
+  }
+  .section-label {
+    font-size:9.5px; letter-spacing:.4em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:24px;
+    display:flex; align-items:center; gap:16px;
+  }
+  .section-label::before { content:''; width:24px; height:1px; background:var(--gold); }
+  .page-hero h1 {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(42px,6vw,80px);
+    font-weight:300; line-height:1; color:var(--white); letter-spacing:-.01em;
+  }
+  .page-hero h1 em { font-style:italic; color:var(--gold-light); }
+
+  /* CONTENT */
+  .legal-content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 100px 60px 120px;
+  }
+  .legal-block {
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(201,169,110,.1);
+  }
+  .legal-block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  .legal-block h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 400; color: var(--white);
+    margin-bottom: 24px; line-height: 1.2;
+    letter-spacing: .02em;
+  }
+  .legal-block h2 em { font-style: italic; color: var(--gold-light); }
+  .legal-block p {
+    font-size: 13.5px; line-height: 2;
+    color: var(--cream-dim); margin-bottom: 16px;
+  }
+  .legal-block p:last-child { margin-bottom: 0; }
+  .legal-block strong { color: var(--cream); font-weight: 400; }
+
+  .legal-data {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+    margin-top: 32px;
+  }
+  .legal-data-item {
+    background: var(--surface);
+    padding: 24px 28px;
+  }
+  .legal-data-label {
+    font-size: 9px; letter-spacing: .35em; text-transform: uppercase;
+    color: var(--gold-muted); margin-bottom: 8px;
+  }
+  .legal-data-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; color: var(--white); font-weight: 400;
+  }
+
+  /* FOOTER */
+  footer {
+    background:var(--black); padding:56px 60px;
+    border-top:1px solid rgba(201,169,110,.1);
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;
+  }
+  .footer-logo { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:var(--white); letter-spacing:.1em; }
+  .footer-logo span { display:block; font-family:'Noto Serif JP',serif; font-size:10px; font-weight:200; letter-spacing:.4em; color:var(--gold-muted); margin-top:4px; text-transform:uppercase; }
+  .footer-links { display:flex; gap:28px; list-style:none; }
+  .footer-links a { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--cream-dim); text-decoration:none; transition:color .3s; }
+  .footer-links a:hover { color:var(--gold); }
+  .footer-copy { font-size:10px; color:var(--gold-muted); letter-spacing:.1em; }
+
+  /* MOBILE */
+  .hamburger {
+    display: none; flex-direction: column; justify-content: center; align-items: center;
+    width: 40px; height: 40px; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 0; z-index: 600;
+  }
+  .hamburger span { display: block; width: 24px; height: 1px; background: var(--gold); transition: transform .3s, opacity .3s, width .3s; transform-origin: center; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 499;
+    background: rgba(10,8,6,.97); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: center; gap: 0;
+    opacity: 0; pointer-events: none; transition: opacity .4s ease;
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu a {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 8vw, 44px);
+    font-weight: 300; letter-spacing: .05em; color: var(--cream-dim);
+    text-decoration: none; padding: 16px 40px; transition: color .3s;
+    border-bottom: 1px solid rgba(201,169,110,.08); width: 100%; text-align: center;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--gold-light); }
+  .mobile-menu .mobile-cta {
+    margin-top: 32px; font-family: 'Montserrat', sans-serif;
+    font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--black); background: var(--gold);
+    padding: 18px 48px; border-bottom: none; width: auto;
+  }
+
+  @media(max-width:1024px){
+    nav { padding: 20px 24px; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: flex; }
+    .page-hero { padding: 120px 24px 60px; }
+    .legal-content { padding: 60px 24px 80px; }
+    .legal-data { grid-template-columns: 1fr; }
+    footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+    .footer-links { flex-wrap: wrap; gap: 16px; }
+  }
+
+  /* ── BASE UI: selección, foco, scrollbar ── */
+  img { display: block; }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--gold); color: var(--black); }
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  html { scrollbar-color: #3a3126 var(--black); }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: #3a3126; border: 2px solid var(--black); border-radius: 6px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold-muted); }
+
+  .skip-link {
+    position: fixed; left: 16px; top: -120px; z-index: 900;
+    background: var(--gold); color: var(--black);
+    font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    padding: 14px 22px; text-decoration: none; transition: top .25s;
+  }
+  .skip-link:focus { top: 16px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* ── BARRA DE PROGRESO DE LECTURA ── */
+  .scroll-progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+    transform: scaleX(0); transform-origin: 0 50%;
+    background: linear-gradient(to right, var(--gold-muted), var(--gold-light));
+    z-index: 700; pointer-events: none;
+  }
+
+  /* ── ESTADO ABIERTO / CERRADO ── */
+  .open-status:empty { display: none; }
+  .open-status {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+    padding: 5px 11px; border: 1px solid rgba(201,169,110,.28);
+    color: var(--cream-dim); white-space: nowrap; vertical-align: middle;
+  }
+  .open-status::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold-muted); flex-shrink: 0;
+  }
+  .open-status.is-open { color: #9fd0a4; border-color: rgba(120,190,130,.3); }
+  .open-status.is-open::before { background: #6fbf7a; box-shadow: 0 0 0 3px rgba(111,191,122,.18); animation: pulseDot 2.4s ease-in-out infinite; }
+  .open-status.is-closed { color: #d9a0a0; border-color: rgba(200,120,120,.28); }
+  .open-status.is-closed::before { background: #c56d6d; }
+  @keyframes pulseDot { 0%,100%{box-shadow:0 0 0 3px rgba(111,191,122,.18)} 50%{box-shadow:0 0 0 6px rgba(111,191,122,0)} }
+
+  /* ── BARRA DE ACCIONES MÓVIL ── */
+  .mobile-actions { display: none; }
+  @media (max-width: 1024px) {
+    .mobile-actions {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 480;
+      padding: 0;
+      background: rgba(10,8,6,.95); backdrop-filter: blur(18px);
+      border-top: 1px solid rgba(201,169,110,.18);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    .mobile-actions a {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      padding: 10px 4px 11px; text-decoration: none; min-height: 58px;
+      font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--cream-dim); transition: color .25s, background .25s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mobile-actions a + a { box-shadow: inset 1px 0 0 rgba(201,169,110,.1); }
+    .mobile-actions a svg { color: var(--gold); transition: transform .25s; }
+    .mobile-actions a:active { background: rgba(201,169,110,.12); color: var(--gold-light); }
+    .mobile-actions a:active svg { transform: scale(.88); }
+    .ma-wa svg { color: #6fbf7a; }
+    body { padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px)); }
+    .mobile-menu { padding-bottom: 70px; }
+  }
+
+</style>
+</head>
+<body>
+
+<a href="#contenido" class="skip-link">Saltar al contenido</a>
+
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    とっとり
+    <span>TOTTORI</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">El Restaurante</a></li>
+    <li><a href="carta.html">Carta</a></li>
+    <li><a href="menu.html">Menú</a></li>
+    <li><a href="avisolegal.html">Aviso Legal</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#about" onclick="closeMobile()">El Restaurante</a>
+  <a href="carta.html" onclick="closeMobile()">Carta</a>
+  <a href="menu.html" onclick="closeMobile()">Menú</a>
+  <a href="tel:936388770" class="mobile-cta" onclick="closeMobile()">Llamar ahora</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="section-label">Legal</div>
+  <h1>Aviso <em>Legal</em></h1>
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-top:36px;font-size:10.5px;letter-spacing:.25em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:16px 36px;text-decoration:none;transition:background .3s;" onmouseover="this.style.background='var(--gold-light)'" onmouseout="this.style.background='var(--gold)'">
+    ← Volver al inicio
+  </a>
+</div>
+
+<!-- CONTENT -->
+<div id="contenido" class="legal-content">
+
+  <div class="legal-block">
+    <h2>Datos del <em>titular</em></h2>
+    <p>En cumplimiento con el deber de información recogido en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico, a continuación se reflejan los datos de identificación del titular del sitio web.</p>
+    <div class="legal-data">
+      <div class="legal-data-item">
+        <div class="legal-data-label">Razón social</div>
+        <div class="legal-data-val">H&J SUSHI YA S.L.</div>
+      </div>
+      <div class="legal-data-item">
+        <div class="legal-data-label">CIF / NIF</div>
+        <div class="legal-data-val">B66272246</div>
+      </div>
+      <div class="legal-data-item">
+        <div class="legal-data-label">Domicilio</div>
+        <div class="legal-data-val">Calle Sant Pere nº37, Gavà, Barcelona</div>
+      </div>
+      <div class="legal-data-item">
+        <div class="legal-data-label">Dominio</div>
+        <div class="legal-data-val">www.tottorigava.com</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legal-block">
+    <h2>Condiciones de <em>uso</em></h2>
+    <p>Las presentes condiciones de uso regulan el acceso a esta web por parte de los clientes de TOTTORI y demás usuarios de internet. Por el mero uso de esta web, el usuario manifiesta su aceptación sin reservas de las presentes condiciones de uso.</p>
+    <p>TOTTORI se reserva el derecho unilateral de modificar las presentes condiciones de acceso a la web, así como los contenidos en ella incluidos. El contenido de esta web es de carácter general y tiene una finalidad y efectos exclusivamente informativos.</p>
+    <p>La finalidad de la web es dar a conocer el negocio de restauración y servir como herramienta de contacto e informativa.</p>
+  </div>
+
+  <div class="legal-block">
+    <h2>Responsabilidad y <em>disponibilidad</em></h2>
+    <p>El usuario exonera a TOTTORI de cualquier responsabilidad que pudiera derivarse de las interrupciones de disponibilidad de la página web, ya sea por mal funcionamiento del servidor web o de aplicaciones, de las infraestructuras de comunicaciones, o del software y hardware utilizados para la navegación.</p>
+    <p>En el caso de incluir enlaces a otras páginas web, TOTTORI declina cualquier responsabilidad relacionada con el acceso y utilización de dichos enlaces.</p>
+  </div>
+
+  <div class="legal-block">
+    <h2>Propiedad <em>intelectual</em></h2>
+    <p>La totalidad de esta web se encuentra protegida por las leyes sobre Propiedad Intelectual e Industrial. Salvo que se indique lo contrario, los derechos de propiedad intelectual sobre estos contenidos corresponden en exclusiva a TOTTORI.</p>
+    <p>El usuario reconoce que el uso de los contenidos queda estrictamente limitado a finalidades personales del propio usuario y que la reproducción, distribución, comunicación o transformación no expresamente autorizada de tales obras constituye una infracción de los derechos de propiedad intelectual.</p>
+    <p>Asimismo, el usuario se abstendrá de emplear los contenidos y, en particular, la información de cualquier clase obtenida a través de la web para remitir publicidad, comunicaciones con fines de venta directa o con cualquier otra clase de finalidad comercial, mensajes no solicitados dirigidos a una pluralidad de personas con independencia de su finalidad. También se abstendrá de comercializar o divulgar de cualquier modo dicha información.</p>
+  </div>
+
+  <div class="legal-block">
+    <h2>Protección de <em>datos</em></h2>
+    <p>La utilización de esta web y de sus formularios requiere la aceptación del tratamiento de los datos del usuario bajo la responsabilidad de TOTTORI, para finalidades que incluyen la provisión de la web, la recopilación de datos de acceso y el envío de información comercial por vía electrónica, en determinados casos y siempre bajo consentimiento del receptor.</p>
+    <p>Para ejercer los derechos de acceso, rectificación, supresión, oposición, y otros derechos de protección de datos, puede contactar con nosotros a través de los siguientes medios:</p>
+    <p>· Por teléfono al número <strong><a href="tel:936388770" style="color:var(--gold-light);text-decoration:none;">93 638 87 70</a></strong><br>
+    · Por correo electrónico a <strong><a href="mailto:tottorigava@gmail.com" style="color:var(--gold-light);text-decoration:none;">tottorigava@gmail.com</a></strong><br>
+    · Por escrito dirigiéndose a: <strong>TOTTORI, Calle Sant Pere nº37, Gavà, Barcelona.</strong></p>
+  </div>
+
+  <div class="legal-block">
+    <h2>Legislación <em>aplicable</em></h2>
+    <p>El presente Aviso Legal, así como las relaciones entre TOTTORI y los usuarios, se regirán por la normativa española vigente y cualquier controversia se someterá a los Juzgados y Tribunales de GAVÀ, excepto en el caso de consumidores y usuarios que se aplicará el fuero imperativo de los juzgados que correspondan a su domicilio.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">TOTTORI <span>Restaurant japonès · Gavà</span></div>
+  <ul class="footer-links">
+    <li><a href="index.html#about">El Restaurante</a></li>
+    <li><a href="carta.html">Carta</a></li>
+    <li><a href="menu.html">Menú</a></li>
+    <li><a href="avisolegal.html">Aviso Legal</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Tottori Gavà · Barcelona</div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── Barra de progreso de lectura ── */
+  (function(){
+    const bar = document.querySelector('.scroll-progress');
+    if (!bar) return;
+    let ticking = false;
+    const update = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
+
+  /* ── ¿Abierto ahora? Calculado en hora de Madrid ── */
+  (function(){
+    const nodes = document.querySelectorAll('[data-open-status]');
+    if (!nodes.length) return;
+    // 0 domingo … 6 sábado. Tramos en minutos desde medianoche.
+    const HORARIO = {
+      0: [[720, 960], [1140, 1380]],
+      1: [],
+      2: [[720, 960], [1140, 1380]],
+      3: [[720, 960], [1140, 1380]],
+      4: [[720, 960], [1140, 1380]],
+      5: [[720, 960], [1140, 1440]],
+      6: [[720, 960], [1140, 1440]]
+    };
+    const DIAS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+    function ahoraMadrid() {
+      const f = new Intl.DateTimeFormat('es-ES', {
+        timeZone: 'Europe/Madrid', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false
+      }).formatToParts(new Date());
+      const g = t => f.find(p => p.type === t).value;
+      const wd = { 'dom': 0, 'lun': 1, 'mar': 2, 'mié': 3, 'mie': 3, 'jue': 4, 'vie': 5, 'sáb': 6, 'sab': 6 };
+      const key = g('weekday').toLowerCase().replace('.', '').slice(0, 3);
+      return { dia: wd[key] ?? new Date().getDay(), min: +g('hour') * 60 + +g('minute') };
+    }
+    function hhmm(m) { return String(Math.floor(m / 60) % 24).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); }
+    const { dia, min } = ahoraMadrid();
+    const hoy = HORARIO[dia];
+    let abierto = null;
+    for (const [a, b] of hoy) if (min >= a && min < b) { abierto = b; break; }
+    let texto, clase;
+    if (abierto !== null) {
+      texto = 'Abierto ahora · hasta las ' + hhmm(abierto);
+      clase = 'is-open';
+    } else {
+      let prox = hoy.find(([a]) => min < a);
+      if (prox) {
+        texto = 'Cerrado · abre a las ' + hhmm(prox[0]);
+      } else {
+        let d = dia, saltos = 0;
+        do { d = (d + 1) % 7; saltos++; } while (!HORARIO[d].length && saltos < 8);
+        texto = 'Cerrado · abre el ' + DIAS[d] + ' a las ' + hhmm(HORARIO[d][0][0]);
+      }
+      clase = 'is-closed';
+    }
+    nodes.forEach(n => { n.textContent = texto; n.classList.remove('is-open', 'is-closed'); n.classList.add(clase); });
+  })();
+</script>
+
+<div class="mobile-actions" role="navigation" aria-label="Acciones rápidas">
+  <a href="tel:936388770"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg><span>Llamar</span></a>
+  <a class="ma-wa" href="https://wa.me/34688006355" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.24 8.24 0 01-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm-2.5 4.1c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.43-.59 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41h-.5z"/></svg><span>WhatsApp</span></a>
+  <a href="carta.html"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7a2 2 0 012 2v14a2 2 0 00-2-2H4z"/><path d="M20 4h-7a2 2 0 00-2 2v14a2 2 0 012-2h7z"/></svg><span>Carta</span></a>
+  <a href="https://maps.google.com/?q=Calle+St.+Pere+37,Gav%C3%A0,Barcelona" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Llegar</span></a>
+</div>
+
+</body>
+</html>

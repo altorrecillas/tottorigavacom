@@ -1,0 +1,31 @@
+# ── Versiones antiguas de la web (no se publican) ───────────────────────────
+old/
+
+# ── Duplicados ──────────────────────────────────────────────────────────────
+# Copia idéntica de carta_tottori.pdf (el que sí usa la web)
+cartatottoricom.pdf
+
+# ── Dropbox ─────────────────────────────────────────────────────────────────
+.dropbox*
+*conflicted copy*
+*Copia en conflicto*
+*en conflicto*
+
+# ── Sistema y editores ──────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*~
+*.swp
+
+# ── Temporales ──────────────────────────────────────────────────────────────
+*.log
+*.tmp
+*.bak
+
+# ── Configuración local del asistente de IA ─────────────────────────────────
+.claude/
+CLAUDE.md
+.mcp.json
