@@ -680,6 +680,360 @@
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
     overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
   }
+
+  /* ════════ PEDIDO ONLINE POR WHATSAPP ════════
+     Solo se activa con JS (clase .pd-on en <html>): sin JS la carta queda como siempre. */
+
+  /* — Cómo pedir (cabecera) — */
+  .como-pedir { display: none; margin-top: 34px; scroll-margin-top: 120px; animation: fadeInUp 1s ease .75s both; }
+  .pd-on .como-pedir { display: block; }
+  .cp-tag {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
+    font-size: 9.5px; letter-spacing: .35em; text-transform: uppercase; color: var(--gold);
+  }
+  .cp-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); flex-shrink: 0; }
+  .cp-pasos { list-style: none; display: flex; flex-wrap: wrap; gap: 14px 30px; }
+  .cp-pasos li { display: flex; align-items: center; gap: 12px; font-size: 11.5px; letter-spacing: .04em; line-height: 1.4; color: var(--cream); }
+  .cp-pasos b {
+    font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 28px; line-height: 1;
+    color: transparent; -webkit-text-stroke: 1px var(--gold);
+  }
+  .cp-nota { margin-top: 16px; font-size: 11px; line-height: 1.7; color: var(--cream-dim); }
+
+  /* — Fichas: la botonera queda al pie y alineada con las fichas vecinas — */
+  .pd-on .dish-card { display: flex; flex-direction: column; }
+  .pd-on .dish-card[hidden] { display: none; }
+  .pd-on .dish-card-img { flex-shrink: 0; }
+  .pd-on .dish-card-body { flex: 1; display: flex; flex-direction: column; }
+  .dish-card.pd-en-pedido { border-color: rgba(201,169,110,.75); }
+  .dish-card-img:focus-visible { outline-offset: -3px; }
+
+  .pd-ctl { margin-top: auto; padding-top: 16px; cursor: default; }
+  .pd-ctl [hidden] { display: none !important; }
+  .pd-var { margin-bottom: 12px; }
+  .pd-var-t {
+    display: block; margin-bottom: 3px;
+    font-size: 8.5px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold-muted);
+  }
+  .pd-var-op {
+    display: flex; align-items: center; gap: 9px; padding: 6px 0;
+    font-size: 11px; line-height: 1.3; color: var(--cream-dim); cursor: pointer;
+  }
+  .pd-var-op input {
+    -webkit-appearance: none; appearance: none; flex-shrink: 0; margin: 0; cursor: pointer;
+    width: 15px; height: 15px; border-radius: 50%; border: 1px solid var(--gold-muted);
+    display: grid; place-items: center; transition: border-color .2s;
+  }
+  .pd-var-op input::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--gold-light); transform: scale(0); transition: transform .2s;
+  }
+  .pd-var-op input:checked { border-color: var(--gold); }
+  .pd-var-op input:checked::before { transform: scale(1); }
+  .pd-var-op input:checked + span { color: var(--white); }
+  .pd-var-op:hover span { color: var(--gold-light); }
+  .pd-var-n { margin-left: auto; font-size: 10px; letter-spacing: .06em; color: var(--gold-light); }
+
+  .pd-add, .pd-step { width: 100%; min-height: 42px; -webkit-tap-highlight-color: transparent; }
+  .pd-add {
+    display: flex; align-items: center; justify-content: center; gap: 9px;
+    background: rgba(201,169,110,.04); border: 1px solid rgba(201,169,110,.45); color: var(--gold-light);
+    font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 400;
+    letter-spacing: .22em; text-transform: uppercase;
+    cursor: pointer; transition: background .25s, color .25s, border-color .25s;
+  }
+  .pd-add:hover { background: var(--gold); border-color: var(--gold); color: var(--black); }
+  .pd-step {
+    display: grid; grid-template-columns: 42px 1fr 42px;
+    background: var(--lamina); box-shadow: var(--relieve); color: var(--black);
+  }
+  .pd-step button {
+    display: flex; align-items: center; justify-content: center;
+    background: none; border: none; color: var(--black); cursor: pointer; transition: background .2s;
+  }
+  .pd-step button:hover { background: rgba(10,8,6,.1); }
+  .pd-step .pd-n {
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 400;
+  }
+
+  /* cuántas unidades del plato hay en el pedido, en la esquina de la foto */
+  .pd-cuenta {
+    position: absolute; z-index: 3; top: 9px; left: 9px;
+    min-width: 28px; height: 28px; padding: 0 8px; border-radius: 14px;
+    display: grid; place-items: center; pointer-events: none;
+    background: var(--lamina); box-shadow: var(--relieve), 0 4px 14px -4px rgba(0,0,0,.85);
+    font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 400; color: var(--black);
+  }
+  .pd-cuenta[hidden] { display: none; }
+  .pd-cuenta.pop { animation: pdPop .4s cubic-bezier(.2,.9,.3,1.4); }
+  @keyframes pdPop { from { transform: scale(.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+  /* — Barra «Ver mi pedido» — */
+  .pd-barra {
+    position: fixed; z-index: 478; right: 24px; bottom: 24px;
+    display: flex; align-items: center; gap: 12px; height: 58px; padding: 0 24px 0 20px;
+    background: var(--lamina); color: var(--black); border: none; cursor: pointer;
+    box-shadow: var(--relieve), 0 20px 40px -18px rgba(0,0,0,.95);
+    font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400;
+    letter-spacing: .22em; text-transform: uppercase;
+    opacity: 0; visibility: hidden; transform: translateY(24px);
+    transition: opacity .35s, transform .45s cubic-bezier(.2,.8,.3,1), visibility 0s .45s, background .3s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pd-barra.show {
+    opacity: 1; visibility: visible; transform: none;
+    transition: opacity .35s, transform .45s cubic-bezier(.2,.8,.3,1), visibility 0s, background .3s;
+  }
+  .pd-barra:hover { background: var(--lamina-viva); }
+  .pd-barra-n {
+    min-width: 22px; height: 22px; padding: 0 6px; border-radius: 11px;
+    display: grid; place-items: center;
+    background: var(--black); color: var(--gold-light); font-size: 11px; letter-spacing: 0;
+  }
+  .pd-barra-total {
+    font-family: 'Cormorant Garamond', serif; font-size: 21px; letter-spacing: .03em; text-transform: none;
+    padding-left: 14px; border-left: 1px solid rgba(10,8,6,.25);
+  }
+  .pd-barra.latido, .pd-minimo.latido { animation: pdLatido .45s ease; }
+  @keyframes pdLatido { 40% { transform: scale(1.05); } }
+  body.pd-con-pedido .to-top { bottom: 96px; }
+  @media (min-width: 1025px) { body.pd-con-pedido { padding-bottom: 96px; } }
+
+  /* — Panel del pedido — */
+  .pd-fondo {
+    position: fixed; inset: 0; z-index: 890;
+    background: rgba(6,5,4,.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    opacity: 0; transition: opacity .35s;
+  }
+  .pd-fondo.show { opacity: 1; }
+  .pd-panel {
+    position: fixed; z-index: 900; top: 0; right: 0; bottom: 0; width: min(480px, 100%);
+    display: flex; flex-direction: column;
+    background: var(--dark); border-left: 1px solid rgba(201,169,110,.18);
+    box-shadow: -40px 0 80px -40px rgba(0,0,0,.9);
+    transform: translateX(100%); transition: transform .42s cubic-bezier(.2,.8,.3,1);
+  }
+  .pd-panel.show { transform: none; }
+  .pd-fondo[hidden], .pd-panel[hidden], .pd-panel [hidden] { display: none !important; }
+
+  .pd-cab {
+    flex-shrink: 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    padding: 24px 28px 20px; border-bottom: 1px solid rgba(201,169,110,.12);
+  }
+  .pd-cab h2 {
+    font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 300;
+    color: var(--white); line-height: 1; margin-bottom: 12px;
+  }
+  .pd-cab h2 em { font-style: italic; color: var(--gold-light); }
+  .pd-cerrar {
+    flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+    background: rgba(201,169,110,.08); border: 1px solid rgba(201,169,110,.22); color: var(--gold);
+    cursor: pointer; transition: background .25s, color .25s, border-color .25s;
+  }
+  .pd-cerrar:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+  .pd-vista { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .pd-cuerpo {
+    flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 6px 28px 32px;
+    scrollbar-width: thin; scrollbar-color: #3a3126 transparent;
+  }
+  .pd-pie {
+    flex-shrink: 0; padding: 16px 28px calc(18px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid rgba(201,169,110,.15); background: var(--black);
+  }
+
+  .pd-vacio { text-align: center; padding: 56px 8px 24px; }
+  .pd-vacio-kanji {
+    font-family: 'Noto Serif JP', serif; font-size: 76px; font-weight: 200; line-height: 1; margin-bottom: 22px;
+    color: transparent; -webkit-text-stroke: 1px rgba(201,169,110,.25); user-select: none;
+  }
+  .pd-vacio p { font-family: 'Cormorant Garamond', serif; font-size: 25px; color: var(--white); margin-bottom: 10px; }
+  .pd-vacio .pd-sub {
+    font-family: 'Montserrat', sans-serif; font-size: 12px; line-height: 1.8;
+    color: var(--cream-dim); margin: 0 auto 28px; max-width: 320px;
+  }
+
+  .pd-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 50px; padding: 0 28px; border: none; cursor: pointer; text-decoration: none;
+    background: var(--lamina); box-shadow: var(--relieve); color: var(--black);
+    font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400;
+    letter-spacing: .24em; text-transform: uppercase; transition: background .3s, opacity .3s;
+  }
+  .pd-btn:hover { background: var(--lamina-viva); }
+  .pd-btn-ghost { background: transparent; box-shadow: none; border: 1px solid rgba(201,169,110,.4); color: var(--gold-light); }
+  .pd-btn-ghost:hover { background: rgba(201,169,110,.1); }
+  .pd-link {
+    background: none; border: none; cursor: pointer; padding: 12px;
+    font-family: 'Montserrat', sans-serif; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--cream-dim); transition: color .25s;
+  }
+  .pd-link:hover { color: var(--gold-light); }
+
+  /* líneas del pedido */
+  .pd-lineas { list-style: none; }
+  .pd-linea {
+    display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: baseline;
+    padding: 18px 0; border-bottom: 1px solid rgba(201,169,110,.09);
+  }
+  .pd-l-nombre { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--white); line-height: 1.2; }
+  .pd-l-num { font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .12em; color: var(--gold); margin-right: 8px; }
+  .pd-l-var { margin-top: 4px; font-size: 11px; color: var(--gold-light); }
+  .pd-l-precio { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--gold-light); white-space: nowrap; }
+  .pd-l-ctl { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; margin-top: 10px; }
+  .pd-l-unit { font-size: 10.5px; color: var(--gold-muted); }
+  .pd-quitar, .pd-vaciar {
+    background: none; border: none; cursor: pointer;
+    font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold-muted); transition: color .25s;
+  }
+  .pd-quitar { margin-left: auto; padding: 10px 0 10px 10px; }
+  .pd-vaciar { margin-top: 12px; padding: 10px 0; }
+  .pd-quitar:hover, .pd-vaciar:hover, .pd-vaciar.confirmar { color: #e0a4a4; }
+  .pd-mini { display: inline-grid; grid-template-columns: 38px 34px 38px; height: 38px; border: 1px solid rgba(201,169,110,.32); }
+  .pd-mini button {
+    display: flex; align-items: center; justify-content: center;
+    background: none; border: none; color: var(--gold-light); cursor: pointer; transition: background .2s, color .2s;
+  }
+  .pd-mini button:hover { background: var(--gold); color: var(--black); }
+  .pd-mini .pd-n { display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--white); }
+
+  /* formulario */
+  .pd-sec { padding-top: 30px; }
+  .pd-sec-t {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+    font-size: 9.5px; letter-spacing: .32em; text-transform: uppercase; color: var(--gold);
+  }
+  .pd-sec-t::before { content: ''; width: 20px; height: 1px; background: var(--gold); flex-shrink: 0; }
+  .pd-opt { font-size: 9px; letter-spacing: .1em; text-transform: none; color: var(--gold-muted); }
+  .pd-req { color: var(--gold); }
+
+  .pd-opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pd-opcion { position: relative; display: block; cursor: pointer; }
+  .pd-opcion input { position: absolute; top: 0; left: 0; width: 1px; height: 1px; margin: 0; opacity: 0; }
+  .pd-opcion span {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px;
+    min-height: 84px; padding: 14px 10px; text-align: center;
+    border: 1px solid rgba(201,169,110,.22); background: rgba(201,169,110,.03);
+    font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; line-height: 1.5; color: var(--cream-dim);
+    transition: border-color .25s, background .25s, color .25s;
+  }
+  .pd-opcion span svg { color: var(--gold-muted); transition: color .25s; }
+  .pd-opcion:hover span { border-color: rgba(201,169,110,.5); }
+  .pd-opcion input:checked + span { border-color: var(--gold); background: rgba(201,169,110,.12); color: var(--gold-light); }
+  .pd-opcion input:checked + span svg { color: var(--gold-light); }
+  .pd-opcion input:focus-visible + span { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+  .pd-opciones[aria-invalid="true"] .pd-opcion span { border-color: #c56d6d; }
+
+  .pd-info {
+    margin-top: 12px; padding: 14px 16px; border: 1px solid rgba(201,169,110,.12);
+    background: rgba(201,169,110,.03); font-size: 11.5px; line-height: 1.75; color: var(--cream-dim);
+  }
+  .pd-info a { color: var(--gold-light); }
+  .pd-info strong { color: var(--white); font-weight: 400; }
+  .pd-zonas { list-style: none; margin-top: 6px; }
+  .pd-zonas li { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-top: 1px solid rgba(201,169,110,.07); }
+  .pd-zonas li span:last-child { color: var(--white); white-space: nowrap; }
+  .pd-zonas li .pd-gratis { color: var(--gold-light); }
+
+  .pd-campo { margin-bottom: 14px; }
+  .pd-campo label {
+    display: block; margin-bottom: 7px;
+    font-size: 9px; letter-spacing: .24em; text-transform: uppercase; color: var(--cream-dim);
+  }
+  .pd-campo input, .pd-campo textarea {
+    width: 100%; padding: 12px 14px; border-radius: 0; outline: none;
+    background: rgba(201,169,110,.04); border: 1px solid rgba(201,169,110,.22);
+    font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 300; color: var(--white);
+    transition: border-color .25s, background .25s;
+  }
+  .pd-campo textarea { display: block; resize: vertical; min-height: 78px; line-height: 1.6; }
+  .pd-campo input::placeholder, .pd-campo textarea::placeholder { color: var(--gold-muted); }
+  .pd-campo input:focus, .pd-campo textarea:focus { border-color: var(--gold); background: rgba(201,169,110,.08); }
+  .pd-campo input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 40px #1a170f inset; -webkit-text-fill-color: var(--white); caret-color: var(--white);
+  }
+  .pd-campo [aria-invalid="true"] { border-color: #c56d6d; }
+  .pd-error { margin-top: 7px; font-size: 11px; line-height: 1.5; color: #e0a4a4; }
+  .pd-euro { position: relative; max-width: 170px; }
+  .pd-euro input { padding-right: 34px; }
+  .pd-euro span { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--gold-muted); pointer-events: none; }
+
+  .pd-check { display: flex; align-items: center; gap: 12px; padding: 10px 0; cursor: pointer; font-size: 12.5px; color: var(--cream); }
+  .pd-check input {
+    -webkit-appearance: none; appearance: none; flex-shrink: 0; margin: 0; cursor: pointer;
+    width: 20px; height: 20px; border: 1px solid var(--gold-muted); background: rgba(201,169,110,.04);
+    display: grid; place-items: center; transition: background .2s, border-color .2s;
+  }
+  .pd-check input::before {
+    content: ''; width: 10px; height: 5px; margin-top: -3px;
+    border-left: 1.5px solid var(--black); border-bottom: 1.5px solid var(--black);
+    transform: rotate(-45deg) scale(0); transition: transform .2s;
+  }
+  .pd-check input:checked { background: var(--gold); border-color: var(--gold); }
+  .pd-check input:checked::before { transform: rotate(-45deg) scale(1); }
+  .pd-pares { display: flex; align-items: center; gap: 12px; padding: 0 0 8px 32px; font-size: 11px; color: var(--cream-dim); }
+  .pd-recordar { margin-top: 2px; font-size: 11.5px; color: var(--cream-dim); }
+
+  /* pie: total y envío */
+  .pd-minimo {
+    margin-bottom: 12px; padding: 10px 12px; border: 1px solid rgba(200,120,120,.3);
+    background: rgba(197,109,109,.08); font-size: 11px; line-height: 1.6; color: #e0b4b4;
+  }
+  .pd-total { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .pd-total span { font-size: 9.5px; letter-spacing: .28em; text-transform: uppercase; color: var(--cream-dim); }
+  .pd-total strong { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400; color: var(--gold-light); letter-spacing: .02em; }
+  .pd-envio { margin-top: 2px; font-size: 10.5px; color: var(--gold-muted); }
+  .pd-enviar { width: 100%; margin-top: 14px; min-height: 54px; }
+  .pd-enviar.off { opacity: .45; cursor: not-allowed; }
+  .pd-legal { margin-top: 10px; font-size: 10px; line-height: 1.6; color: var(--gold-muted); text-align: center; }
+  .pd-privacidad { margin-top: 4px; font-size: 10.5px; line-height: 1.7; color: var(--gold-muted); }
+
+  /* vista «enviado» */
+  .pd-hecho {
+    align-items: center; justify-content: center; text-align: center; overflow-y: auto;
+    padding: 40px 32px calc(40px + env(safe-area-inset-bottom, 0px));
+  }
+  .pd-hecho-ico {
+    width: 74px; height: 74px; border-radius: 50%; margin: 0 auto 26px;
+    display: grid; place-items: center; border: 1px solid var(--gold); color: var(--gold-light);
+  }
+  .pd-hecho h3 { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 14px; }
+  .pd-hecho h3 em { font-style: italic; color: var(--gold-light); }
+  .pd-hecho p { font-size: 12.5px; line-height: 1.85; color: var(--cream-dim); max-width: 340px; margin: 0 auto 30px; }
+  .pd-hecho p strong { color: var(--white); font-weight: 400; }
+  .pd-hecho .pd-btn { width: 100%; max-width: 320px; margin-bottom: 10px; }
+
+  .pd-aviso {
+    position: fixed; z-index: 905; left: 50%; bottom: 28px; transform: translate(-50%, 20px);
+    width: max-content; max-width: min(92vw, 420px); padding: 14px 20px;
+    background: rgba(17,16,9,.97); border: 1px solid rgba(201,169,110,.35);
+    box-shadow: 0 20px 40px -18px rgba(0,0,0,.95);
+    font-size: 12px; line-height: 1.6; color: var(--cream); text-align: center;
+    opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s;
+  }
+  .pd-aviso.show { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 1024px) {
+    .pd-barra { left: 12px; right: 12px; bottom: calc(68px + env(safe-area-inset-bottom, 0px)); height: 52px; padding: 0 18px; }
+    .pd-barra-txt { margin-right: auto; }
+    body.pd-con-pedido { padding-bottom: calc(132px + env(safe-area-inset-bottom, 0px)); }
+    body.pd-con-pedido .to-top { bottom: calc(132px + env(safe-area-inset-bottom, 0px)); }
+    .pd-aviso { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+    /* 16 px evita que el iPhone haga zoom al escribir */
+    .pd-campo input, .pd-campo textarea { font-size: 16px; }
+  }
+  @media (max-width: 640px) {
+    .pd-panel { width: 100%; border-left: none; transform: translateY(100%); }
+    .pd-cab { padding: 18px 20px 16px; }
+    .pd-cab h2 { font-size: 30px; }
+    .pd-cuerpo { padding: 4px 20px 28px; }
+    .pd-pie { padding: 14px 20px calc(14px + env(safe-area-inset-bottom, 0px)); }
+  }
+  @media (max-width: 380px) {
+    .cp-pasos { flex-direction: column; }
+    .pd-opcion span { min-height: 76px; font-size: 9px; letter-spacing: .12em; }
+  }
 </style>
 </head>
 <body>
@@ -719,6 +1073,15 @@
     <div class="page-tag">Tottori Gavà · Gavà, Barcelona</div>
     <h1>Nuestra<br><em>carta</em></h1>
     <p>Cocina japonesa auténtica elaborada con ingredientes frescos y técnicas tradicionales.<br>Cada plato, una experiencia.</p>
+    <div class="como-pedir" id="como-pedir">
+      <div class="cp-tag">Pedido online · A domicilio o para recoger</div>
+      <ol class="cp-pasos">
+        <li><b>1</b>Añade platos</li>
+        <li><b>2</b>Elige entrega y pago</li>
+        <li><b>3</b>Envíalo por WhatsApp</li>
+      </ol>
+      <div class="cp-nota">Pedidos online solo en horario de apertura. Te contestaremos por WhatsApp con el tiempo de llegada o la hora de recogida.</div>
+    </div>
     <div style="margin-top:20px"><span class="open-status" data-open-status></span></div>
     <div class="hero-actions">
       <a href="index.html" class="back-link">
@@ -2277,7 +2640,7 @@
 
   <div class="dish-grid">
 
-    <div class="dish-card reveal">
+    <div class="dish-card reveal" data-sabores="Fresa|Chocolate|Té verde">
       <div class="dish-card-img">
         <img src="imgcarta/951%20Mochi%20de%20fresa%2C%20chocolate%20o%20t%C3%A9%20verde%201p.avif" alt="Mochi de fresa, chocolate o té verde 1p" loading="lazy" decoding="async" srcset="imgcarta/sm/951%20Mochi%20de%20fresa%2C%20chocolate%20o%20t%C3%A9%20verde%201p.avif 340w, imgcarta/951%20Mochi%20de%20fresa%2C%20chocolate%20o%20t%C3%A9%20verde%201p.avif 608w" sizes="(max-width:380px) 92vw, (max-width:640px) 47vw, (max-width:1024px) 31vw, 24vw" width="608" height="608">
       </div>
@@ -2299,7 +2662,7 @@
       </div>
     </div>
 
-    <div class="dish-card reveal">
+    <div class="dish-card reveal" data-sabores="Sésamo negro|Té verde">
       <div class="dish-card-img">
         <img src="imgcarta/953%20Helado%20de%20s%C3%A9samo%20negro%20o%20t%C3%A9%20verde%202bolas.avif" alt="Helado de sésamo negro o té verde 2 bolas" loading="lazy" decoding="async" srcset="imgcarta/sm/953%20Helado%20de%20s%C3%A9samo%20negro%20o%20t%C3%A9%20verde%202bolas.avif 340w, imgcarta/953%20Helado%20de%20s%C3%A9samo%20negro%20o%20t%C3%A9%20verde%202bolas.avif 671w" sizes="(max-width:380px) 92vw, (max-width:640px) 47vw, (max-width:1024px) 31vw, 24vw" width="671" height="671">
       </div>
@@ -2321,7 +2684,7 @@
       </div>
     </div>
 
-    <div class="dish-card reveal">
+    <div class="dish-card reveal" data-sabores="Yogurt|Coco|Chocolate">
       <div class="dish-card-img">
         <img src="imgcarta/955%20Mochi%20de%20Yogurt%2C%20Coco%20o%20chocolate%202p.avif" alt="Mochi de Yogurt, Coco o chocolate 2p" loading="lazy" decoding="async" srcset="imgcarta/sm/955%20Mochi%20de%20Yogurt%2C%20Coco%20o%20chocolate%202p.avif 340w, imgcarta/955%20Mochi%20de%20Yogurt%2C%20Coco%20o%20chocolate%202p.avif 671w" sizes="(max-width:380px) 92vw, (max-width:640px) 47vw, (max-width:1024px) 31vw, 24vw" width="671" height="671">
       </div>
@@ -2378,6 +2741,165 @@
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
+
+<!-- PEDIDO ONLINE: barra, panel y avisos (los activa el script del final) -->
+<button type="button" class="pd-barra" id="pdBarra" aria-haspopup="dialog">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
+  <span class="pd-barra-txt">Ver mi pedido</span>
+  <span class="pd-barra-n" id="pdBarraN">0</span>
+  <span class="pd-barra-total" id="pdBarraTotal">0,00 €</span>
+</button>
+
+<div class="pd-fondo" id="pdFondo" hidden></div>
+<div class="pd-panel" id="pdPanel" role="dialog" aria-modal="true" aria-labelledby="pdTitulo" hidden>
+  <div class="pd-cab">
+    <div>
+      <h2 id="pdTitulo">Tu <em>pedido</em></h2>
+      <span class="open-status" data-open-status></span>
+    </div>
+    <button type="button" class="pd-cerrar" id="pdCerrar" aria-label="Cerrar el pedido">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <div class="pd-vista" id="pdVistaPedido">
+    <div class="pd-cuerpo">
+      <div class="pd-vacio" id="pdVacio">
+        <div class="pd-vacio-kanji" aria-hidden="true">注文</div>
+        <p>Tu pedido está vacío</p>
+        <div class="pd-sub">Pulsa «Añadir» en los platos que quieras y vuelve aquí para enviarnos el pedido por WhatsApp.</div>
+        <button type="button" class="pd-btn" id="pdSeguir">Ver la carta</button>
+      </div>
+
+      <div id="pdLleno">
+        <ul class="pd-lineas" id="pdLineas"></ul>
+        <button type="button" class="pd-vaciar" id="pdVaciar">Vaciar pedido</button>
+
+        <form id="pdForm" novalidate>
+          <div class="pd-sec">
+            <div class="pd-sec-t" id="pdModoT">¿Cómo lo quieres?</div>
+            <div class="pd-opciones" role="radiogroup" aria-labelledby="pdModoT">
+              <label class="pd-opcion"><input type="radio" name="pdModo" value="domicilio" checked><span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                A domicilio</span></label>
+              <label class="pd-opcion"><input type="radio" name="pdModo" value="recoger"><span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
+                Recoger en el local</span></label>
+            </div>
+            <!-- Mismas condiciones que en index.html (Reservas): si cambian allí, cambiarlas aquí también -->
+            <div class="pd-info" id="pdInfoDomicilio">
+              <strong>Pedido mínimo 18 €.</strong> Gastos de envío según la distancia:
+              <ul class="pd-zonas">
+                <li><span>Gavà y hasta 3 km</span><span class="pd-gratis">Gratuito</span></li>
+                <li><span>De 3 km a 5 km</span><span>+3 €</span></li>
+                <li><span>Más de 5 km</span><span>5 €</span></li>
+              </ul>
+            </div>
+            <div class="pd-info" id="pdInfoRecoger" hidden>
+              Recógelo en <a href="https://maps.google.com/?q=Calle+St.+Pere+37,Gav%C3%A0,Barcelona" target="_blank" rel="noopener">Calle St. Pere nº37, Gavà</a>. Te diremos por WhatsApp a qué hora estará listo.
+            </div>
+          </div>
+
+          <div class="pd-sec">
+            <div class="pd-sec-t">Tus datos</div>
+            <div class="pd-campo">
+              <label for="pdNombre">Nombre <span class="pd-req" aria-hidden="true">*</span></label>
+              <input id="pdNombre" name="name" autocomplete="name" maxlength="60" required enterkeyhint="next">
+              <p class="pd-error" id="pdNombreE" hidden></p>
+            </div>
+            <div class="pd-campo">
+              <label for="pdTel">Teléfono <span class="pd-req" aria-hidden="true">*</span></label>
+              <input id="pdTel" type="tel" name="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="600 000 000" required enterkeyhint="next">
+              <p class="pd-error" id="pdTelE" hidden></p>
+            </div>
+            <div id="pdCamposDomicilio">
+              <div class="pd-campo">
+                <label for="pdDir">Dirección <span class="pd-req" aria-hidden="true">*</span></label>
+                <input id="pdDir" name="street-address" autocomplete="street-address" maxlength="120" placeholder="Calle, número, piso y puerta" required enterkeyhint="next">
+                <p class="pd-error" id="pdDirE" hidden></p>
+              </div>
+              <div class="pd-campo">
+                <label for="pdPob">Población <span class="pd-req" aria-hidden="true">*</span></label>
+                <input id="pdPob" name="address-level2" autocomplete="address-level2" maxlength="50" placeholder="Gavà" required enterkeyhint="next">
+                <p class="pd-error" id="pdPobE" hidden></p>
+              </div>
+            </div>
+            <label class="pd-check pd-recordar"><input type="checkbox" id="pdRecordar"><span>Recordar mis datos en este dispositivo</span></label>
+          </div>
+
+          <div class="pd-sec">
+            <div class="pd-sec-t" id="pdPagoT"><span>Pago <span class="pd-req" aria-hidden="true">*</span></span></div>
+            <div class="pd-opciones" id="pdPagoGrupo" role="radiogroup" aria-labelledby="pdPagoT" aria-required="true">
+              <label class="pd-opcion"><input type="radio" name="pdPago" value="efectivo"><span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="1"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v5M18 9.5v5"/></svg>
+                Efectivo</span></label>
+              <label class="pd-opcion"><input type="radio" name="pdPago" value="tarjeta"><span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>
+                Tarjeta</span></label>
+            </div>
+            <p class="pd-error" id="pdPagoE" hidden></p>
+            <div class="pd-campo" id="pdCambioCampo" style="margin-top:14px" hidden>
+              <label for="pdCambio">¿Con cuánto pagarás? <span class="pd-opt">(opcional, para llevarte el cambio)</span></label>
+              <div class="pd-euro"><input id="pdCambio" inputmode="decimal" maxlength="7" placeholder="Ej. 50" enterkeyhint="next"><span aria-hidden="true">€</span></div>
+              <p class="pd-error" id="pdCambioE" hidden></p>
+            </div>
+          </div>
+
+          <div class="pd-sec">
+            <div class="pd-sec-t">Acompañamientos <span class="pd-opt">(opcional)</span></div>
+            <label class="pd-check"><input type="checkbox" id="pdPalillos"><span>Palillos</span></label>
+            <div class="pd-pares" id="pdPares" hidden>
+              <span id="pdParesT">¿Cuántos pares?</span>
+              <div class="pd-mini" role="group" aria-labelledby="pdParesT">
+                <button type="button" data-p="-1" aria-label="Un par menos"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+                <span class="pd-n" id="pdParesN">1</span>
+                <button type="button" data-p="1" aria-label="Un par más"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+              </div>
+            </div>
+            <label class="pd-check"><input type="checkbox" id="pdJengibre"><span>Jengibre</span></label>
+            <label class="pd-check"><input type="checkbox" id="pdWasabi"><span>Wasabi</span></label>
+          </div>
+
+          <div class="pd-sec">
+            <div class="pd-sec-t" id="pdNotasT">Observaciones <span class="pd-opt">(opcional)</span></div>
+            <div class="pd-campo">
+              <label for="pdNotas" class="sr-solo">Observaciones</label>
+              <textarea id="pdNotas" rows="3" maxlength="300" aria-describedby="pdNotasT" placeholder="¿Algún comentario o nota? Alergias, sin sésamo, timbre, piso, hora…"></textarea>
+            </div>
+            <p class="pd-privacidad">Usamos tus datos únicamente para preparar y entregar este pedido.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="pd-pie" id="pdPie">
+      <p class="pd-minimo" id="pdCerrado" hidden></p>
+      <p class="pd-minimo" id="pdMinimo" hidden></p>
+      <div class="pd-total"><span id="pdTotalT">Total productos</span><strong id="pdTotal">0,00 €</strong></div>
+      <p class="pd-envio" id="pdEnvio">+ envío según distancia (gratis en Gavà y hasta 3 km)</p>
+      <a class="pd-btn pd-enviar" id="pdEnviar" href="https://wa.me/34688006355" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.24 8.24 0 01-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm-2.5 4.1c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.43-.59 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41h-.5z"/></svg>
+        Enviar pedido por WhatsApp
+      </a>
+      <p class="pd-legal">Se abrirá WhatsApp con tu pedido ya escrito: solo tendrás que pulsar enviar.</p>
+    </div>
+  </div>
+
+  <div class="pd-vista pd-hecho" id="pdVistaEnviado" hidden>
+    <div class="pd-hecho-ico" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    </div>
+    <h3>¡Muchas <em>gracias</em>!</h3>
+    <p id="pdHechoTxt"></p>
+    <button type="button" class="pd-btn" id="pdHechoOk">Ya lo he enviado</button>
+    <a class="pd-btn pd-btn-ghost" id="pdReabrir" href="https://wa.me/34688006355" target="_blank" rel="noopener">Abrir WhatsApp otra vez</a>
+    <button type="button" class="pd-link" id="pdModificar">← Modificar el pedido</button>
+  </div>
+</div>
+
+<div class="pd-aviso" id="pdAviso" role="status" aria-live="polite"></div>
+<div class="sr-solo" id="pdVivo" aria-live="polite"></div>
+
 <script>
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 80));
@@ -2420,10 +2942,9 @@
     update();
   })();
 
-  /* ── ¿Abierto ahora? Calculado en hora de Madrid ── */
-  (function(){
-    const nodes = document.querySelectorAll('[data-open-status]');
-    if (!nodes.length) return;
+  /* ── ¿Abierto ahora? Calculado en hora de Madrid ──
+     estadoApertura() también la usa el panel del pedido para avisar si está cerrado. */
+  const estadoApertura = (function(){
     // 0 domingo … 6 sábado. Tramos en minutos desde medianoche.
     const HORARIO = {
       0: [[720, 960], [1140, 1380]],
@@ -2445,27 +2966,28 @@
       return { dia: wd[key] ?? new Date().getDay(), min: +g('hour') * 60 + +g('minute') };
     }
     function hhmm(m) { return String(Math.floor(m / 60) % 24).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); }
-    const { dia, min } = ahoraMadrid();
-    const hoy = HORARIO[dia];
-    let abierto = null;
-    for (const [a, b] of hoy) if (min >= a && min < b) { abierto = b; break; }
-    let texto, clase;
-    if (abierto !== null) {
-      texto = 'Abierto ahora · hasta las ' + hhmm(abierto);
-      clase = 'is-open';
-    } else {
-      let prox = hoy.find(([a]) => min < a);
-      if (prox) {
-        texto = 'Cerrado · abre a las ' + hhmm(prox[0]);
-      } else {
-        let d = dia, saltos = 0;
-        do { d = (d + 1) % 7; saltos++; } while (!HORARIO[d].length && saltos < 8);
-        texto = 'Cerrado · abre el ' + DIAS[d] + ' a las ' + hhmm(HORARIO[d][0][0]);
-      }
-      clase = 'is-closed';
-    }
-    nodes.forEach(n => { n.textContent = texto; n.classList.remove('is-open', 'is-closed'); n.classList.add(clase); });
+    return function() {
+      const { dia, min } = ahoraMadrid();
+      const hoy = HORARIO[dia];
+      let abierto = null;
+      for (const [a, b] of hoy) if (min >= a && min < b) { abierto = b; break; }
+      if (abierto !== null) return { abierto: true, texto: 'Abierto ahora · hasta las ' + hhmm(abierto) };
+      const prox = hoy.find(([a]) => min < a);
+      if (prox) return { abierto: false, texto: 'Cerrado · abre a las ' + hhmm(prox[0]) };
+      let d = dia, saltos = 0;
+      do { d = (d + 1) % 7; saltos++; } while (!HORARIO[d].length && saltos < 8);
+      return { abierto: false, texto: 'Cerrado · abre el ' + DIAS[d] + ' a las ' + hhmm(HORARIO[d][0][0]) };
+    };
   })();
+  function pintarEstadoApertura() {
+    const { abierto, texto } = estadoApertura();
+    document.querySelectorAll('[data-open-status]').forEach(n => {
+      n.textContent = texto;
+      n.classList.remove('is-open', 'is-closed');
+      n.classList.add(abierto ? 'is-open' : 'is-closed');
+    });
+  }
+  pintarEstadoApertura();
 
   /* ── Altura real del nav: la barra de categorías se pega justo debajo ── */
   const setNavH = () => document.documentElement.style.setProperty('--nav-h', navbar.offsetHeight + 'px');
@@ -2595,10 +3117,15 @@
     if (!items.length) return;
 
     items.forEach((it, i) => {
-      it.el.setAttribute('role', 'button');
-      it.el.setAttribute('tabindex', '0');
-      it.el.addEventListener('click', () => abrir(i));
-      it.el.addEventListener('keydown', e => {
+      // La ficha de plato lleva dentro los botones del pedido: para teclado y lectores
+      // de pantalla, lo que abre el visor es la foto; con el ratón, toda la ficha salvo esos botones.
+      const disparador = it.el.classList.contains('dish-card') ? it.el.querySelector('.dish-card-img') : it.el;
+      disparador.setAttribute('role', 'button');
+      disparador.setAttribute('tabindex', '0');
+      if (disparador !== it.el) disparador.setAttribute('aria-label', 'Ver foto: ' + it.name);
+      it.el.addEventListener('click', e => { if (!e.target.closest('.pd-ctl')) abrir(i); });
+      disparador.addEventListener('keydown', e => {
+        if (e.target !== disparador) return;
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(i); }
       });
     });
@@ -2689,9 +3216,447 @@
   })();
 </script>
 
+<script>
+/* ══ PEDIDO ONLINE POR WHATSAPP ══════════════════════════════════════════
+   Cada plato con precio recibe su botón «Añadir». Número, nombre y precio se
+   leen de la propia ficha: si cambia un precio en el HTML, el pedido lo recoge
+   solo. Las fichas con «+ N piezas» ofrecen las dos raciones y las que llevan
+   data-sabores piden elegir sabor. No pasa nada por ningún servidor: el pedido
+   se abre ya escrito en WhatsApp y el cliente lo envía desde su teléfono. */
+(function(){
+  const WHATSAPP = '34688006355';         // número que recibe los pedidos
+  const MINIMO_DOMICILIO = 1800;           // pedido mínimo a domicilio, en céntimos
+  const CADUCIDAD = 12 * 60 * 60 * 1000;   // un pedido que nadie toca en 12 h se descarta
+  const K_PEDIDO = 'tottori-pedido', K_CLIENTE = 'tottori-cliente';
+
+  const $ = id => document.getElementById(id);
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  const slug = t => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  const centimos = t => { const m = /(\d+)(?:[.,](\d{1,2}))?/.exec(t || ''); return m ? +m[1] * 100 + +(m[2] || '0').padEnd(2, '0') : null; };
+  const euros = c => (c / 100).toFixed(2).replace('.', ',') + ' €';
+  const leer = k => { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } };
+  const guardar = (k, v) => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+  const svgMas = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
+  const svgMenos = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg>';
+
+  const panel = $('pdPanel'), fondo = $('pdFondo'), form = $('pdForm'), barra = $('pdBarra'), enviar = $('pdEnviar');
+  if (!panel) return;
+  const campo = { nombre: $('pdNombre'), tel: $('pdTel'), dir: $('pdDir'), pob: $('pdPob'), cambio: $('pdCambio'), notas: $('pdNotas') };
+  let panelAbierto = false, antesDelPanel = null, pares = 1, intentado = false, enviado = false, avisoT, vaciarT;
+
+  /* ── 1. Platos que se pueden pedir ── */
+  const platos = new Map();
+  document.querySelectorAll('.dish-card').forEach(card => {
+    const txt = sel => { const n = card.querySelector(sel); return n ? n.textContent.trim() : ''; };
+    const num = txt('.dish-num'), nombre = txt('.dish-name'), precio = centimos(txt('.dish-price'));
+    if (!nombre || precio == null) return;            // sin precio en la carta: no se pide online
+    const p = { id: slug(num + '-' + nombre), num, nombre, card, tipo: '', variantes: [{ k: '', precio }] };
+    if (card.dataset.sabores) {
+      p.tipo = 'Sabor';
+      p.variantes = card.dataset.sabores.split('|').map(s => s.trim()).filter(Boolean)
+        .map(s => ({ k: slug(s), txt: s, precio }));
+    } else {
+      for (const d of card.querySelectorAll('.dish-desc')) {
+        const m = /^\+\s*(\d+)\s*piezas?\s*[—–-]\s*([\d.,]+)\s*€/i.exec(d.textContent.trim());
+        if (!m) continue;
+        const mas = +m[1], base = +((/(\d+)\s*p\b/i.exec(nombre) || [])[1] || 0);
+        p.tipo = 'Ración';
+        p.variantes = [
+          { k: '', txt: base ? base + ' piezas' : 'Ración normal', precio },
+          { k: 'mas', txt: base ? (base + mas) + ' piezas' : '+' + mas + ' piezas', mas, precio: precio + centimos(m[2]) }
+        ];
+        break;
+      }
+    }
+    platos.set(p.id, p);
+  });
+  if (!platos.size) return;
+  document.documentElement.classList.add('pd-on');
+
+  const variante = (p, k) => p.variantes.find(v => v.k === k);
+  // en el panel la opción elegida va en una línea aparte; en el mensaje, todo seguido
+  const detalle = (p, v) => p.tipo === 'Sabor' ? 'Sabor: ' + v.txt : v.mas ? '+' + v.mas + ' piezas · ' + v.txt + ' en total' : '';
+  const enMensaje = (p, v) => p.num + ' ' + p.nombre +
+    (p.tipo === 'Sabor' ? ' (sabor ' + v.txt.toLowerCase() + ')' : v.mas ? ' +' + v.mas + ' piezas (' + v.txt + ' en total)' : '');
+
+  /* ── 2. El pedido: «plato|opción» → unidades, guardado en este navegador ── */
+  const pedido = new Map();
+  const clave = (id, k) => id + '|' + k;
+  const partes = c => { const i = c.lastIndexOf('|'), p = platos.get(c.slice(0, i)); return [p, p && variante(p, c.slice(i + 1))]; };
+  const guardado = leer(K_PEDIDO);
+  if (guardado && !guardado.enviado && Array.isArray(guardado.lineas) && Date.now() - guardado.t < CADUCIDAD) {
+    guardado.lineas.forEach(([c, n]) => {
+      const [p, v] = partes(String(c)), q = Math.min(99, Math.floor(+n) || 0);
+      if (p && v && q > 0) pedido.set(String(c), q);
+    });
+  }
+  if (guardado && !pedido.size) guardar(K_PEDIDO, null);   // caducado o ya enviado
+  const persistir = () => guardar(K_PEDIDO, pedido.size ? { t: Date.now(), enviado, lineas: [...pedido] } : null);
+  function totales() {
+    let uds = 0, cent = 0;
+    pedido.forEach((n, c) => { uds += n; cent += n * partes(c)[1].precio; });
+    return { uds, cent };
+  }
+
+  /* ── 3. Botonera de cada ficha ── */
+  platos.forEach(p => {
+    const ctl = document.createElement('div');
+    ctl.className = 'pd-ctl';
+    let h = '';
+    if (p.variantes.length > 1) {
+      const g = 'pdv-' + p.id;
+      h += '<div class="pd-var" role="radiogroup" aria-labelledby="' + g + '"><span class="pd-var-t" id="' + g + '">' + p.tipo + '</span>' +
+        p.variantes.map((v, i) => '<label class="pd-var-op"><input type="radio" name="' + g + '" value="' + v.k + '"' + (i ? '' : ' checked') + '>' +
+          '<span>' + esc(v.txt) + (p.tipo === 'Ración' ? ' · ' + euros(v.precio) : '') + '</span><span class="pd-var-n"></span></label>').join('') +
+        '</div>';
+    }
+    h += '<button type="button" class="pd-add" data-d="1" aria-label="Añadir ' + esc(p.nombre) + ' al pedido">' + svgMas + 'Añadir</button>' +
+      '<div class="pd-step" hidden>' +
+        '<button type="button" data-d="-1" aria-label="Quitar uno: ' + esc(p.nombre) + '">' + svgMenos + '</button>' +
+        '<span class="pd-n"></span>' +
+        '<button type="button" data-d="1" aria-label="Añadir otro: ' + esc(p.nombre) + '">' + svgMas + '</button>' +
+      '</div>';
+    ctl.innerHTML = h;
+    p.card.querySelector('.dish-card-body').appendChild(ctl);
+    p.ctl = ctl;
+    p.cuenta = document.createElement('span');
+    p.cuenta.className = 'pd-cuenta';
+    p.cuenta.hidden = true;
+    p.cuenta.setAttribute('aria-hidden', 'true');
+    p.card.appendChild(p.cuenta);
+    p.elegida = () => { const r = ctl.querySelector('input:checked'); return r ? r.value : p.variantes[0].k; };
+    ctl.addEventListener('change', () => pintarFicha(p));
+    ctl.addEventListener('click', e => {
+      const b = e.target.closest('button[data-d]');
+      if (b) cambiar(clave(p.id, p.elegida()), +b.dataset.d);
+    });
+    pintarFicha(p);
+  });
+
+  function pintarFicha(p) {
+    const n = pedido.get(clave(p.id, p.elegida())) || 0;
+    const add = p.ctl.querySelector('.pd-add'), step = p.ctl.querySelector('.pd-step');
+    const foco = document.activeElement;
+    add.hidden = n > 0;
+    step.hidden = !n;
+    step.querySelector('.pd-n').textContent = n;
+    if (foco === add && n) step.lastElementChild.focus();         // el foco no se pierde al cambiar de botón
+    else if (step.contains(foco) && !n) add.focus();
+    let total = 0;
+    p.variantes.forEach(v => {
+      const nv = pedido.get(clave(p.id, v.k)) || 0;
+      total += nv;
+      const marca = p.ctl.querySelector('input[value="' + v.k + '"] ~ .pd-var-n');
+      if (marca) marca.textContent = nv ? '×' + nv : '';
+    });
+    if (+p.cuenta.textContent !== total) {
+      p.cuenta.textContent = total;
+      p.cuenta.hidden = !total;
+      p.cuenta.classList.remove('pop'); void p.cuenta.offsetWidth; p.cuenta.classList.add('pop');
+    }
+    p.card.classList.toggle('pd-en-pedido', total > 0);
+  }
+
+  function cambiar(c, d) {
+    const [p, v] = partes(c);
+    if (!p || !v) return;
+    const n = Math.max(0, Math.min(99, (pedido.get(c) || 0) + d));
+    if (n) pedido.set(c, n); else pedido.delete(c);
+    enviado = false;
+    persistir();
+    pintarFicha(p);
+    pintarBarra(d > 0);
+    if (panelAbierto) pintarLineas();
+    const extra = detalle(p, v);
+    anunciar(p.nombre + (extra ? ', ' + extra : '') + ': ' + (n ? n + ' en tu pedido' : 'quitado del pedido') + '. Total ' + euros(totales().cent) + '.');
+  }
+
+  /* ── 4. Barra «Ver mi pedido» ── */
+  function pintarBarra(latir) {
+    const { uds, cent } = totales();
+    barra.classList.toggle('show', uds > 0);
+    document.body.classList.toggle('pd-con-pedido', uds > 0);
+    $('pdBarraN').textContent = uds;
+    $('pdBarraTotal').textContent = euros(cent);
+    barra.setAttribute('aria-label', 'Ver mi pedido: ' + uds + (uds === 1 ? ' plato, ' : ' platos, ') + euros(cent));
+    if (latir) { barra.classList.remove('latido'); void barra.offsetWidth; barra.classList.add('latido'); }
+  }
+  barra.addEventListener('click', abrirPanel);
+  // botón «Pedir online» de la barra inferior del móvil: con platos ya elegidos, abre el pedido
+  // (la barra está más abajo en el HTML que este script: se escucha en el documento)
+  document.addEventListener('click', e => {
+    if (pedido.size && e.target.closest('.mobile-actions .ma-wa')) { e.preventDefault(); abrirPanel(); }
+  });
+
+  /* ── 5. Panel del pedido ── */
+  const modo = () => (form.querySelector('[name="pdModo"]:checked') || { value: 'domicilio' }).value;
+  const pago = () => (form.querySelector('[name="pdPago"]:checked') || { value: '' }).value;
+
+  function abrirPanel() {
+    if (panelAbierto) return;
+    panelAbierto = true;
+    antesDelPanel = document.activeElement;
+    pintarEstadoApertura();
+    mostrarVista(enviado ? 'enviado' : 'pedido');
+    pintarLineas();
+    pintarFormulario();
+    fondo.hidden = panel.hidden = false;
+    void panel.offsetWidth;                        // que la transición arranque desde fuera
+    fondo.classList.add('show');
+    panel.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    try { history.pushState({ pdPanel: true }, ''); } catch (e) {}   // «atrás» en el móvil cierra el panel
+    (enviado ? $('pdHechoOk') : $('pdCerrar')).focus();
+  }
+  function cerrarPanel(desdeHistorial) {
+    if (!panelAbierto) return;
+    panelAbierto = false;
+    fondo.classList.remove('show');
+    panel.classList.remove('show');
+    document.body.style.overflow = '';
+    setTimeout(() => { if (!panelAbierto) fondo.hidden = panel.hidden = true; }, 420);
+    if (desdeHistorial !== true && history.state && history.state.pdPanel) history.back();
+    if (antesDelPanel && document.contains(antesDelPanel)) antesDelPanel.focus();
+  }
+  window.addEventListener('popstate', () => { if (panelAbierto) cerrarPanel(true); });
+  fondo.addEventListener('click', cerrarPanel);
+  $('pdCerrar').addEventListener('click', cerrarPanel);
+  $('pdSeguir').addEventListener('click', cerrarPanel);
+  panel.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { e.preventDefault(); cerrarPanel(); return; }
+    if (e.key !== 'Tab') return;
+    const f = [...panel.querySelectorAll('a[href], button, input, textarea')].filter(el => !el.disabled && el.getClientRects().length);
+    if (!f.length) return;
+    const primero = f[0], ultimo = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+  });
+
+  function pintarLineas() {
+    const vacio = !pedido.size;
+    $('pdVacio').hidden = !vacio;
+    $('pdLleno').hidden = vacio;
+    $('pdPie').hidden = vacio;
+    $('pdLineas').innerHTML = [...pedido].map(([c, n]) => {
+      const [p, v] = partes(c), extra = detalle(p, v);
+      return '<li class="pd-linea" data-c="' + esc(c) + '">' +
+        '<div><div class="pd-l-nombre"><span class="pd-l-num">' + esc(p.num) + '</span>' + esc(p.nombre) + '</div>' +
+          (extra ? '<div class="pd-l-var">' + esc(extra) + '</div>' : '') + '</div>' +
+        '<div class="pd-l-precio">' + euros(n * v.precio) + '</div>' +
+        '<div class="pd-l-ctl"><div class="pd-mini">' +
+          '<button type="button" data-d="-1" aria-label="Quitar uno: ' + esc(p.nombre) + '">' + svgMenos + '</button>' +
+          '<span class="pd-n">' + n + '</span>' +
+          '<button type="button" data-d="1" aria-label="Añadir otro: ' + esc(p.nombre) + '">' + svgMas + '</button></div>' +
+          (n > 1 ? '<span class="pd-l-unit">' + euros(v.precio) + ' / ud.</span>' : '') +
+          '<button type="button" class="pd-quitar" data-d="x" aria-label="Quitar del pedido: ' + esc(p.nombre) + '">Quitar</button>' +
+        '</div></li>';
+    }).join('');
+    actualizarTotales();
+  }
+  $('pdLineas').addEventListener('click', e => {
+    const b = e.target.closest('button[data-d]');
+    if (!b) return;
+    const c = b.closest('.pd-linea').dataset.c, d = b.dataset.d;
+    cambiar(c, d === 'x' ? -99 : +d);
+    const misma = [...$('pdLineas').children].find(li => li.dataset.c === c);
+    (misma ? misma.querySelector('[data-d="' + d + '"]') : $('pdLineas').querySelector('button') || $('pdSeguir')).focus();
+  });
+  $('pdVaciar').addEventListener('click', () => {
+    const b = $('pdVaciar');
+    clearTimeout(vaciarT);
+    if (!b.classList.contains('confirmar')) {
+      b.classList.add('confirmar');
+      b.textContent = '¿Seguro? Pulsa otra vez para vaciarlo';
+      vaciarT = setTimeout(() => { b.classList.remove('confirmar'); b.textContent = 'Vaciar pedido'; }, 4000);
+      return;
+    }
+    b.classList.remove('confirmar');
+    b.textContent = 'Vaciar pedido';
+    pedido.clear(); enviado = false; persistir();
+    platos.forEach(pintarFicha);
+    pintarBarra(false);
+    pintarLineas();
+    $('pdSeguir').focus();
+    anunciar('Pedido vaciado.');
+  });
+
+  function pintarFormulario() {
+    const dom = modo() === 'domicilio';
+    $('pdInfoDomicilio').hidden = !dom;
+    $('pdInfoRecoger').hidden = dom;
+    $('pdCamposDomicilio').hidden = !dom;
+    $('pdCambioCampo').hidden = !(dom && pago() === 'efectivo');
+    $('pdPares').hidden = !$('pdPalillos').checked;
+    $('pdParesN').textContent = pares;
+    actualizarTotales();
+  }
+  function actualizarTotales() {
+    const { cent } = totales(), dom = modo() === 'domicilio', est = estadoApertura();
+    const falta = dom ? MINIMO_DOMICILIO - cent : 0;
+    // fuera de horario se puede preparar el pedido, pero no enviarlo
+    $('pdCerrado').hidden = est.abierto;
+    $('pdCerrado').textContent = est.abierto ? '' : 'Ahora estamos cerrados (' + est.texto.replace(/^Cerrado · /, '') +
+      '). Solo aceptamos pedidos online en nuestro horario: de martes a domingo, de 12:00 a 16:00 y de 19:00 a 23:00 ' +
+      '(viernes y sábado, hasta las 24:00). Tu pedido se queda guardado para cuando abramos.';
+    $('pdTotal').textContent = euros(cent);
+    $('pdTotalT').textContent = dom ? 'Total productos' : 'Total';
+    $('pdEnvio').hidden = !dom;
+    $('pdMinimo').hidden = falta <= 0 || !est.abierto;
+    $('pdMinimo').textContent = falta > 0 ? 'El pedido mínimo a domicilio es de ' + euros(MINIMO_DOMICILIO) + ': te faltan ' +
+      euros(falta) + '. Si lo prefieres, elige «Recoger en el local».' : '';
+    enviar.classList.toggle('off', falta > 0 || !est.abierto);
+    enviar.setAttribute('aria-disabled', String(falta > 0 || !est.abierto));
+  }
+  form.addEventListener('change', () => { pintarFormulario(); if (intentado) validar(false); });
+  form.addEventListener('input', () => { if (intentado) validar(false); });
+  form.addEventListener('submit', e => e.preventDefault());
+  $('pdPares').addEventListener('click', e => {
+    const b = e.target.closest('button[data-p]');
+    if (!b) return;
+    pares = Math.max(1, Math.min(20, pares + +b.dataset.p));
+    $('pdParesN').textContent = pares;
+  });
+  $('pdRecordar').addEventListener('change', e => { if (!e.target.checked) guardar(K_CLIENTE, null); });
+
+  /* ── 6. Comprobaciones antes de enviar ── */
+  const telValido = t => {
+    const d = t.replace(/[\s.\-()\/]/g, '');
+    return /^(\+34|0034)?[6789]\d{8}$/.test(d) || /^(\+|00)[1-9]\d{7,14}$/.test(d);
+  };
+  const importe = t => {
+    t = t.replace(/€/g, '').trim();
+    if (!t) return null;
+    return /^\d{1,4}([.,]\d{1,2})?$/.test(t) ? Math.round(parseFloat(t.replace(',', '.')) * 100) : NaN;
+  };
+  function marcar(el, idError, msg) {
+    const e = $(idError);
+    e.hidden = !msg;
+    e.textContent = msg;
+    if (msg) { el.setAttribute('aria-invalid', 'true'); el.setAttribute('aria-describedby', idError); }
+    else { el.removeAttribute('aria-invalid'); el.removeAttribute('aria-describedby'); }
+    return !msg;
+  }
+  function validar(enfocar) {
+    const dom = modo() === 'domicilio', pg = pago(), malos = [];
+    const paga = dom && pg === 'efectivo' ? importe(campo.cambio.value) : null;
+    const revisar = (el, idError, msg, foco) => { if (!marcar(el, idError, msg)) malos.push(foco || el); };
+    revisar(campo.nombre, 'pdNombreE', campo.nombre.value.trim().length < 2 ? 'Escribe tu nombre.' : '');
+    revisar(campo.tel, 'pdTelE', !campo.tel.value.trim() ? 'Necesitamos un teléfono de contacto.'
+      : telValido(campo.tel.value) ? '' : 'Revisa el teléfono: tiene que tener 9 cifras.');
+    revisar(campo.dir, 'pdDirE', dom && campo.dir.value.trim().length < 5 ? 'Escribe la dirección: calle, número, piso y puerta.' : '');
+    revisar(campo.pob, 'pdPobE', dom && campo.pob.value.trim().length < 2 ? 'Indica la población.' : '');
+    revisar($('pdPagoGrupo'), 'pdPagoE', pg ? '' : 'Elige cómo vas a pagar.', form.querySelector('[name="pdPago"]'));
+    revisar(campo.cambio, 'pdCambioE', Number.isNaN(paga) ? 'Escribe solo el importe, por ejemplo 50.'
+      : paga !== null && paga < totales().cent ? 'Tiene que ser igual o mayor que el total del pedido.' : '');
+    if (enfocar && malos.length) {
+      malos[0].focus({ preventScroll: true });
+      malos[0].closest('.pd-campo, .pd-sec').scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }
+    return !malos.length;
+  }
+  function limpiarErrores() {
+    [[campo.nombre, 'pdNombreE'], [campo.tel, 'pdTelE'], [campo.dir, 'pdDirE'], [campo.pob, 'pdPobE'],
+     [$('pdPagoGrupo'), 'pdPagoE'], [campo.cambio, 'pdCambioE']].forEach(([el, id]) => marcar(el, id, ''));
+  }
+
+  /* ── 7. El mensaje que le llega al restaurante ── */
+  function mensaje() {
+    const dom = modo() === 'domicilio', pg = pago();
+    const paga = dom && pg === 'efectivo' ? importe(campo.cambio.value) : null;
+    const cifras = campo.tel.value.replace(/[^\d+]/g, '').replace(/^(\+34|0034)(?=\d{9}$)/, '');
+    const tel = /^\d{9}$/.test(cifras) ? cifras.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3') : campo.tel.value.trim();
+    const notas = campo.notas.value.trim().replace(/\s*\n\s*/g, ' · ');
+    const L = ['*NUEVO PEDIDO · ' + (dom ? 'A DOMICILIO' : 'RECOGER EN EL LOCAL') + '*', ''];
+    pedido.forEach((n, c) => { const [p, v] = partes(c); L.push(n + ' × ' + enMensaje(p, v) + ' — ' + euros(n * v.precio)); });
+    L.push('', '*' + (dom ? 'Total productos' : 'Total') + ': ' + euros(totales().cent) + '*', '');
+    L.push('*Nombre:* ' + campo.nombre.value.trim(), '*Teléfono:* ' + tel);
+    if (dom) L.push('*Dirección:* ' + campo.dir.value.trim(), '*Población:* ' + campo.pob.value.trim());
+    L.push('*Pago:* ' + (pg === 'tarjeta' ? 'Tarjeta' : 'Efectivo' + (paga ? ' (paga con ' + euros(paga) + ')' : '')), '');
+    L.push('*Palillos:* ' + ($('pdPalillos').checked ? pares + (pares === 1 ? ' par' : ' pares') : 'No'));
+    L.push('*Jengibre:* ' + ($('pdJengibre').checked ? 'Sí' : 'No'));
+    L.push('*Wasabi:* ' + ($('pdWasabi').checked ? 'Sí' : 'No'));
+    if (notas) L.push('', '*Observaciones:* ' + notas);
+    return L.join('\n');
+  }
+
+  /* ── 8. Enviar: el enlace abre WhatsApp con el pedido ya escrito ── */
+  enviar.addEventListener('click', e => {
+    intentado = true;
+    if (!pedido.size) { e.preventDefault(); return; }
+    actualizarTotales();                     // la hora puede haber cambiado con la página abierta
+    if (enviar.classList.contains('off')) {
+      e.preventDefault();
+      pintarEstadoApertura();
+      const m = $('pdCerrado').hidden ? $('pdMinimo') : $('pdCerrado');
+      m.classList.remove('latido'); void m.offsetWidth; m.classList.add('latido');
+      return;
+    }
+    if (!validar(true)) { e.preventDefault(); return; }
+    const url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(mensaje());
+    enviar.href = url;
+    $('pdReabrir').href = url;
+    guardar(K_CLIENTE, $('pdRecordar').checked
+      ? { nombre: campo.nombre.value.trim(), tel: campo.tel.value.trim(), dir: campo.dir.value.trim(), pob: campo.pob.value.trim(), modo: modo() }
+      : null);
+    enviado = true;
+    persistir();
+    setTimeout(() => mostrarVista('enviado'), 400);
+  });
+
+  function mostrarVista(v) {
+    const env = v === 'enviado';
+    $('pdVistaPedido').hidden = env;
+    $('pdVistaEnviado').hidden = !env;
+    if (!env) return;
+    $('pdHechoTxt').innerHTML = 'Pulsa <strong>Enviar</strong> en WhatsApp y te contestamos en unos minutos indicándote ' +
+      (modo() === 'domicilio' ? 'el tiempo de llegada.' : 'a qué hora estará listo para recoger.');
+    if (panelAbierto) $('pdHechoOk').focus();
+  }
+  $('pdHechoOk').addEventListener('click', () => {
+    const dom = modo() === 'domicilio';
+    pedido.clear(); enviado = false; persistir();
+    platos.forEach(pintarFicha);
+    pintarBarra(false);
+    // se borra lo propio de este pedido; nombre, teléfono y dirección solo se quedan si pidió recordarlos
+    form.querySelectorAll('[name="pdPago"]').forEach(r => { r.checked = false; });
+    $('pdPalillos').checked = $('pdJengibre').checked = $('pdWasabi').checked = false;
+    pares = 1;
+    campo.cambio.value = campo.notas.value = '';
+    if (!$('pdRecordar').checked) campo.nombre.value = campo.tel.value = campo.dir.value = campo.pob.value = '';
+    intentado = false;
+    limpiarErrores();
+    cerrarPanel();
+    aviso('¡Muchas gracias por tu pedido! Te contestamos por WhatsApp en unos minutos indicándote ' + (dom ? 'el tiempo de llegada.' : 'la hora de recogida.'));
+  });
+  $('pdModificar').addEventListener('click', () => { enviado = false; persistir(); mostrarVista('pedido'); enviar.focus(); });
+
+  /* ── 9. Avisos (pantalla y lectores de pantalla) ── */
+  function anunciar(t) { const v = $('pdVivo'); v.textContent = ''; setTimeout(() => { v.textContent = t; }, 50); }
+  function aviso(t) {
+    const a = $('pdAviso');
+    a.textContent = t;
+    a.classList.add('show');
+    clearTimeout(avisoT);
+    avisoT = setTimeout(() => a.classList.remove('show'), 6000);
+  }
+
+  /* ── 10. Arranque: datos recordados y barra ── */
+  const cliente = leer(K_CLIENTE);
+  if (cliente) {
+    campo.nombre.value = cliente.nombre || '';
+    campo.tel.value = cliente.tel || '';
+    campo.dir.value = cliente.dir || '';
+    campo.pob.value = cliente.pob || '';
+    if (cliente.modo === 'recoger') form.querySelector('[name="pdModo"][value="recoger"]').checked = true;
+    $('pdRecordar').checked = true;
+  }
+  pintarBarra(false);
+})();
+</script>
+
 <div class="mobile-actions" role="navigation" aria-label="Acciones rápidas">
   <a href="tel:936388770"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg><span>Llamar</span></a>
-  <a class="ma-wa" href="https://wa.me/34688006355" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.24 8.24 0 01-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm-2.5 4.1c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.43-.59 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41h-.5z"/></svg><span>WhatsApp</span></a>
+  <a class="ma-wa" href="#como-pedir" aria-label="Pedido online por WhatsApp"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.24 8.24 0 01-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm-2.5 4.1c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.43-.59 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41h-.5z"/></svg><span>Pedir online</span></a>
   <a href="menu.html"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v8a3 3 0 003 3v7M7 3v6M10 3v6"/><path d="M18 3c-1.5 2-2 4-2 7h4c0-3-.5-5-2-7zM18 10v11"/></svg><span>Menú día</span></a>
   <a href="https://maps.google.com/?q=Calle+St.+Pere+37,Gav%C3%A0,Barcelona" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Llegar</span></a>
 </div>

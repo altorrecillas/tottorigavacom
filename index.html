@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tottori Gavà — Restaurante japonés en Gavà · Sushi, Take Away y Domicilio</title>
 <meta name="description" content="Restaurante japonés en el centro de Gavà desde 2017. Sushi elaborado al momento, menú del día desde 14,90 €, take away y entrega a domicilio. Calle Sant Pere 37. Reservas: 93 638 87 70.">
-<link rel="canonical" href="https://tottorigava.com/">
+<link rel="canonical" href="https://tottorigava.es/">
 <meta name="theme-color" content="#0a0806">
 <meta name="author" content="Tottori Gavà">
 
@@ -13,10 +13,10 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Tottori Gavà">
-<meta property="og:url" content="https://tottorigava.com/">
+<meta property="og:url" content="https://tottorigava.es/">
 <meta property="og:title" content="Tottori Gavà — Restaurante japonés en Gavà">
 <meta property="og:description" content="Sushi elaborado al momento, menú del día desde 14,90 €, take away y entrega a domicilio en Gavà.">
-<meta property="og:image" content="https://tottorigava.com/og-image.jpg">
+<meta property="og:image" content="https://tottorigava.es/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -782,6 +782,116 @@
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
     overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
   }
+
+  /* ════════ NOVEDAD: PEDIDO ONLINE POR WHATSAPP ════════ */
+  #pedido-online {
+    position: relative; overflow: hidden; padding: 140px 60px;
+    background:
+      radial-gradient(ellipse 55% 70% at 85% 50%, rgba(201,169,110,.09), transparent 70%),
+      radial-gradient(ellipse 40% 50% at 10% 20%, rgba(181,52,44,.06), transparent 70%),
+      var(--surface);
+    border-top: 1px solid rgba(201,169,110,.14); border-bottom: 1px solid rgba(201,169,110,.14);
+  }
+  #pedido-online::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent); opacity: .55;
+  }
+  .po-kanji {
+    position: absolute; left: -2%; bottom: -60px; pointer-events: none; user-select: none;
+    font-family: 'Noto Serif JP', serif; font-weight: 200; font-size: clamp(160px, 22vw, 340px); line-height: 1;
+    color: transparent; -webkit-text-stroke: 1px rgba(201,169,110,.06);
+  }
+  .po-inner {
+    position: relative; z-index: 2; max-width: 1240px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.08fr .92fr; gap: 90px; align-items: center;
+  }
+  .po-novedad {
+    display: inline-flex; align-items: center; gap: 14px; margin-bottom: 30px;
+    font-size: 9.5px; letter-spacing: .4em; text-transform: uppercase; color: var(--gold);
+  }
+  .po-sello {
+    width: 38px; height: 38px; display: grid; place-items: center; flex-shrink: 0;
+    background: var(--sello); color: #fff5ee;
+    font-family: 'Noto Serif JP', serif; font-weight: 200; font-size: 19px; letter-spacing: 0;
+    -webkit-text-stroke: .4px #fff5ee;
+    box-shadow: inset 0 0 0 3px var(--sello), inset 0 0 0 4px rgba(255,245,238,.45), 0 6px 18px -6px rgba(0,0,0,.9);
+    transform: rotate(-4deg);
+  }
+  .po-texto h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300; color: var(--white);
+    font-size: clamp(44px, 5.4vw, 76px); line-height: 1; letter-spacing: -.01em; margin-bottom: 28px;
+  }
+  .po-texto h2 em { font-style: italic; color: var(--gold-light); }
+  .po-intro { font-size: 14px; line-height: 1.95; color: var(--cream-dim); max-width: 500px; margin-bottom: 40px; }
+  .po-intro strong { color: var(--cream); font-weight: 400; }
+  .po-pasos { list-style: none; display: grid; gap: 0; max-width: 500px; margin-bottom: 44px; border-top: 1px solid rgba(201,169,110,.12); }
+  .po-pasos li { display: flex; align-items: center; gap: 22px; padding: 17px 0; border-bottom: 1px solid rgba(201,169,110,.12); }
+  .po-pasos b {
+    width: 36px; flex-shrink: 0; font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 34px; line-height: 1;
+    color: transparent; -webkit-text-stroke: 1px var(--gold);
+  }
+  .po-pasos span { font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--white); line-height: 1.2; }
+  .po-pasos small { display: block; margin-top: 3px; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: .03em; color: var(--cream-dim); }
+  .po-facil {
+    max-width: 500px; margin: -12px 0 40px; padding: 4px 0 4px 22px; border-left: 1px solid var(--gold);
+    font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1.45; color: var(--white);
+  }
+  .po-facil em { font-style: italic; color: var(--gold-light); }
+  .po-acciones { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .po-cta { display: inline-flex !important; align-items: center; gap: 12px; }
+  .po-cta svg { flex-shrink: 0; }
+  .po-letra { margin-top: 26px; font-size: 10.5px; letter-spacing: .06em; line-height: 1.8; color: var(--gold-muted); max-width: 500px; }
+
+  /* conversación de ejemplo */
+  .po-movil { display: flex; justify-content: center; }
+  .po-chat {
+    width: 100%; max-width: 380px; padding: 0 0 26px; border-radius: 30px; overflow: hidden;
+    background: linear-gradient(180deg, #14110c 0%, #0d0b08 100%);
+    border: 1px solid rgba(201,169,110,.3);
+    box-shadow: 0 50px 90px -40px rgba(0,0,0,.95), 0 0 0 8px rgba(201,169,110,.035), var(--relieve);
+    transform: rotate(-2deg); animation: poFlota 7s ease-in-out infinite;
+  }
+  @keyframes poFlota { 0%,100% { transform: rotate(-2deg) translateY(0); } 50% { transform: rotate(-2deg) translateY(-10px); } }
+  .po-chat-cab {
+    display: flex; align-items: center; gap: 12px; padding: 18px 20px; margin-bottom: 22px;
+    background: rgba(201,169,110,.06); border-bottom: 1px solid rgba(201,169,110,.14);
+  }
+  .po-av {
+    width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0;
+    background: var(--lamina); color: var(--black); font-family: 'Cormorant Garamond', serif; font-size: 20px;
+  }
+  .po-chat-cab strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; color: var(--white); }
+  .po-chat-cab small { font-size: 10px; letter-spacing: .08em; color: #8fc79a; }
+  .po-burbuja {
+    position: relative; margin: 0 18px 12px; padding: 13px 15px 22px; max-width: 86%;
+    font-size: 11px; line-height: 1.75; color: var(--cream); border-radius: 14px;
+  }
+  .po-burbuja strong { display: block; font-weight: 400; color: var(--white); letter-spacing: .04em; }
+  .po-sale { margin-left: auto; background: rgba(201,169,110,.13); border: 1px solid rgba(201,169,110,.28); border-top-right-radius: 3px; }
+  .po-entra { background: #1d1912; border: 1px solid rgba(201,169,110,.1); border-top-left-radius: 3px; }
+  .po-linea { display: block; color: var(--cream-dim); }
+  .po-total { margin-top: 6px; }
+  .po-hora { position: absolute; right: 12px; bottom: 6px; font-size: 9px; color: var(--gold-muted); }
+  .po-hora i { font-style: normal; color: #6fbf7a; margin-left: 4px; letter-spacing: -.15em; }
+  .po-entra.po-aparece { opacity: 0; animation: poAparece .6s ease 1.2s forwards; animation-play-state: paused; }
+  .reveal.visible .po-entra.po-aparece { animation-play-state: running; }
+  @keyframes poAparece { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  @media (max-width: 1024px) {
+    #pedido-online { padding: 90px 24px 100px; }
+    .po-inner { grid-template-columns: 1fr; gap: 64px; }
+    .po-kanji { display: none; }
+  }
+  @media (max-width: 640px) {
+    .po-acciones { flex-direction: column; align-items: stretch; }
+    .po-acciones .open-status { align-self: flex-start; }
+    .po-cta { justify-content: center; }
+    .po-pasos span { font-size: 19px; }
+    .po-chat { transform: none; animation: none; }
+  }
+  @media (max-width: 380px) {
+    #pedido-online { padding: 72px 16px 84px; }
+  }
 </style>
 </head>
 <body>
@@ -827,9 +937,47 @@
     <div class="hero-actions">
       <a href="menu.html" class="btn-primary">Menú del día</a>
       <a href="carta.html" target="_self" onclick="closeMobile()" class="btn-ghost">Ver la carta <svg width="20" height="10" viewBox="0 0 20 10" fill="none"><path d="M0 5H18M14 1L18 5L14 9" stroke="currentColor" stroke-width="1"/></svg></a>
+      <a href="carta.html#como-pedir" class="btn-ghost">Pedir online <svg width="20" height="10" viewBox="0 0 20 10" fill="none"><path d="M0 5H18M14 1L18 5L14 9" stroke="currentColor" stroke-width="1"/></svg></a>
     </div>
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- NOVEDAD: PEDIDO ONLINE -->
+<section id="pedido-online" aria-labelledby="poTitulo">
+  <div class="po-kanji" aria-hidden="true">注文</div>
+  <div class="po-inner">
+    <div class="po-texto reveal">
+      <div class="po-novedad"><span class="po-sello" aria-hidden="true">新</span>Novedad · Pedido online</div>
+      <h2 id="poTitulo">Tu sushi,<br><em>a un mensaje</em></h2>
+      <p class="po-intro">Ahora puedes hacer tu pedido directamente desde nuestra carta y enviárnoslo por <strong>WhatsApp</strong> en un instante. Elige tus platos, dinos si te lo llevamos a casa o pasas a recogerlo, y en unos minutos te contestamos indicándote el tiempo de llegada.</p>
+      <ol class="po-pasos">
+        <li><b>1</b><span>Elige tus platos<small>Toda la carta, con fotos y precios</small></span></li>
+        <li><b>2</b><span>A domicilio o para recoger<small>Pago en efectivo o con tarjeta</small></span></li>
+        <li><b>3</b><span>Envíalo por WhatsApp<small>Te respondemos con la hora de llegada</small></span></li>
+      </ol>
+      <p class="po-facil">Así de fácil: <em>eliges tus productos, le das a enviar y, sin más, tu pedido llega directamente al local.</em></p>
+      <div class="po-acciones">
+        <a href="carta.html#como-pedir" class="btn-primary po-cta"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.24 8.24 0 01-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm-2.5 4.1c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.43-.59 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41h-.5z"/></svg>Hacer mi pedido</a>
+        <span class="open-status" data-open-status></span>
+      </div>
+      <p class="po-letra">Pedido mínimo a domicilio 18 € · Envío gratuito en Gavà y hasta 3 km · Pedidos en horario de apertura</p>
+    </div>
+    <div class="po-movil reveal" aria-hidden="true">
+      <div class="po-chat">
+        <div class="po-chat-cab"><span class="po-av">T</span><div><strong>Tottori Gavà</strong><small>en línea</small></div></div>
+        <div class="po-burbuja po-sale">
+          <strong>NUEVO PEDIDO · A DOMICILIO</strong>
+          <span class="po-linea">2 × 403 Rainbow roll 8p — 19,30 €</span>
+          <span class="po-linea">1 × 811 Combinación 5 — 39,90 €</span>
+          <span class="po-linea">2 × 951 Mochi de té verde — 8,50 €</span>
+          <strong class="po-total">Total: 67,70 €</strong>
+          <span class="po-hora">20:41<i>✓✓</i></span>
+        </div>
+        <div class="po-burbuja po-entra po-aparece">¡Recibido! Tiempo de llegada: 35 minutos. Gracias 🙏<span class="po-hora">20:42</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ABOUT -->
@@ -880,7 +1028,7 @@
 
     <!-- ROLLS -->
     <div class="menu-card reveal" data-category="rolls">
-      <div class="menu-card-img"><img src="principal/rainbow%20roll.avif" alt="Rainbow Roll" loading="lazy" decoding="async" srcset="principal/sm/rainbow%20roll.avif 340w, principal/rainbow%20roll.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
+      <div class="menu-card-img"><img src="principal/rainbow roll.avif" alt="Rainbow Roll" loading="lazy" decoding="async" srcset="principal/sm/rainbow%20roll.avif 340w, principal/rainbow%20roll.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
       <div class="menu-card-body">
         <div class="card-num">403</div>
         <div class="card-jp">レインボー巻き</div>
@@ -890,7 +1038,7 @@
       </div>
     </div>
     <div class="menu-card tokusen reveal" data-category="rolls">
-      <div class="menu-card-img"><img src="principal/tottori%20roll.avif" alt="Tottori Roll" loading="lazy" decoding="async" srcset="principal/sm/tottori%20roll.avif 340w, principal/tottori%20roll.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
+      <div class="menu-card-img"><img src="principal/tottori roll.avif" alt="Tottori Roll" loading="lazy" decoding="async" srcset="principal/sm/tottori%20roll.avif 340w, principal/tottori%20roll.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
       <div class="menu-card-body">
         <span class="sr-solo">Especialidad de la casa</span>
         <div class="card-num">406</div>
@@ -901,7 +1049,7 @@
       </div>
     </div>
     <div class="menu-card reveal" data-category="rolls">
-      <div class="menu-card-img"><img src="principal/dragon%20roll%20salmon.avif" alt="Dragon Roll Salmón" loading="lazy" decoding="async" srcset="principal/sm/dragon%20roll%20salmon.avif 340w, principal/dragon%20roll%20salmon.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
+      <div class="menu-card-img"><img src="principal/dragon roll salmon.avif" alt="Dragon Roll Salmón" loading="lazy" decoding="async" srcset="principal/sm/dragon%20roll%20salmon.avif 340w, principal/dragon%20roll%20salmon.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
       <div class="menu-card-body">
         <div class="card-num">404</div>
         <div class="card-jp">龍ロール</div>
@@ -913,7 +1061,7 @@
 
     <!-- NIGIRIS -->
     <div class="menu-card reveal" data-category="nigiris" hidden>
-      <div class="menu-card-img"><img src="principal/nigiri%20de%20salmon.avif" alt="Nigiri de Salmón" loading="lazy" decoding="async" srcset="principal/sm/nigiri%20de%20salmon.avif 340w, principal/nigiri%20de%20salmon.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
+      <div class="menu-card-img"><img src="principal/nigiri de salmon.avif" alt="Nigiri de Salmón" loading="lazy" decoding="async" srcset="principal/sm/nigiri%20de%20salmon.avif 340w, principal/nigiri%20de%20salmon.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
       <div class="menu-card-body">
         <div class="card-num">601</div>
         <div class="card-jp">鮭の握り</div>
@@ -923,7 +1071,7 @@
       </div>
     </div>
     <div class="menu-card reveal" data-category="nigiris" hidden>
-      <div class="menu-card-img"><img src="principal/nigiri%20de%20atun.avif" alt="Nigiri de Atún" loading="lazy" decoding="async"></div>
+      <div class="menu-card-img"><img src="principal/nigiri de atun.avif" alt="Nigiri de Atún" loading="lazy" decoding="async"></div>
       <div class="menu-card-body">
         <div class="card-num">602</div>
         <div class="card-jp">まぐろの握り</div>
@@ -933,7 +1081,7 @@
       </div>
     </div>
     <div class="menu-card reveal" data-category="nigiris" hidden>
-      <div class="menu-card-img"><img src="principal/nigiri%20de%20dorada.avif" alt="Nigiri de Dorada" loading="lazy" decoding="async"></div>
+      <div class="menu-card-img"><img src="principal/nigiri de dorada.avif" alt="Nigiri de Dorada" loading="lazy" decoding="async"></div>
       <div class="menu-card-body">
         <div class="card-num">606</div>
         <div class="card-jp">鯛のにぎり</div>
@@ -945,7 +1093,7 @@
 
     <!-- COCINA -->
     <div class="menu-card reveal" data-category="varios" hidden>
-      <div class="menu-card-img"><img src="principal/tataki%20de%20atun.avif" alt="Tataki de atún" loading="lazy" decoding="async" srcset="principal/sm/tataki%20de%20atun.avif 340w, principal/tataki%20de%20atun.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
+      <div class="menu-card-img"><img src="principal/tataki de atun.avif" alt="Tataki de atún" loading="lazy" decoding="async" srcset="principal/sm/tataki%20de%20atun.avif 340w, principal/tataki%20de%20atun.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
       <div class="menu-card-body">
         <div class="card-num">703</div>
         <div class="card-jp">まぐろたたき</div>
@@ -965,7 +1113,7 @@
       </div>
     </div>
     <div class="menu-card menu-card-featured reveal" data-category="varios" hidden>
-      <div class="menu-card-img"><img src="principal/combinacion%205.avif" alt="Combinación 5" loading="lazy" decoding="async" srcset="principal/sm/combinacion%205.avif 340w, principal/combinacion%205.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
+      <div class="menu-card-img"><img src="principal/combinacion 5.avif" alt="Combinación 5" loading="lazy" decoding="async" srcset="principal/sm/combinacion%205.avif 340w, principal/combinacion%205.avif 600w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 31vw" width="600" height="450"></div>
       <div class="menu-card-body">
         <div class="card-num">811</div>
         <div class="card-jp">大皿盛り</div>
@@ -1024,13 +1172,13 @@
     <h2>Cada plato,<br><em>una obra</em></h2>
   </div>
   <div class="gallery-grid reveal">
-    <div class="g-item wide"><img src="principal/gran%20combinacion.avif" alt="Gran combinación" loading="lazy" decoding="async" srcset="principal/sm/gran%20combinacion.avif 340w, principal/gran%20combinacion.avif 900w" sizes="(max-width:640px) 92vw, 47vw" width="900" height="400"></div>
-    <div class="g-item"><img src="principal/poke%20de%20salmon.avif" alt="Poke de salmón" loading="lazy" decoding="async"></div>
-    <div class="g-item"><img src="principal/salmon%20ikura%20roll.avif" alt="Salmón ikura roll" loading="lazy" decoding="async" srcset="principal/sm/salmon%20ikura%20roll.avif 340w, principal/salmon%20ikura%20roll.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
-    <div class="g-item"><img src="principal/futomaki%20salmon%20mango.avif" alt="Futomaki salmón mango" loading="lazy" decoding="async" srcset="principal/sm/futomaki%20salmon%20mango.avif 340w, principal/futomaki%20salmon%20mango.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
+    <div class="g-item wide"><img src="principal/gran combinacion.avif" alt="Gran combinación" loading="lazy" decoding="async" srcset="principal/sm/gran%20combinacion.avif 340w, principal/gran%20combinacion.avif 900w" sizes="(max-width:640px) 92vw, 47vw" width="900" height="400"></div>
+    <div class="g-item"><img src="principal/poke de salmon.avif" alt="Poke de salmón" loading="lazy" decoding="async"></div>
+    <div class="g-item"><img src="principal/salmon ikura roll.avif" alt="Salmón ikura roll" loading="lazy" decoding="async" srcset="principal/sm/salmon%20ikura%20roll.avif 340w, principal/salmon%20ikura%20roll.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
+    <div class="g-item"><img src="principal/futomaki salmon mango.avif" alt="Futomaki salmón mango" loading="lazy" decoding="async" srcset="principal/sm/futomaki%20salmon%20mango.avif 340w, principal/futomaki%20salmon%20mango.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
     <div class="g-item"><img src="principal/mochi.avif" alt="Mochi" loading="lazy" decoding="async" srcset="principal/sm/mochi.avif 340w, principal/mochi.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
     <div class="g-item"><img src="principal/sashimi.avif" alt="Sashimi" loading="lazy" decoding="async" srcset="principal/sm/sashimi.avif 340w, principal/sashimi.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
-    <div class="g-item"><img src="principal/gunkan%20ikura.avif" alt="Gunkan ikura" loading="lazy" decoding="async" srcset="principal/sm/gunkan%20ikura.avif 340w, principal/gunkan%20ikura.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
+    <div class="g-item"><img src="principal/gunkan ikura.avif" alt="Gunkan ikura" loading="lazy" decoding="async" srcset="principal/sm/gunkan%20ikura.avif 340w, principal/gunkan%20ikura.avif 500w" sizes="(max-width:640px) 92vw, (max-width:1024px) 47vw, 24vw" width="500" height="280"></div>
   </div>
 </section>
 
@@ -1040,7 +1188,7 @@
   <div class="reservas-inner reveal">
     <div class="section-label" style="justify-content:center;">Reservas &amp; Contacto</div>
     <h2>Reserva tu<br><em>mesa</em></h2>
-    <p>Llámanos o escríbenos por WhatsApp para reservar. También ofrecemos servicio a domicilio y Take Away.</p>
+    <p>Llámanos o escríbenos por WhatsApp para reservar. También ofrecemos servicio a domicilio y Take Away: haz tu pedido desde la carta y envíanoslo por WhatsApp.</p>
     <div style="margin:-32px 0 40px"><span class="open-status" data-open-status></span></div>
     <div class="contact-cards">
       <a href="tel:936388770" class="contact-card">
@@ -1053,6 +1201,7 @@
       </a>
     </div>
     <a href="tel:936388770" class="btn-primary">Llamar ahora</a>
+    <div style="margin-top:28px"><a href="carta.html#como-pedir" class="btn-ghost">Hacer un pedido online <svg width="20" height="10" viewBox="0 0 20 10" fill="none"><path d="M0 5H18M14 1L18 5L14 9" stroke="currentColor" stroke-width="1"/></svg></a></div>
 
     <div class="delivery-conditions">
       <div class="delivery-title">
@@ -1372,13 +1521,13 @@
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
-  "@id": "https://tottorigava.com/#restaurante",
+  "@id": "https://tottorigava.es/#restaurante",
   "name": "Tottori Gavà",
   "alternateName": "Tottori Menjar Japonès",
   "description": "Restaurante japonés en el centro de Gavà desde 2017. Sushi elaborado al momento, menú del día, take away y entrega a domicilio.",
-  "url": "https://tottorigava.com/",
-  "image": "https://tottorigava.com/og-image.jpg",
-  "logo": "https://tottorigava.com/apple-touch-icon.png",
+  "url": "https://tottorigava.es/",
+  "image": "https://tottorigava.es/og-image.jpg",
+  "logo": "https://tottorigava.es/apple-touch-icon.png",
   "telephone": "+34936388770",
   "email": "tottorigava@gmail.com",
   "servesCuisine": ["Japonesa", "Sushi", "Asiática"],
@@ -1396,7 +1545,7 @@
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 41.302, "longitude": 2.003 },
   "hasMap": "https://maps.google.com/?q=Calle+St.+Pere+37,Gav%C3%A0,Barcelona",
-  "hasMenu": "https://tottorigava.com/carta.html",
+  "hasMenu": "https://tottorigava.es/carta.html",
   "acceptsReservations": "True",
   "openingHoursSpecification": [
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Sunday"], "opens": "12:00", "closes": "16:00" },
@@ -1410,7 +1559,7 @@
 
 <div class="mobile-actions" role="navigation" aria-label="Acciones rápidas">
   <a href="tel:936388770"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg><span>Llamar</span></a>
-  <a class="ma-wa" href="https://wa.me/34688006355" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.24 8.24 0 01-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm-2.5 4.1c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.43-.59 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41h-.5z"/></svg><span>WhatsApp</span></a>
+  <a class="ma-wa" href="carta.html#como-pedir" aria-label="Pedido online por WhatsApp"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 012.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.24 8.24 0 01-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm-2.5 4.1c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.43-.59 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41h-.5z"/></svg><span>Pedir online</span></a>
   <a href="carta.html"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7a2 2 0 012 2v14a2 2 0 00-2-2H4z"/><path d="M20 4h-7a2 2 0 00-2 2v14a2 2 0 012-2h7z"/></svg><span>Carta</span></a>
   <a href="https://maps.google.com/?q=Calle+St.+Pere+37,Gav%C3%A0,Barcelona" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Llegar</span></a>
 </div>
