@@ -2858,6 +2858,7 @@
             </div>
             <label class="pd-check"><input type="checkbox" id="pdJengibre"><span>Jengibre</span></label>
             <label class="pd-check"><input type="checkbox" id="pdWasabi"><span>Wasabi</span></label>
+            <label class="pd-check"><input type="checkbox" id="pdSoja"><span>Soja</span></label>
           </div>
 
           <div class="pd-sec">
@@ -3575,6 +3576,7 @@
     L.push('*Palillos:* ' + ($('pdPalillos').checked ? pares + (pares === 1 ? ' par' : ' pares') : 'No'));
     L.push('*Jengibre:* ' + ($('pdJengibre').checked ? 'Sí' : 'No'));
     L.push('*Wasabi:* ' + ($('pdWasabi').checked ? 'Sí' : 'No'));
+    L.push('*Soja:* ' + ($('pdSoja').checked ? 'Sí' : 'No'));
     if (notas) L.push('', '*Observaciones:* ' + notas);
     return L.join('\n');
   }
@@ -3619,7 +3621,7 @@
     pintarBarra(false);
     // se borra lo propio de este pedido; nombre, teléfono y dirección solo se quedan si pidió recordarlos
     form.querySelectorAll('[name="pdPago"]').forEach(r => { r.checked = false; });
-    $('pdPalillos').checked = $('pdJengibre').checked = $('pdWasabi').checked = false;
+    $('pdPalillos').checked = $('pdJengibre').checked = $('pdWasabi').checked = $('pdSoja').checked = false;
     pares = 1;
     campo.cambio.value = campo.notas.value = '';
     if (!$('pdRecordar').checked) campo.nombre.value = campo.tel.value = campo.dir.value = campo.pob.value = '';
